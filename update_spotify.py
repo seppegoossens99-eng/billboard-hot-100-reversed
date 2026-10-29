@@ -19,6 +19,14 @@ def secret(name):
 def normalize(text):
     return re.sub(r"[^a-z0-9]+", " ", text.casefold()).strip()
 
+def title_variants(title):
+    base = re.sub(r"\s*\([^)]*\)", "", title).strip()
+    return list(dict.fromkeys([title, base]))
+
+def artist_variants(artist):
+    lead = re.split(r"\s+(?:Featuring|Feat\.?|Ft\.?|With|X)\s+|\s*&\s*|,", artist, maxsplit=1, flags=re.I)[0]
+    return list(dict.fromkeys([artist, lead]))
+
 def main():
     if os.getenv("GITHUB_EVENT_NAME") == "schedule":
         local = datetime.now(ZoneInfo("Europe/Brussels"))
@@ -51,23 +59,24 @@ def main():
     missing = []
     for song in sorted(songs, key=lambda x: x["this_week"], reverse=True):
         title, artist = song["song"], song["artist"]
-        lead_artist = re.split(r" Featuring | feat\.? | ft\.? | & |, ", artist, maxsplit=1, flags=re.I)[0]
-        queries = [
-            f'track:"{title}" artist:"{lead_artist}"',
-            f"{title} {artist}",
-        ]
+        queries = []
+        for variant in title_variants(title):
+            for artist_name in artist_variants(artist):
+                queries.extend([f'track:"{variant}" artist:"{artist_name}"', f"{variant} {artist_name}"])
         chosen = None
-        for query in queries:
-            results = spotify.search(q=query, type="track", limit=10)["tracks"]["items"]
-            title_norm = normalize(title)
-            artist_norm = normalize(lead_artist)
+        best_score = -1
+        lead = normalize(artist_variants(artist).slice(-1)[0])
+        for query in dict.fromkeys(queries):
+            results = spotify.search(q=query, type="track", limit=50)["tracks"]["items"]
             for item in results:
                 found_title = normalize(item["name"])
-                found_artists = " ".join(normalize(a["name"]) for a in item["artists"])
-                if (found_title == title_norm or found_title.startswith(title_norm + " ")) and artist_norm in found_artists:
-                    chosen = item["id"]
-                    break
-            if chosen:
+                wanted_title = normalize(title)
+                found_artists = [normalize(a["name"]) for a in item["artists"]]
+                if (found_title == wanted_title or found_title.startswith(wanted_title + " ")) and lead in found_artists:
+                    score = 100 if found_title == wanted_title else 80
+                    if score > best_score:
+                        chosen, best_score = item["id"], score
+            if best_score == 100:
                 break
         if chosen and chosen not in ids:
             ids.append(chosen)
