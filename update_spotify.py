@@ -1,71 +1,143 @@
 import os
+import re
+import unicodedata
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
+import requests
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
-SOURCE_PLAYLIST_ID = "6UeSakyzhiEt4NB3UAd6NQ"
-SCOPES = "playlist-modify-private playlist-modify-public playlist-read-private"
+CHART_URL = "https://raw.githubusercontent.com/mhollingshead/billboard-hot-100/main/recent.json"
+API = "https://api.spotify.com/v1"
+SCOPES = "playlist-modify-public playlist-modify-private playlist-read-private"
 
-def secret(name):
+# Verified Spotify tracks. Used only if the chart artist + title match.
+# These songs were not found by the basic Spotify search in the first run.
+OVERRIDES = {
+    ("karol g", "ahi"): "6DoUDG1GJrJf6eGQLUBBnm",
+    ("beyonce", "morning dew donk"): "4ZYlzwjjAJrflwWg4DJTlT",
+    ("boa", "duvet"): "7urtwZEtOypb3r8HNi42dT",
+    ("shakira", "dai dai fifa world cup official song 2026"): "0kosUz0jePvjiz4ctmR6wL",
+    ("stella lefty", "something to lose"): "78lR1li9wdwunwNoVYiBpE",
+    ("jhene aiko", "so good"): "3Yd3J42s3GZaYty4Iy4ewT",
+    ("adela", "ain t in la"): "02HyFYmpzt02VJ8k0CqxKj",
+    ("karol g", "bby wow"): "3h5T5JypYU7huFiVYhv1dr",
+    ("adela", "nicole kidman"): "70cHKK8bHAfJrOGVnfRG9J",
+}
+
+def need_env(name):
     value = os.getenv(name, "").strip()
     if not value:
         raise RuntimeError("Missing GitHub secret: " + name)
     return value
 
+def normalize(s):
+    s = unicodedata.normalize("NFKD", s.casefold())
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    return re.sub(r"[^a-z0-9]+", " ", s).strip()
+
+def main_artist(artist):
+    return re.split(r"\s+(?:featuring|feat\.?|ft\.?|with|x)\s+|\s*&\s*|,", artist, 1, re.I)[0].strip()
+
+def query_variants(song, artist):
+    title_without_suffix = re.sub(r"\s*\([^)]*\)", "", song).strip()
+    variants = [
+        f'track:"{song}" artist:"{main_artist(artist)}"',
+        f"{song} {main_artist(artist)}",
+        f"{title_without_suffix} {main_artist(artist)}",
+        f"{song} {artist}",
+    ]
+    return list(dict.fromkeys(v for v in variants if v.strip()))
+
+def find_spotify_track(spotify, title, artist):
+    main = normalize(main_artist(artist))
+    wanted = normalize(title)
+    short_title = normalize(re.sub(r"\s*\([^)]*\)", "", title))
+    best = None
+    best_score = -1
+    for query in query_variants(title, artist):
+        found = spotify.search(q=query, type="track", limit=10)["tracks"]["items"]
+        for track in found:
+            candidate = normalize(track["name"])
+            artist_names = [normalize(a["name"]) for a in track["artists"]]
+            if main not in artist_names:
+                continue
+            if candidate == wanted:
+                score = 100
+            elif candidate == short_title:
+                score = 95
+            elif candidate.startswith(wanted + " "):
+                score = 85
+            elif candidate.startswith(short_title + " "):
+                score = 80
+            else:
+                continue
+            if score > best_score:
+                best, best_score = track["id"], score
+        if best_score == 100:
+            break
+    return best
+
 def main():
     if os.getenv("GITHUB_EVENT_NAME") == "schedule":
-        local = datetime.now(ZoneInfo("Europe/Brussels"))
-        if local.weekday() != 2 or local.hour != 12:
-            print("Not Wednesday at noon in Belgium; skipping.")
+        now = datetime.now(ZoneInfo("Europe/Brussels"))
+        if now.weekday() != 2 or now.hour != 12:
+            print("Outside Wednesday 12:00 Belgium schedule. Skipping.")
             return
 
+    chart_response = requests.get(CHART_URL, timeout=40)
+    chart_response.raise_for_status()
+    chart = chart_response.json()
+    songs = chart.get("data", [])
+    positions = [s.get("this_week") for s in songs]
+    if len(songs) != 100 or sorted(positions) != list(range(1, 101)):
+        raise RuntimeError("Chart is not a complete 1-100 ranking. Playlist unchanged.")
+    print("Billboard chart date:", chart.get("date"))
+
     oauth = SpotifyOAuth(
-        client_id=secret("SPOTIFY_CLIENT_ID"),
-        client_secret=secret("SPOTIFY_CLIENT_SECRET"),
+        client_id=need_env("SPOTIFY_CLIENT_ID"),
+        client_secret=need_env("SPOTIFY_CLIENT_SECRET"),
         redirect_uri="http://127.0.0.1:8888/callback",
         scope=SCOPES,
         open_browser=False,
         cache_path=None,
     )
-    token = oauth.refresh_access_token(secret("SPOTIFY_REFRESH_TOKEN"))["access_token"]
-    spotify = spotipy.Spotify(auth=token, requests_timeout=30, retries=3)
+    access_token = oauth.refresh_access_token(need_env("SPOTIFY_REFRESH_TOKEN"))["access_token"]
+    spotify = spotipy.Spotify(auth=access_token, requests_timeout=30, retries=3)
+    target = need_env("SPOTIFY_PLAYLIST_ID")
 
-    target_id = secret("SPOTIFY_PLAYLIST_ID")
-    if target_id == SOURCE_PLAYLIST_ID:
-        raise RuntimeError("Source and destination playlists must be different.")
+    result_ids = []
+    unresolved = []
+    for s in sorted(songs, key=lambda x: x["this_week"], reverse=True):
+        title, artist, pos = s["song"], s["artist"], s["this_week"]
+        key = (normalize(main_artist(artist)), normalize(title))
+        track_id = OVERRIDES.get(key)
+        if not track_id:
+            track_id = find_spotify_track(spotify, title, artist)
+        if track_id and track_id not in result_ids:
+            result_ids.append(track_id)
+        else:
+            unresolved.append(f"{pos}: {artist} - {title}")
 
-    source = spotify.playlist(SOURCE_PLAYLIST_ID, fields="id,name,items(total)")
-    print("Source:", source["name"], "Total:", source["items"]["total"])
-    if source["tracks"]["total"] != 100:
-        raise RuntimeError("Source playlist does not contain exactly 100 entries; destination unchanged.")
+    print(f"Matched: {len(result_ids)}/100. Missing or duplicates: {len(unresolved)}")
+    for entry in unresolved:
+        print("UNMATCHED:", entry)
 
-    tracks = []
-    offset = 0
-    while True:
-        page = spotify.playlist_items(
-            SOURCE_PLAYLIST_ID,
-            offset=offset,
-            limit=100,
-            fields="items(track(id,type,is_local)),next,total",
-            additional_types=("track",),
-        )
-        for entry in page["items"]:
-            track = entry.get("track")
-            if not track or track.get("type") != "track" or track.get("is_local") or not track.get("id"):
-                raise RuntimeError("Source contains unavailable/non-track item; destination unchanged.")
-            tracks.append(track["id"])
-        if not page.get("next"):
-            break
-        offset += len(page["items"])
+    # Never delete or replace the existing playlist with an incomplete chart.
+    if len(result_ids) != 100:
+        raise RuntimeError("Expected 100 unique matched tracks. Playlist left unchanged.")
 
-    if len(tracks) != 100 or len(set(tracks)) != 100:
-        raise RuntimeError("Expected exactly 100 unique playable track IDs; destination unchanged.")
-
-    reversed_tracks = list(reversed(tracks))
-    spotify.playlist_replace_items(target_id, reversed_tracks)
-    print("Successfully updated destination with 100 tracks, positions 100 through 1.")
+    # The February 2026 Spotify API uses PUT /items, not the old PUT /tracks.
+    uris = [f"spotify:track:{track_id}" for track_id in result_ids]
+    reply = requests.put(
+        f"{API}/playlists/{target}/items",
+        headers={"Authorization": f"Bearer {access_token}"},
+        json={"uris": uris},
+        timeout=60,
+    )
+    reply.raise_for_status()
+    print("SUCCESS: 100 songs written in reverse chart order (#100 first, #1 last).")
 
 if __name__ == "__main__":
     main()
