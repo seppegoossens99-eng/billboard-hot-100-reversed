@@ -36,8 +36,8 @@ def main():
     if target_id == SOURCE_PLAYLIST_ID:
         raise RuntimeError("Source and destination playlists must be different.")
 
-    source = spotify.playlist(SOURCE_PLAYLIST_ID, fields="id,name,tracks(total)")
-    print("Source:", source["name"], "Total:", source["tracks"]["total"])
+    source = spotify.playlist(SOURCE_PLAYLIST_ID, fields="id,name,items(total)")
+    print("Source:", source["name"], "Total:", source["items"]["total"])
     if source["tracks"]["total"] != 100:
         raise RuntimeError("Source playlist does not contain exactly 100 entries; destination unchanged.")
 
