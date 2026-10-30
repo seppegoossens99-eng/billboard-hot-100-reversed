@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: billboard-hot-100-reversed
@@ -24,6 +24,17 @@ jobs:
           python-version: '3.12'
           cache: pip
       - run: pip install -r requirements.txt
+      - name: Generate details CSV
+        run: python generate_details.py
+      - name: Commit details CSV
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add billboard_hot_100_details.csv
+          if ! git diff --cached --quiet; then
+            git commit -m "Update Billboard details CSV"
+            git push
+          fi
       - name: Update Spotify playlist
         env:
           SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
