@@ -5,6 +5,7 @@ import time
 import unicodedata
 from pathlib import Path
 import requests
+import pycountry
 
 CHART_URL = "https://raw.githubusercontent.com/mhollingshead/billboard-hot-100/main/recent.json"
 MB = "https://musicbrainz.org/ws/2"
@@ -43,6 +44,48 @@ def mb_get(entity, params):
 
 artist_cache = {}
 recording_cache = {}
+area_cache = {}
+
+def country_name(code):
+    if code == "US":
+        return "Verenigde Staten"
+    if not code:
+        return ""
+    match = pycountry.countries.get(alpha_2=code)
+    return match.name if match else code
+
+def us_state(area_id):
+    """Follow MusicBrainz area hierarchy; never infer state from city name."""
+    if not area_id:
+        return ""
+    if area_id in area_cache:
+        return area_cache[area_id]
+    visited = set()
+    pending = [(area_id, 0)]
+    result = ""
+    while pending:
+        identifier, depth = pending.pop(0)
+        if identifier in visited or depth > 3:
+            continue
+        visited.add(identifier)
+        area = mb_get(f"area/{identifier}", {"inc": "area-rels"})
+        if area.get("type") == "Subdivision":
+            # Subdivisions include counties: only accept a state directly
+            # below the United States (verified in the next pass).
+            relations = area.get("relations", [])
+            parents = [r.get("area", {}) for r in relations
+                       if r.get("type") == "part of" and r.get("direction") == "backward"]
+            if any(p.get("name") == "United States" for p in parents):
+                result = area.get("name", "")
+                break
+        for rel in area.get("relations", []):
+            if rel.get("type") == "part of" and rel.get("direction") == "backward":
+                parent = rel.get("area", {})
+                if parent.get("id") and parent.get("name") != "United States":
+                    pending.append((parent["id"], depth + 1))
+    area_cache[area_id] = result
+    return result
+
 
 def artist_details(name):
     key = norm(name)
@@ -55,20 +98,14 @@ def artist_details(name):
     # Multiple identically named artists: do not guess.
     if len(candidates) == 1:
         artist = candidates[0]
-        country = artist.get("country", "")
+        code = artist.get("country", "")
         begin = artist.get("begin-area") or {}
         area = artist.get("area") or {}
-        city = begin.get("name", "")
+        city = begin.get("name", "") if begin.get("type") == "City" else ""
         region = ""
-        if country == "US":
-            if area.get("name", "") != "United States":
-                region = area.get("name", "")
-            country = "Verenigde Staten"
-        elif country:
-            country = country  # ISO country code is retained unambiguously.
-        # Begin-area can itself be a state or country, not necessarily a city.
-        if city and (city == area.get("name") or city == country or city == region):
-            city = ""
+        if code == "US":
+            region = us_state(begin.get("id") or area.get("id"))
+        country = country_name(code)
         result = (country, region, city, f"https://musicbrainz.org/artist/{artist['id']}")
     artist_cache[key] = result
     return result
@@ -101,7 +138,7 @@ def earliest_recording_date(title, artist):
 def main():
     response = session.get(CHART_URL, timeout=40)
     response.raise_for_status()
-    chart = chart_data = response.json()
+    chart_data = response.json()
     songs = chart_data.get("data", [])
     if len(songs) != 100 or sorted(s.get("this_week") for s in songs) != list(range(1, 101)):
         raise RuntimeError("Incomplete Billboard chart; existing CSV unchanged.")
@@ -118,8 +155,11 @@ def main():
         prior = existing.get((norm(artist), norm(title)), {})
         row = {"Billboard-positie": song["this_week"], "Artiest": artist, "Nummer": title}
         row.update({field: prior.get(field, "") for field in FIELDS[3:]})
+        # Convert legacy ISO country codes without re-querying the artist.
+        if len(row["Land"]) == 2 and row["Land"].isupper():
+            row["Land"] = country_name(row["Land"])
         lead = main_artist(artist)
-        if not row["Bron herkomst"]:
+        if not row["Bron herkomst"] or (row["Land"] == "Verenigde Staten" and not row["Staat/regio"]):
             country, region, city, source = artist_details(lead)
             if source:
                 row.update({"Land": country, "Staat/regio": region, "Stad": city,
