@@ -162,8 +162,13 @@ def main():
         if not row["Bron herkomst"] or (row["Land"] == "Verenigde Staten" and not row["Staat/regio"]):
             country, region, city, source = artist_details(lead)
             if source:
-                row.update({"Land": country, "Staat/regio": region, "Stad": city,
-                            "Bron herkomst": source})
+                if country:
+                    row["Land"] = country
+                if region:
+                    row["Staat/regio"] = region
+                if city:
+                    row["Stad"] = city
+                row["Bron herkomst"] = source
         if not row["Bron releasedatum"]:
             date, source = earliest_recording_date(title, lead)
             if source:
