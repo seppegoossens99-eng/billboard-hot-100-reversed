@@ -22,6 +22,10 @@ def main():
     grouped = defaultdict(list)
     for artist in artists:
         grouped[(artist["Billboard-positie"], artist["Nummer"])].append(artist)
+    band_rows = read_csv("billboard_band_members.csv")
+    bands = defaultdict(list)
+    for member in band_rows:
+        bands[member["Artiest"]].append(member)
     blocks = []
     for track in tracks:
         pos = track["Billboard-positie"]
@@ -34,6 +38,21 @@ def main():
             source = safe_url(person["Bron herkomst"])
             source_link = f' <a href="{source}" target="_blank" rel="noopener">Bron</a>' if source else ""
             people.append(f'<li><strong>{html.escape(person["Artiest"])}</strong><span>{origin}{source_link}</span></li>')
+        band_sections = []
+        for person in credited:
+            band_members = bands.get(person["Artiest"], [])
+            if not band_members:
+                continue
+            count = next((x["Leden (bevestigd huidig)"] for x in band_members if x["Leden (bevestigd huidig)"]), "")
+            label = f"{count} gedocumenteerde huidige leden" if count else "Huidig ledenaantal onbekend"
+            member_items = []
+            for member in band_members:
+                if member["Lid"]:
+                    member_items.append(f'<li><strong>{html.escape(member["Lid"])}</strong><span>{html.escape(member["Functie/instrument"])} · {html.escape(member["Status"])}</span></li>')
+            source = safe_url(band_members[0]["Bron"])
+            source_link = f'<a href="{source}" target="_blank" rel="noopener">MusicBrainz</a>' if source else ""
+            band_sections.append(f'<div class="band"><h3>{html.escape(person["Artiest"])}</h3><p class="sub">{html.escape(label)} · {source_link}</p><ul>{"".join(member_items) or "<li>Leden nog niet gedocumenteerd</li>"}</ul><small>Aantal mogelijk onvolledig.</small></div>')
+        band_markup = f'<details class="bands"><summary>Bandleden en instrumenten</summary>{"".join(band_sections)}</details>' if band_sections else ""
         date = track["Eerste officiële releasedatum"]
         date_display = html.escape(date) if date else "Nog niet gevonden"
         date_source = safe_url(track["Bron releasedatum"])
@@ -45,6 +64,7 @@ def main():
           <div class="heading"><span class="rank">#{pos}</span><div><h2>{html.escape(name)}</h2><p class="credit">{html.escape(track["Artiest"])}</p></div></div>
           <div class="info"><div><div class="label">Releasedatum</div><strong>{date_display}</strong><small>{status} · {date_link}</small></div>
           <div><div class="label">Herkomst per artiest</div><ul>{''.join(people)}</ul></div></div>
+          {band_markup}
         </article>""")
     document = """<!doctype html><html lang="nl"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -64,7 +84,7 @@ h2{font-size:19px;margin:2px 0 5px;line-height:1.2}.credit{margin:0;color:#b9c7d
 .label{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:#91a2b8;margin-bottom:8px}
 small{display:block;color:#aab9cc;margin-top:5px}ul{list-style:none;padding:0;margin:0}li{display:flex;flex-wrap:wrap;gap:5px 12px;margin-bottom:9px}li span{color:#b5c6d8}
 a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
-.note{background:#222c3f;padding:14px;border-radius:12px;color:#c9d3e2;font-size:14px;line-height:1.5}
+.bands{margin-top:14px;border-top:1px solid #2b3648;padding-top:14px}.bands summary{cursor:pointer;color:#a8ccff;font-weight:650}.band{padding:10px 0}.band h3{margin:4px 0;font-size:16px}.band p{margin:5px 0 10px}.note{background:#222c3f;padding:14px;border-radius:12px;color:#c9d3e2;font-size:14px;line-height:1.5}
 @media(max-width:620px){main{padding:18px 12px 55px}.song{padding:15px}.info{grid-template-columns:1fr;gap:15px}h2{font-size:18px}}
 </style></head><body><main><header><span class="pill">#100 → #1</span>
 <h1>Billboard Hot 100</h1><p class="sub">Reversed · artiesten, steden, staten en releasedata</p>
