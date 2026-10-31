@@ -26,11 +26,13 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Generate details CSV
         run: python generate_details.py
+      - name: Build mobile HTML overview
+        run: python build_mobile_page.py
       - name: Commit details CSV
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add billboard_hot_100_details.csv billboard_hot_100_artists.csv
+          git add billboard_hot_100_details.csv billboard_hot_100_artists.csv billboard_hot_100.html
           if ! git diff --cached --quiet; then
             git commit -m "Update Billboard details CSV"
             git push
