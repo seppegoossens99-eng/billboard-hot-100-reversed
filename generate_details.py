@@ -29,7 +29,7 @@ def main_artist(value):
 def split_artists(value):
     """Split explicit artist collaborations, never split a band's name blindly."""
     parts = re.split(
-        r"\\s+(?:featuring|feat\\.?|ft\\.?|with|x)\\s+|\\s*&\\s*|\\s*,\\s*",
+        r"\s+(?:featuring|feat\.?|ft\.?|with|x)\s+|\s*&\s*|\s*,\s*",
         value, flags=re.I
     )
     return list(dict.fromkeys(p.strip() for p in parts if p.strip()))
