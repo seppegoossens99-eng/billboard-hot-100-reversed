@@ -28,11 +28,13 @@ jobs:
         run: python generate_details.py
       - name: Build mobile HTML overview
         run: python build_mobile_page.py
+      - name: Prepare website homepage
+        run: cp billboard_hot_100.html index.html
       - name: Commit details CSV
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add billboard_hot_100_details.csv billboard_hot_100_artists.csv billboard_hot_100.html
+          git add billboard_hot_100_details.csv billboard_hot_100_artists.csv billboard_hot_100.html index.html
           if ! git diff --cached --quiet; then
             git commit -m "Update Billboard details CSV"
             git push
