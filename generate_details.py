@@ -10,6 +10,8 @@ import pycountry
 CHART_URL = "https://raw.githubusercontent.com/mhollingshead/billboard-hot-100/main/recent.json"
 MB = "https://musicbrainz.org/ws/2"
 OUTPUT = Path("billboard_hot_100_details.csv")
+ARTISTS_OUTPUT = Path("billboard_hot_100_artists.csv")
+ARTIST_FIELDS = ["Billboard-positie", "Nummer", "Artiest", "Land", "Staat/regio", "Stad", "Bron herkomst"]
 FIELDS = ["Billboard-positie", "Artiest", "Nummer", "Land", "Staat/regio", "Stad",
           "Eerste officiële releasedatum", "Bron herkomst", "Bron releasedatum"]
 HEADERS = {"User-Agent": "BillboardReverseMetadata/1.0 (https://github.com/seppegoossens99-eng/billboard-hot-100-reversed)"}
@@ -23,6 +25,14 @@ def norm(value):
 
 def main_artist(value):
     return re.split(r"\s+(?:featuring|feat\.?|ft\.?|with|x)\s+|\s*&\s*|,", value, 1, re.I)[0].strip()
+
+def split_artists(value):
+    """Split explicit artist collaborations, never split a band's name blindly."""
+    parts = re.split(
+        r"\\s+(?:featuring|feat\\.?|ft\\.?|with|x)\\s+|\\s*&\\s*|\\s*,\\s*",
+        value, flags=re.I
+    )
+    return list(dict.fromkeys(p.strip() for p in parts if p.strip()))
 
 def mb_get(entity, params):
     global last_call
@@ -150,6 +160,7 @@ def main():
                 existing[(norm(row.get("Artiest", "")), norm(row.get("Nummer", "")))] = row
 
     rows = []
+    artist_rows = []
     for i, song in enumerate(sorted(songs, key=lambda s: s["this_week"], reverse=True), 1):
         artist, title = song["artist"], song["song"]
         prior = existing.get((norm(artist), norm(title)), {})
@@ -175,12 +186,29 @@ def main():
                 row["Eerste officiële releasedatum"] = date
                 row["Bron releasedatum"] = source
         rows.append(row)
+        for individual in split_artists(artist):
+            country, region, city, source = artist_details(individual)
+            # Do not substitute a main artist location for a collaborator.
+            artist_rows.append({
+                "Billboard-positie": song["this_week"],
+                "Nummer": title,
+                "Artiest": individual,
+                "Land": country,
+                "Staat/regio": region,
+                "Stad": city,
+                "Bron herkomst": source,
+            })
         print(f"{i}/100: #{song['this_week']} {artist} - {title}", flush=True)
 
     with OUTPUT.open("w", encoding="utf-8-sig", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=FIELDS)
         writer.writeheader()
         writer.writerows(rows)
+    with ARTISTS_OUTPUT.open("w", encoding="utf-8-sig", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=ARTIST_FIELDS)
+        writer.writeheader()
+        writer.writerows(artist_rows)
+    print(f"Saved {len(artist_rows)} artist credits to {ARTISTS_OUTPUT}", flush=True)
     print("Saved 100 chart rows. MusicBrainz dates are provisional and need verification.", flush=True)
 
 if __name__ == "__main__":
