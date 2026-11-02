@@ -66,12 +66,15 @@ jobs:
       - name: Collect artist photos and ages
         if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
         run: python collect_artist_profiles.py
+      - name: Report missing metadata
+        if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
+        run: python metadata_quality_report.py
       - name: Build mobile HTML overview
         if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
         run: python build_mobile_page.py
       - name: Prepare website homepage
         if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
-        run: cp billboard_hot_100.html index.html
+        run: cp billboard_hot_100.html index.html metadata_quality_report.md
       - name: Commit details CSV
         if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
         run: |
