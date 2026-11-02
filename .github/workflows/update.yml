@@ -28,6 +28,8 @@ jobs:
         run: python generate_details.py
       - name: Collect band members and roles
         run: python collect_band_members.py
+      - name: Enrich band member ages and instruments
+        run: python enrich_band_members.py
       - name: Collect artist photos and ages
         run: python collect_artist_profiles.py
       - name: Build mobile HTML overview
@@ -38,7 +40,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add billboard_hot_100_details.csv billboard_hot_100_artists.csv billboard_band_members.csv band_members_cache.json billboard_artist_profiles.csv billboard_hot_100.html index.html
+          git add billboard_hot_100_details.csv billboard_hot_100_artists.csv billboard_band_members.csv band_members_cache.json band_member_ages_cache.json billboard_artist_profiles.csv billboard_hot_100.html index.html
           if ! git diff --cached --quiet; then
             git commit -m "Update Billboard details CSV"
             git push
