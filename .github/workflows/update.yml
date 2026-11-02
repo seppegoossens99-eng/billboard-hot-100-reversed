@@ -5,6 +5,12 @@ on:
     # Wednesday at 12:00 Europe/Brussels, including daylight-saving changes.
     - cron: '0 10,11 * * 3'
   workflow_dispatch:
+    inputs:
+      update_spotify:
+        description: "Spotify-playlist ook bijwerken? Laat uit voor website-only updates."
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -46,6 +52,7 @@ jobs:
             git push
           fi
       - name: Update Spotify playlist
+        if: github.event_name == 'schedule' || inputs.update_spotify == true
         env:
           SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
           SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
