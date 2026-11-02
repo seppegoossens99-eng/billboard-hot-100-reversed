@@ -48,6 +48,11 @@ def main():
             qids.add(qid)
         birth = (data.get("life-span") or {}).get("begin", "") if data.get("type") == "Person" else ""
         entries.append((name, data.get("type", ""), birth, age_at(birth), qid, source))
+    # Preserve previously verified photos if Wikidata temporarily fails.
+    previous = {}
+    if OUT.exists():
+        with OUT.open(encoding="utf-8-sig", newline="") as old_file:
+            previous = {row["Artiest"]: row for row in csv.DictReader(old_file)}
     images = {}
     ids = sorted(qids)
     for offset in range(0, len(ids), 50):
@@ -68,8 +73,10 @@ def main():
         writer = csv.writer(f)
         writer.writerow(FIELDS)
         for name, kind, birth, age, qid, source in entries:
-            writer.writerow([name, kind, birth if age else "", age, images.get(qid, ""),
-                             "https://www.wikidata.org/wiki/" + qid if images.get(qid) else "", source if age else ""])
+            prior = previous.get(name, {})
+            photo = images.get(qid, "") or prior.get("Afbeelding", "")
+            photo_source = ("https://www.wikidata.org/wiki/" + qid if images.get(qid) else prior.get("Bron afbeelding", ""))
+            writer.writerow([name, kind, birth if age else "", age, photo, photo_source, source if age else ""])
     print(f"Profiles: {len(entries)}, photos: {sum(bool(images.get(e[4])) for e in entries)}, ages: {sum(bool(e[3]) for e in entries)}", flush=True)
 
 if __name__ == "__main__":
