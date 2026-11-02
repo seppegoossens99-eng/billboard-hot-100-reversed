@@ -56,10 +56,9 @@ def main():
             member_items = []
             for member in band_members:
                 if member["Lid"]:
-                    member_items.append(f'<li><strong>{html.escape(member["Lid"])}</strong><span>{html.escape(member["Functie/instrument"])} · {html.escape(member["Status"])}</span></li>')
-            for member in band_members:
-                if member.get("Leeftijd lid") and member.get("Lid"):
-                    member_items = [x.replace(html.escape(member["Lid"]) + "</strong>", html.escape(member["Lid"]) + "</strong><span>" + html.escape(member["Leeftijd lid"]) + " jaar</span>") for x in member_items]
+                    member_age = member.get("Leeftijd lid", "")
+                    age_label = f" · {html.escape(member_age)} jaar" if member_age else ""
+                    member_items.append(f'<li><strong>{html.escape(member["Lid"])}</strong><span>{html.escape(member["Functie/instrument"])}{age_label} · {html.escape(member["Status"])}</span></li>')
             source = safe_url(band_members[0]["Bron"])
             source_link = f'<a href="{source}" target="_blank" rel="noopener">MusicBrainz</a>' if source else ""
             band_sections.append(f'<div class="band"><h3>{html.escape(person["Artiest"])}</h3><p class="sub">{html.escape(label)} · {source_link}</p><ul>{"".join(member_items) or "<li>Leden nog niet gedocumenteerd</li>"}</ul><small>Aantal mogelijk onvolledig.</small></div>')
