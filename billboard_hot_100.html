@@ -16,8 +16,8 @@ h2{font-size:19px;margin:2px 0 5px;line-height:1.2}.credit{margin:0;color:#b9c7d
 .label{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:#91a2b8;margin-bottom:8px}
 small{display:block;color:#aab9cc;margin-top:5px}ul{list-style:none;padding:0;margin:0}li{display:flex;flex-wrap:wrap;gap:5px 12px;margin-bottom:9px}li span{color:#b5c6d8}
 a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
-.artist-entry{align-items:center;gap:12px}.artist-entry>div{display:flex;flex-direction:column;gap:3px}.portrait{width:64px;height:64px;object-fit:cover;border-radius:12px;background:#26344a}.bands{margin-top:14px;border-top:1px solid #2b3648;padding-top:14px}.bands summary{cursor:pointer;color:#a8ccff;font-weight:650}.band{padding:10px 0}.band h3{margin:4px 0;font-size:16px}.band p{margin:5px 0 10px}.note{background:#222c3f;padding:14px;border-radius:12px;color:#c9d3e2;font-size:14px;line-height:1.5}
-@media(max-width:620px){main{padding:18px 12px 55px}.song{padding:15px}.info{grid-template-columns:1fr;gap:15px}h2{font-size:18px}}
+.artist-entry{display:flex;align-items:flex-start;gap:16px;padding:10px 0}.artist-entry>div{display:flex;flex-direction:column;gap:6px;flex:1;min-width:0}.artist-entry strong{font-size:17px}.portrait{width:180px;height:220px;flex:none;object-fit:cover;object-position:center 22%;border-radius:14px;background:#26344a;cursor:zoom-in}.portrait:focus{outline:2px solid #99c4ff}.photo-modal{border:0;padding:0;background:transparent;max-width:min(94vw,900px);max-height:94vh}.photo-modal::backdrop{background:rgba(0,0,0,.9)}.photo-modal img{display:block;max-width:94vw;max-height:86vh;object-fit:contain}.photo-modal button{display:block;margin:8px 0 0 auto;background:#263a59;border:0;border-radius:8px;padding:10px 16px;color:white;cursor:pointer}.bands{margin-top:14px;border-top:1px solid #2b3648;padding-top:14px}.bands summary{cursor:pointer;color:#a8ccff;font-weight:650}.band{padding:10px 0}.band h3{margin:4px 0;font-size:16px}.band p{margin:5px 0 10px}.note{background:#222c3f;padding:14px;border-radius:12px;color:#c9d3e2;font-size:14px;line-height:1.5}
+@media(max-width:620px){main{padding:18px 12px 55px}.song{padding:15px}.info{grid-template-columns:1fr;gap:15px}h2{font-size:18px}.artist-entry{flex-direction:column}.portrait{width:100%;height:auto;max-height:440px;aspect-ratio:4/5;object-fit:cover}.artist-entry>div{width:100%}}
 </style></head><body><main><header><span class="pill">#100 → #1</span>
 <h1>Billboard Hot 100</h1><p class="sub">Reversed · artiesten, foto’s, leeftijden, herkomst en releasedata</p>
 <div class="note">De releasedata zijn voorlopig: MusicBrainz geeft de vroegste daar bekende opname-uitgave, maar bevestigt niet altijd de eerste officiële single-release. Lege gegevens worden niet gegokt. De herkomst van een groep kan de oprichtingsplaats zijn.</div>
@@ -27,7 +27,7 @@ a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
         <article class="song" data-search="100 medicine megan moroney megan moroney">
           <div class="heading"><span class="rank">#100</span><div><h2>Medicine</h2><p class="credit">Megan Moroney</p></div></div>
           <div class="info"><div><div class="label">Releasedatum</div><strong>2026-02-20</strong><small>Voorlopige datum · <a href="https://musicbrainz.org/recording/042a9b61-eada-4b01-91b4-22ac745c2400" target="_blank" rel="noopener">MusicBrainz-bron</a></small></div>
-          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><div><strong>Megan Moroney</strong><span>Herkomst onbekend</span></div></li></ul></div></div>
+          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><div><strong>Megan Moroney</strong><span>Savannah, Georgia, Verenigde Staten · 29 jaar <a href="https://musicbrainz.org/artist/9eb2030a-c311-4cbf-a8f2-c57a58aa18ce" target="_blank" rel="noopener">Bron</a></span></div></li></ul></div></div>
           
         </article>
 
@@ -83,14 +83,14 @@ a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
         <article class="song" data-search="92 chevy silverado bailey zimmerman bailey zimmerman">
           <div class="heading"><span class="rank">#92</span><div><h2>Chevy Silverado</h2><p class="credit">Bailey Zimmerman</p></div></div>
           <div class="info"><div><div class="label">Releasedatum</div><strong>2025-08-01</strong><small>Voorlopige datum · <a href="https://musicbrainz.org/recording/8f9d20c1-7e6e-4f04-9b0a-fde0b7045617" target="_blank" rel="noopener">MusicBrainz-bron</a></small></div>
-          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><div><strong>Bailey Zimmerman</strong><span>Herkomst onbekend</span></div></li></ul></div></div>
+          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Bailey_Zimmerman_performing_Where_It_Ends.png" alt="Foto van Bailey Zimmerman" loading="lazy" referrerpolicy="no-referrer"><div><strong>Bailey Zimmerman</strong><span>Verenigde Staten · 26 jaar <a href="https://musicbrainz.org/artist/20543896-ec2c-48c4-b6b2-507c6cbe9918" target="_blank" rel="noopener">Bron</a> <a href="https://www.wikidata.org/wiki/Q112581616" target="_blank" rel="noopener">Foto</a></span></div></li></ul></div></div>
           
         </article>
 
         <article class="song" data-search="91 pink clouding taylor swift taylor swift">
           <div class="heading"><span class="rank">#91</span><div><h2>Pink Clouding</h2><p class="credit">Taylor Swift</p></div></div>
           <div class="info"><div><div class="label">Releasedatum</div><strong>2026-09-25</strong><small>Voorlopige datum · <a href="https://musicbrainz.org/recording/bae8a298-0cf5-4b10-98fd-b4ad340df85c" target="_blank" rel="noopener">MusicBrainz-bron</a></small></div>
-          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><div><strong>Taylor Swift</strong><span>Herkomst onbekend</span></div></li></ul></div></div>
+          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Taylor_Swift_at_the_2023_MTV_Video_Music_Awards_%283%29.png" alt="Foto van Taylor Swift" loading="lazy" referrerpolicy="no-referrer"><div><strong>Taylor Swift</strong><span>West Reading, Pennsylvania, Verenigde Staten · 36 jaar <a href="https://musicbrainz.org/artist/20244d07-534f-4eff-b4d4-930878889970" target="_blank" rel="noopener">Bron</a> <a href="https://www.wikidata.org/wiki/Q26876" target="_blank" rel="noopener">Foto</a></span></div></li></ul></div></div>
           
         </article>
 
@@ -125,7 +125,7 @@ a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
         <article class="song" data-search="86 onsra comehelpglo comehelpglo">
           <div class="heading"><span class="rank">#86</span><div><h2>onsra</h2><p class="credit">comehelpglo</p></div></div>
           <div class="info"><div><div class="label">Releasedatum</div><strong>2026-05-29</strong><small>Voorlopige datum · <a href="https://musicbrainz.org/recording/1bf198ec-b67b-45ef-88db-cdc8ab77c27d" target="_blank" rel="noopener">MusicBrainz-bron</a></small></div>
-          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><div><strong>comehelpglo</strong><span>Herkomst onbekend <a href="https://musicbrainz.org/artist/ede7c451-6309-4751-8ce0-cde337483b89" target="_blank" rel="noopener">Bron</a></span></div></li></ul></div></div>
+          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><div><strong>comehelpglo</strong><span>Herkomst onbekend</span></div></li></ul></div></div>
           
         </article>
 
@@ -139,7 +139,7 @@ a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
         <article class="song" data-search="84 babylon taylor swift taylor swift">
           <div class="heading"><span class="rank">#84</span><div><h2>Babylon</h2><p class="credit">Taylor Swift</p></div></div>
           <div class="info"><div><div class="label">Releasedatum</div><strong>2026-09-25</strong><small>Voorlopige datum · <a href="https://musicbrainz.org/recording/01bec171-21d6-4e85-acdf-f49539b1040e" target="_blank" rel="noopener">MusicBrainz-bron</a></small></div>
-          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><div><strong>Taylor Swift</strong><span>Herkomst onbekend</span></div></li></ul></div></div>
+          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Taylor_Swift_at_the_2023_MTV_Video_Music_Awards_%283%29.png" alt="Foto van Taylor Swift" loading="lazy" referrerpolicy="no-referrer"><div><strong>Taylor Swift</strong><span>West Reading, Pennsylvania, Verenigde Staten · 36 jaar <a href="https://musicbrainz.org/artist/20244d07-534f-4eff-b4d4-930878889970" target="_blank" rel="noopener">Bron</a> <a href="https://www.wikidata.org/wiki/Q26876" target="_blank" rel="noopener">Foto</a></span></div></li></ul></div></div>
           
         </article>
 
@@ -160,14 +160,14 @@ a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
         <article class="song" data-search="81 pink blush dolly babe featuring megan thee stallion dolly babe megan thee stallion">
           <div class="heading"><span class="rank">#81</span><div><h2>Pink Blush</h2><p class="credit">Dolly Babe Featuring Megan Thee Stallion</p></div></div>
           <div class="info"><div><div class="label">Releasedatum</div><strong>2026-06-30</strong><small>Voorlopige datum · <a href="https://musicbrainz.org/recording/5d4a8dbb-d397-4bb7-9305-93660e6857f1" target="_blank" rel="noopener">MusicBrainz-bron</a></small></div>
-          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><div><strong>Dolly Babe</strong><span>Herkomst onbekend <a href="https://musicbrainz.org/artist/fb3a2585-9523-49b7-b8eb-a5009f4a68c2" target="_blank" rel="noopener">Bron</a></span></div></li><li class="artist-entry"><img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Megan_Thee_Stallion_Adweek_02.jpg" alt="Foto van Megan Thee Stallion" loading="lazy" referrerpolicy="no-referrer"><div><strong>Megan Thee Stallion</strong><span>San Antonio, Texas, Verenigde Staten · 31 jaar <a href="https://musicbrainz.org/artist/ee27b2d8-648c-4a9d-a68c-e55066959975" target="_blank" rel="noopener">Bron</a> <a href="https://www.wikidata.org/wiki/Q59268408" target="_blank" rel="noopener">Foto</a></span></div></li></ul></div></div>
+          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><div><strong>Dolly Babe</strong><span>Herkomst onbekend</span></div></li><li class="artist-entry"><img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Megan_Thee_Stallion_Adweek_02.jpg" alt="Foto van Megan Thee Stallion" loading="lazy" referrerpolicy="no-referrer"><div><strong>Megan Thee Stallion</strong><span>San Antonio, Texas, Verenigde Staten · 31 jaar <a href="https://musicbrainz.org/artist/ee27b2d8-648c-4a9d-a68c-e55066959975" target="_blank" rel="noopener">Bron</a> <a href="https://www.wikidata.org/wiki/Q59268408" target="_blank" rel="noopener">Foto</a></span></div></li></ul></div></div>
           
         </article>
 
         <article class="song" data-search="80 duvet boa boa">
           <div class="heading"><span class="rank">#80</span><div><h2>Duvet</h2><p class="credit">boa</p></div></div>
           <div class="info"><div><div class="label">Releasedatum</div><strong>1998-07-01</strong><small>Voorlopige datum · <a href="https://musicbrainz.org/recording/f4d36326-da1b-4b43-af19-7113c2adb92d" target="_blank" rel="noopener">MusicBrainz-bron</a></small></div>
-          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><div><strong>boa</strong><span>Herkomst onbekend</span></div></li></ul></div></div>
+          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/BoA_at_Incheon_Airport_on_May_15%2C_2019_%282%29.png" alt="Foto van boa" loading="lazy" referrerpolicy="no-referrer"><div><strong>boa</strong><span>Guri, Korea, Republic of · 39 jaar <a href="https://musicbrainz.org/artist/a16d1433-ba89-4f72-a47b-a370add0bb55" target="_blank" rel="noopener">Bron</a> <a href="https://www.wikidata.org/wiki/Q232449" target="_blank" rel="noopener">Foto</a></span></div></li></ul></div></div>
           
         </article>
 
@@ -188,8 +188,8 @@ a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
         <article class="song" data-search="77 say so dan + shay dan + shay">
           <div class="heading"><span class="rank">#77</span><div><h2>Say So</h2><p class="credit">Dan + Shay</p></div></div>
           <div class="info"><div><div class="label">Releasedatum</div><strong>2026-04-03</strong><small>Voorlopige datum · <a href="https://musicbrainz.org/recording/ac28c23b-8a60-44a8-9cd3-b29adb80a25a" target="_blank" rel="noopener">MusicBrainz-bron</a></small></div>
-          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Dan_%2B_Shay_in_2017.jpg" alt="Foto van Dan + Shay" loading="lazy" referrerpolicy="no-referrer"><div><strong>Dan + Shay</strong><span>Nashville, Tennessee, Verenigde Staten <a href="https://musicbrainz.org/artist/33cf3954-10af-4dcb-985f-9420d1fa4168" target="_blank" rel="noopener">Bron</a> <a href="https://www.wikidata.org/wiki/Q16959408" target="_blank" rel="noopener">Foto</a></span></div></li></ul></div></div>
-          <details class="bands"><summary>Bandleden en instrumenten</summary><div class="band"><h3>Dan + Shay</h3><p class="sub">2 gedocumenteerde huidige leden · <a href="https://musicbrainz.org/artist/33cf3954-10af-4dcb-985f-9420d1fa4168" target="_blank" rel="noopener">MusicBrainz</a></p><ul><li><strong>Dan Smyers</strong><span>Niet vermeld · Huidig (volgens MusicBrainz)</span></li><li><strong>Shay Mooney</strong><span>Niet vermeld · Huidig (volgens MusicBrainz)</span></li></ul><small>Aantal mogelijk onvolledig.</small></div></details>
+          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><div><strong>Dan + Shay</strong><span>Herkomst onbekend</span></div></li></ul></div></div>
+          
         </article>
 
         <article class="song" data-search="76 ghetto love story babychiefdoit babychiefdoit">
@@ -209,7 +209,7 @@ a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
         <article class="song" data-search="74 south of sanity zach top zach top">
           <div class="heading"><span class="rank">#74</span><div><h2>South Of Sanity</h2><p class="credit">Zach Top</p></div></div>
           <div class="info"><div><div class="label">Releasedatum</div><strong>2025-08-01</strong><small>Voorlopige datum · <a href="https://musicbrainz.org/recording/1ff368e3-ed4b-44fb-bdc5-7eb62d6fca03" target="_blank" rel="noopener">MusicBrainz-bron</a></small></div>
-          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><div><strong>Zach Top</strong><span>Herkomst onbekend</span></div></li></ul></div></div>
+          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Zach_top_-_musician.webp" alt="Foto van Zach Top" loading="lazy" referrerpolicy="no-referrer"><div><strong>Zach Top</strong><span>Sunnyside, Washington, Verenigde Staten · 29 jaar <a href="https://musicbrainz.org/artist/9939a762-5ca9-4c12-a735-0d62e21df4e3" target="_blank" rel="noopener">Bron</a> <a href="https://www.wikidata.org/wiki/Q126414316" target="_blank" rel="noopener">Foto</a></span></div></li></ul></div></div>
           
         </article>
 
@@ -251,14 +251,14 @@ a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
         <article class="song" data-search="68 snakeskin boots miranda lambert &amp; ella langley miranda lambert ella langley">
           <div class="heading"><span class="rank">#68</span><div><h2>Snakeskin Boots</h2><p class="credit">Miranda Lambert &amp; Ella Langley</p></div></div>
           <div class="info"><div><div class="label">Releasedatum</div><strong>2026-10-02</strong><small>Voorlopige datum · <a href="https://musicbrainz.org/recording/4aff2838-9575-41f0-a9f3-cc8b27659eb4" target="_blank" rel="noopener">MusicBrainz-bron</a></small></div>
-          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/MirandaLambertApr10.jpg" alt="Foto van Miranda Lambert" loading="lazy" referrerpolicy="no-referrer"><div><strong>Miranda Lambert</strong><span>Longview, Texas, Verenigde Staten · 42 jaar <a href="https://musicbrainz.org/artist/4eca1aa0-c79f-481b-af8a-4a2d6c41aa5c" target="_blank" rel="noopener">Bron</a> <a href="https://www.wikidata.org/wiki/Q231233" target="_blank" rel="noopener">Foto</a></span></div></li><li class="artist-entry"><img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Ella_Langley_2026_%28cropped%29.jpg" alt="Foto van Ella Langley" loading="lazy" referrerpolicy="no-referrer"><div><strong>Ella Langley</strong><span>Herkomst onbekend · 27 jaar <a href="https://musicbrainz.org/artist/b16c0872-31a7-4db9-8569-0e3146fcecfc" target="_blank" rel="noopener">Bron</a> <a href="https://www.wikidata.org/wiki/Q127559972" target="_blank" rel="noopener">Foto</a></span></div></li></ul></div></div>
+          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><div><strong>Miranda Lambert</strong><span>Herkomst onbekend</span></div></li><li class="artist-entry"><img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Ella_Langley_2026_%28cropped%29.jpg" alt="Foto van Ella Langley" loading="lazy" referrerpolicy="no-referrer"><div><strong>Ella Langley</strong><span>Herkomst onbekend · 27 jaar <a href="https://musicbrainz.org/artist/b16c0872-31a7-4db9-8569-0e3146fcecfc" target="_blank" rel="noopener">Bron</a> <a href="https://www.wikidata.org/wiki/Q127559972" target="_blank" rel="noopener">Foto</a></span></div></li></ul></div></div>
           
         </article>
 
         <article class="song" data-search="67 cowgirl shaboozey shaboozey">
           <div class="heading"><span class="rank">#67</span><div><h2>Cowgirl</h2><p class="credit">Shaboozey</p></div></div>
           <div class="info"><div><div class="label">Releasedatum</div><strong>2026-06-04</strong><small>Voorlopige datum · <a href="https://musicbrainz.org/recording/2005431c-04cb-41df-aa2e-c34e326c37c1" target="_blank" rel="noopener">MusicBrainz-bron</a></small></div>
-          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><div><strong>Shaboozey</strong><span>Herkomst onbekend</span></div></li></ul></div></div>
+          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Shaboozey_at_San_Diego_Comic_Con_2026.jpg" alt="Foto van Shaboozey" loading="lazy" referrerpolicy="no-referrer"><div><strong>Shaboozey</strong><span>Fairfax, Virginia, Verenigde Staten · 31 jaar <a href="https://musicbrainz.org/artist/0b427dad-1ee5-48f1-aa4b-026680a3338e" target="_blank" rel="noopener">Bron</a> <a href="https://www.wikidata.org/wiki/Q125295750" target="_blank" rel="noopener">Foto</a></span></div></li></ul></div></div>
           
         </article>
 
@@ -279,7 +279,7 @@ a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
         <article class="song" data-search="64 all my exes lauren alaina featuring chase matthew lauren alaina chase matthew">
           <div class="heading"><span class="rank">#64</span><div><h2>All My Exes</h2><p class="credit">Lauren Alaina Featuring Chase Matthew</p></div></div>
           <div class="info"><div><div class="label">Releasedatum</div><strong>2025-05-09</strong><small>Voorlopige datum · <a href="https://musicbrainz.org/recording/0dafa30d-87fb-4b8d-948d-4b2e4b036198" target="_blank" rel="noopener">MusicBrainz-bron</a></small></div>
-          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/2023_Independence_Day_celebration_on_MCB_Camp_Lejeune_%284%29_%28cropped%29.jpg" alt="Foto van Lauren Alaina" loading="lazy" referrerpolicy="no-referrer"><div><strong>Lauren Alaina</strong><span>Rossville, Georgia, Verenigde Staten · 31 jaar <a href="https://musicbrainz.org/artist/f2506ff4-4091-4e57-ac5b-156110732aa9" target="_blank" rel="noopener">Bron</a> <a href="https://www.wikidata.org/wiki/Q271796" target="_blank" rel="noopener">Foto</a></span></div></li><li class="artist-entry"><div><strong>Chase Matthew</strong><span>Sevierville, Tennessee, Verenigde Staten · 28 jaar <a href="https://musicbrainz.org/artist/b9bdc8af-9641-4958-8eb3-1bead9ff632d" target="_blank" rel="noopener">Bron</a></span></div></li></ul></div></div>
+          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/2023_Independence_Day_celebration_on_MCB_Camp_Lejeune_%284%29_%28cropped%29.jpg" alt="Foto van Lauren Alaina" loading="lazy" referrerpolicy="no-referrer"><div><strong>Lauren Alaina</strong><span>Rossville, Georgia, Verenigde Staten · 31 jaar <a href="https://musicbrainz.org/artist/f2506ff4-4091-4e57-ac5b-156110732aa9" target="_blank" rel="noopener">Bron</a> <a href="https://www.wikidata.org/wiki/Q271796" target="_blank" rel="noopener">Foto</a></span></div></li><li class="artist-entry"><div><strong>Chase Matthew</strong><span>Herkomst onbekend</span></div></li></ul></div></div>
           
         </article>
 
@@ -384,7 +384,7 @@ a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
         <article class="song" data-search="49 i knew it, i knew you taylor swift taylor swift">
           <div class="heading"><span class="rank">#49</span><div><h2>I Knew It, I Knew You</h2><p class="credit">Taylor Swift</p></div></div>
           <div class="info"><div><div class="label">Releasedatum</div><strong>2026-06-05</strong><small>Voorlopige datum · <a href="https://musicbrainz.org/recording/0b6b2607-eff3-4753-9a4c-a4782caa5d57" target="_blank" rel="noopener">MusicBrainz-bron</a></small></div>
-          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><div><strong>Taylor Swift</strong><span>Herkomst onbekend</span></div></li></ul></div></div>
+          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Taylor_Swift_at_the_2023_MTV_Video_Music_Awards_%283%29.png" alt="Foto van Taylor Swift" loading="lazy" referrerpolicy="no-referrer"><div><strong>Taylor Swift</strong><span>West Reading, Pennsylvania, Verenigde Staten · 36 jaar <a href="https://musicbrainz.org/artist/20244d07-534f-4eff-b4d4-930878889970" target="_blank" rel="noopener">Bron</a> <a href="https://www.wikidata.org/wiki/Q26876" target="_blank" rel="noopener">Foto</a></span></div></li></ul></div></div>
           
         </article>
 
@@ -440,7 +440,7 @@ a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
         <article class="song" data-search="41 lush life zara larsson zara larsson">
           <div class="heading"><span class="rank">#41</span><div><h2>Lush Life</h2><p class="credit">Zara Larsson</p></div></div>
           <div class="info"><div><div class="label">Releasedatum</div><strong>2015-06-01</strong><small>Voorlopige datum · <a href="https://musicbrainz.org/recording/ce47e11c-e35a-4870-8bb0-c39233721367" target="_blank" rel="noopener">MusicBrainz-bron</a></small></div>
-          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><div><strong>Zara Larsson</strong><span>Herkomst onbekend</span></div></li></ul></div></div>
+          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Zara_Larsson_Concert_2026_%28cropped%29.jpg" alt="Foto van Zara Larsson" loading="lazy" referrerpolicy="no-referrer"><div><strong>Zara Larsson</strong><span>Sweden · 28 jaar <a href="https://musicbrainz.org/artist/134e6410-6954-45d1-bd4a-0f2d2ad5471d" target="_blank" rel="noopener">Bron</a> <a href="https://www.wikidata.org/wiki/Q4177928" target="_blank" rel="noopener">Foto</a></span></div></li></ul></div></div>
           
         </article>
 
@@ -524,7 +524,7 @@ a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
         <article class="song" data-search="29 mr. know it all teddy swims teddy swims">
           <div class="heading"><span class="rank">#29</span><div><h2>Mr. Know It All</h2><p class="credit">Teddy Swims</p></div></div>
           <div class="info"><div><div class="label">Releasedatum</div><strong>2026-04-09</strong><small>Voorlopige datum · <a href="https://musicbrainz.org/recording/de4a5aa5-f6e3-4817-8d35-1b78aeee19a0" target="_blank" rel="noopener">MusicBrainz-bron</a></small></div>
-          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Teddy_Swims_Warner_Records.jpg" alt="Foto van Teddy Swims" loading="lazy" referrerpolicy="no-referrer"><div><strong>Teddy Swims</strong><span>Conyers, Georgia, Verenigde Staten · 34 jaar <a href="https://musicbrainz.org/artist/35feae82-8b2c-4f8f-ae7a-af5662848947" target="_blank" rel="noopener">Bron</a> <a href="https://www.wikidata.org/wiki/Q105542333" target="_blank" rel="noopener">Foto</a></span></div></li></ul></div></div>
+          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><div><strong>Teddy Swims</strong><span>Herkomst onbekend</span></div></li></ul></div></div>
           
         </article>
 
@@ -587,7 +587,7 @@ a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
         <article class="song" data-search="20 earrings malcolm todd malcolm todd">
           <div class="heading"><span class="rank">#20</span><div><h2>Earrings</h2><p class="credit">Malcolm Todd</p></div></div>
           <div class="info"><div><div class="label">Releasedatum</div><strong>2024-04-05</strong><small>Voorlopige datum · <a href="https://musicbrainz.org/recording/5167d8a8-f450-4062-be89-4d427a436540" target="_blank" rel="noopener">MusicBrainz-bron</a></small></div>
-          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><div><strong>Malcolm Todd</strong><span>Herkomst onbekend</span></div></li></ul></div></div>
+          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><div><strong>Malcolm Todd</strong><span>Los Angeles, California, Verenigde Staten · 23 jaar <a href="https://musicbrainz.org/artist/6c2a79b8-2b5c-4c2d-b495-6a446811bf9d" target="_blank" rel="noopener">Bron</a></span></div></li></ul></div></div>
           
         </article>
 
@@ -622,7 +622,7 @@ a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
         <article class="song" data-search="15 midnight sun zara larsson zara larsson">
           <div class="heading"><span class="rank">#15</span><div><h2>Midnight Sun</h2><p class="credit">Zara Larsson</p></div></div>
           <div class="info"><div><div class="label">Releasedatum</div><strong>2025-06-13</strong><small>Voorlopige datum · <a href="https://musicbrainz.org/recording/eca6e837-39fd-481e-869d-42ffc893e942" target="_blank" rel="noopener">MusicBrainz-bron</a></small></div>
-          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><div><strong>Zara Larsson</strong><span>Herkomst onbekend</span></div></li></ul></div></div>
+          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Zara_Larsson_Concert_2026_%28cropped%29.jpg" alt="Foto van Zara Larsson" loading="lazy" referrerpolicy="no-referrer"><div><strong>Zara Larsson</strong><span>Sweden · 28 jaar <a href="https://musicbrainz.org/artist/134e6410-6954-45d1-bd4a-0f2d2ad5471d" target="_blank" rel="noopener">Bron</a> <a href="https://www.wikidata.org/wiki/Q4177928" target="_blank" rel="noopener">Foto</a></span></div></li></ul></div></div>
           
         </article>
 
@@ -643,7 +643,7 @@ a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
         <article class="song" data-search="12 bby wow karol g with judeline &amp; rusowsky karol g judeline rusowsky">
           <div class="heading"><span class="rank">#12</span><div><h2>BbY WOW</h2><p class="credit">Karol G With Judeline &amp; rusowsky</p></div></div>
           <div class="info"><div><div class="label">Releasedatum</div><strong>2026-08-05</strong><small>Voorlopige datum · <a href="https://musicbrainz.org/recording/083ef898-e858-452b-b292-497ce07646b0" target="_blank" rel="noopener">MusicBrainz-bron</a></small></div>
-          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/2023-11-16_Gala_de_los_Latin_Grammy%2C_15_%28cropped_2%29.jpg" alt="Foto van Karol G" loading="lazy" referrerpolicy="no-referrer"><div><strong>Karol G</strong><span>Medellín, Colombia · 35 jaar <a href="https://musicbrainz.org/artist/de22adae-f8ac-414f-b653-b0162611bd60" target="_blank" rel="noopener">Bron</a> <a href="https://www.wikidata.org/wiki/Q22001324" target="_blank" rel="noopener">Foto</a></span></div></li><li class="artist-entry"><img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Malaga_Film_Festival_2025_-_Judeline_%283x4_cropped%29.jpg" alt="Foto van Judeline" loading="lazy" referrerpolicy="no-referrer"><div><strong>Judeline</strong><span>Jerez de la Frontera, Spain · 23 jaar <a href="https://musicbrainz.org/artist/b828d419-2928-4286-9509-5d920d524358" target="_blank" rel="noopener">Bron</a> <a href="https://www.wikidata.org/wiki/Q123257584" target="_blank" rel="noopener">Foto</a></span></div></li><li class="artist-entry"><div><strong>rusowsky</strong><span>Valladolid, Spain <a href="https://musicbrainz.org/artist/d836bdef-52ef-4142-baba-573e5b529478" target="_blank" rel="noopener">Bron</a></span></div></li></ul></div></div>
+          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/2023-11-16_Gala_de_los_Latin_Grammy%2C_15_%28cropped_2%29.jpg" alt="Foto van Karol G" loading="lazy" referrerpolicy="no-referrer"><div><strong>Karol G</strong><span>Medellín, Colombia · 35 jaar <a href="https://musicbrainz.org/artist/de22adae-f8ac-414f-b653-b0162611bd60" target="_blank" rel="noopener">Bron</a> <a href="https://www.wikidata.org/wiki/Q22001324" target="_blank" rel="noopener">Foto</a></span></div></li><li class="artist-entry"><div><strong>Judeline</strong><span>Herkomst onbekend</span></div></li><li class="artist-entry"><div><strong>rusowsky</strong><span>Valladolid, Spain <a href="https://musicbrainz.org/artist/d836bdef-52ef-4142-baba-573e5b529478" target="_blank" rel="noopener">Bron</a></span></div></li></ul></div></div>
           
         </article>
 
@@ -692,7 +692,7 @@ a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
         <article class="song" data-search="5 patient zero taylor swift taylor swift">
           <div class="heading"><span class="rank">#5</span><div><h2>Patient Zero</h2><p class="credit">Taylor Swift</p></div></div>
           <div class="info"><div><div class="label">Releasedatum</div><strong>2026-09-25</strong><small>Voorlopige datum · <a href="https://musicbrainz.org/recording/320a8f7b-9035-49f9-b32c-c92546d395b9" target="_blank" rel="noopener">MusicBrainz-bron</a></small></div>
-          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><div><strong>Taylor Swift</strong><span>Herkomst onbekend</span></div></li></ul></div></div>
+          <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Taylor_Swift_at_the_2023_MTV_Video_Music_Awards_%283%29.png" alt="Foto van Taylor Swift" loading="lazy" referrerpolicy="no-referrer"><div><strong>Taylor Swift</strong><span>West Reading, Pennsylvania, Verenigde Staten · 36 jaar <a href="https://musicbrainz.org/artist/20244d07-534f-4eff-b4d4-930878889970" target="_blank" rel="noopener">Bron</a> <a href="https://www.wikidata.org/wiki/Q26876" target="_blank" rel="noopener">Foto</a></span></div></li></ul></div></div>
           
         </article>
 
@@ -722,9 +722,13 @@ a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
           <div class="info"><div><div class="label">Releasedatum</div><strong>2025-10-17</strong><small>Voorlopige datum · <a href="https://musicbrainz.org/recording/f952e3d7-b321-4b76-ab12-e6f6b864ca19" target="_blank" rel="noopener">MusicBrainz-bron</a></small></div>
           <div><div class="label">Herkomst per artiest</div><ul><li class="artist-entry"><img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Ella_Langley_2026_%28cropped%29.jpg" alt="Foto van Ella Langley" loading="lazy" referrerpolicy="no-referrer"><div><strong>Ella Langley</strong><span>Herkomst onbekend · 27 jaar <a href="https://musicbrainz.org/artist/b16c0872-31a7-4db9-8569-0e3146fcecfc" target="_blank" rel="noopener">Bron</a> <a href="https://www.wikidata.org/wiki/Q127559972" target="_blank" rel="noopener">Foto</a></span></div></li></ul></div></div>
           
-        </article></section></main>
+        </article></section></main><dialog id="photo-modal" class="photo-modal"><img id="photo-large" alt=""><button id="photo-close" type="button">Sluiten</button></dialog>
 <script>
 const input=document.getElementById('search'),songs=[...document.querySelectorAll('.song')],count=document.getElementById('count');
+const modal=document.getElementById('photo-modal'),large=document.getElementById('photo-large');
+document.querySelectorAll('.portrait').forEach(img=>{img.tabIndex=0;img.setAttribute('role','button');img.setAttribute('aria-label','Vergroot '+img.alt);const open=()=>{large.src=img.src;large.alt=img.alt;modal.showModal()};img.addEventListener('click',open);img.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})});
+document.getElementById('photo-close').addEventListener('click',()=>modal.close());
+modal.addEventListener('click',e=>{if(e.target===modal)modal.close()});
 input.addEventListener('input',()=>{const q=input.value.trim().toLocaleLowerCase();let visible=0;
 for(const song of songs){const show=song.dataset.search.includes(q);song.hidden=!show;if(show)visible++;}
 count.textContent=visible+' van '+songs.length+' nummers';});
