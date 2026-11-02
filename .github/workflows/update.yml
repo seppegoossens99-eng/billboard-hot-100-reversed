@@ -74,7 +74,7 @@ jobs:
         run: python build_mobile_page.py
       - name: Prepare website homepage
         if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
-        run: cp billboard_hot_100.html index.html metadata_quality_report.md
+        run: cp billboard_hot_100.html index.html
       - name: Commit details CSV
         if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
         run: |
