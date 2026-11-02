@@ -40,9 +40,11 @@ def main():
             source_link = f' <a href="{source}" target="_blank" rel="noopener">Bron</a>' if source else ""
             profile = profiles.get(person["Artiest"], {})
             age = profile.get("Leeftijd", "")
-            age_text = f" · {html.escape(age)} jaar" if age else ""
+            age_text = f" · {html.escape(age)} jaar" if age else (" · Leeftijd onbekend" if profile.get("Type") == "Person" else "")
             photo = profile.get("Afbeelding", "")
             portrait = f'<img class="portrait" src="{html.escape(photo, quote=True)}" alt="Foto van {html.escape(person["Artiest"], quote=True)}" loading="lazy" referrerpolicy="no-referrer">' if photo.startswith("https://commons.wikimedia.org/wiki/Special:FilePath/") else ""
+            if not portrait:
+                portrait = '<div class="portrait portrait-empty">Foto niet beschikbaar</div>'
             photo_source = profile.get("Bron afbeelding", "")
             photo_credit = f' <a href="{html.escape(photo_source, quote=True)}" target="_blank" rel="noopener">Foto</a>' if photo_source.startswith("https://www.wikidata.org/wiki/") else ""
             people.append(f'<li class="artist-entry">{portrait}<div><strong>{html.escape(person["Artiest"])}</strong><span>{origin}{age_text}{source_link}{photo_credit}</span></div></li>')
@@ -94,7 +96,7 @@ h2{font-size:19px;margin:2px 0 5px;line-height:1.2}.credit{margin:0;color:#b9c7d
 .label{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:#91a2b8;margin-bottom:8px}
 small{display:block;color:#aab9cc;margin-top:5px}ul{list-style:none;padding:0;margin:0}li{display:flex;flex-wrap:wrap;gap:5px 12px;margin-bottom:9px}li span{color:#b5c6d8}
 a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
-.artist-entry{display:flex;align-items:flex-start;gap:16px;padding:10px 0}.artist-entry>div{display:flex;flex-direction:column;gap:6px;flex:1;min-width:0}.artist-entry strong{font-size:17px}.portrait{width:180px;height:220px;flex:none;object-fit:cover;object-position:center 22%;border-radius:14px;background:#26344a;cursor:zoom-in}.portrait:focus{outline:2px solid #99c4ff}.photo-modal{border:0;padding:0;background:transparent;max-width:min(94vw,900px);max-height:94vh}.photo-modal::backdrop{background:rgba(0,0,0,.9)}.photo-modal img{display:block;max-width:94vw;max-height:86vh;object-fit:contain}.photo-modal button{display:block;margin:8px 0 0 auto;background:#263a59;border:0;border-radius:8px;padding:10px 16px;color:white;cursor:pointer}.bands{margin-top:14px;border-top:1px solid #2b3648;padding-top:14px}.bands summary{cursor:pointer;color:#a8ccff;font-weight:650}.band{padding:10px 0}.band h3{margin:4px 0;font-size:16px}.band p{margin:5px 0 10px}.note{background:#222c3f;padding:14px;border-radius:12px;color:#c9d3e2;font-size:14px;line-height:1.5}
+.artist-entry{display:flex;align-items:flex-start;gap:16px;padding:10px 0}.artist-entry>div{display:flex;flex-direction:column;gap:6px;flex:1;min-width:0}.artist-entry strong{font-size:17px}.portrait{width:180px;height:220px;flex:none;object-fit:cover;object-position:center 22%;border-radius:14px;background:#26344a;cursor:zoom-in}.portrait:focus{outline:2px solid #99c4ff}.portrait-empty{display:flex;align-items:center;justify-content:center;padding:18px;text-align:center;color:#b5c6d8;font-size:14px;cursor:default}.photo-modal{border:0;padding:0;background:transparent;max-width:min(94vw,900px);max-height:94vh}.photo-modal::backdrop{background:rgba(0,0,0,.9)}.photo-modal img{display:block;max-width:94vw;max-height:86vh;object-fit:contain}.photo-modal button{display:block;margin:8px 0 0 auto;background:#263a59;border:0;border-radius:8px;padding:10px 16px;color:white;cursor:pointer}.bands{margin-top:14px;border-top:1px solid #2b3648;padding-top:14px}.bands summary{cursor:pointer;color:#a8ccff;font-weight:650}.band{padding:10px 0}.band h3{margin:4px 0;font-size:16px}.band p{margin:5px 0 10px}.note{background:#222c3f;padding:14px;border-radius:12px;color:#c9d3e2;font-size:14px;line-height:1.5}
 @media(max-width:620px){main{padding:18px 12px 55px}.song{padding:15px}.info{grid-template-columns:1fr;gap:15px}h2{font-size:18px}.artist-entry{flex-direction:column}.portrait{width:100%;height:auto;max-height:440px;aspect-ratio:4/5;object-fit:cover}.artist-entry>div{width:100%}}
 </style></head><body><main><header><span class="pill">#100 → #1</span>
 <h1>Billboard Hot 100</h1><p class="sub">Reversed · artiesten, foto’s, leeftijden, herkomst en releasedata</p>
@@ -105,7 +107,7 @@ a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
 <script>
 const input=document.getElementById('search'),songs=[...document.querySelectorAll('.song')],count=document.getElementById('count');
 const modal=document.getElementById('photo-modal'),large=document.getElementById('photo-large');
-document.querySelectorAll('.portrait').forEach(img=>{img.tabIndex=0;img.setAttribute('role','button');img.setAttribute('aria-label','Vergroot '+img.alt);const open=()=>{large.src=img.src;large.alt=img.alt;modal.showModal()};img.addEventListener('click',open);img.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})});
+document.querySelectorAll('img.portrait').forEach(img=>{img.tabIndex=0;img.setAttribute('role','button');img.setAttribute('aria-label','Vergroot '+img.alt);const open=()=>{large.src=img.src;large.alt=img.alt;modal.showModal()};img.addEventListener('click',open);img.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})});
 document.getElementById('photo-close').addEventListener('click',()=>modal.close());
 modal.addEventListener('click',e=>{if(e.target===modal)modal.close()});
 input.addEventListener('input',()=>{const q=input.value.trim().toLocaleLowerCase();let visible=0;
