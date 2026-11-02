@@ -22,6 +22,8 @@ def wikidata_id(data):
     return ""
 
 def age_at(birth):
+    if not isinstance(birth, str) or not birth:
+        return ""
     try:
         born = date.fromisoformat(birth)
         today = date.today()
