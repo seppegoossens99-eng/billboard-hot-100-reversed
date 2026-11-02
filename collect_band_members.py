@@ -23,7 +23,7 @@ def get_artist(artist_id):
         try:
             last_request = time.monotonic()
             response = SESSION.get(f"https://musicbrainz.org/ws/2/artist/{artist_id}",
-                                   params={"inc": "artist-rels", "fmt": "json"}, timeout=20)
+                                   params={"inc": "artist-rels+url-rels", "fmt": "json"}, timeout=20)
             if response.status_code in (429, 503):
                 time.sleep(5)
                 continue
@@ -61,10 +61,10 @@ def main():
     for name, url in sorted({(row["Artiest"], row["Bron herkomst"]) for row in artists if row["Bron herkomst"].startswith("https://musicbrainz.org/artist/")}):
         artist_id = url.rsplit("/", 1)[-1]
         item = cache.get(artist_id, {})
-        if item.get("checked", "") < cutoff or not item.get("data"):
+        if item.get("checked", "") < cutoff or not item.get("data") or not item.get("url_relations_fetched"):
             data = get_artist(artist_id)
             if data:
-                cache[artist_id] = {"checked": date.today().isoformat(), "data": data}
+                cache[artist_id] = {"checked": date.today().isoformat(), "url_relations_fetched": True, "data": data}
             else:
                 data = item.get("data", {})
         else:
