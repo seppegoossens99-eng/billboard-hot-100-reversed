@@ -55,25 +55,25 @@ jobs:
           SPOTIFY_PLAYLIST_ID: ${{ secrets.SPOTIFY_PLAYLIST_ID }}
         run: python update_spotify.py
       - name: Generate details CSV
-        if: steps.clock.outputs.proceed == 'true' && (github.event_name != 'schedule' || steps.spotify.outcome == 'success')
+        if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
         run: python generate_details.py
       - name: Collect band members and roles
-        if: steps.clock.outputs.proceed == 'true' && (github.event_name != 'schedule' || steps.spotify.outcome == 'success')
+        if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
         run: python collect_band_members.py
       - name: Enrich band member ages and instruments
-        if: steps.clock.outputs.proceed == 'true' && (github.event_name != 'schedule' || steps.spotify.outcome == 'success')
+        if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
         run: python enrich_band_members.py
       - name: Collect artist photos and ages
-        if: steps.clock.outputs.proceed == 'true' && (github.event_name != 'schedule' || steps.spotify.outcome == 'success')
+        if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
         run: python collect_artist_profiles.py
       - name: Build mobile HTML overview
-        if: steps.clock.outputs.proceed == 'true' && (github.event_name != 'schedule' || steps.spotify.outcome == 'success')
+        if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
         run: python build_mobile_page.py
       - name: Prepare website homepage
-        if: steps.clock.outputs.proceed == 'true' && (github.event_name != 'schedule' || steps.spotify.outcome == 'success')
+        if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
         run: cp billboard_hot_100.html index.html
       - name: Commit details CSV
-        if: steps.clock.outputs.proceed == 'true' && (github.event_name != 'schedule' || steps.spotify.outcome == 'success')
+        if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
