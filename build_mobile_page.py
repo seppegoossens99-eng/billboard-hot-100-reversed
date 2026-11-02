@@ -26,6 +26,7 @@ def main():
     bands = defaultdict(list)
     for member in band_rows:
         bands[member["Artiest"]].append(member)
+    profiles = {row["Artiest"]: row for row in read_csv("billboard_artist_profiles.csv")}
     blocks = []
     for track in tracks:
         pos = track["Billboard-positie"]
@@ -37,7 +38,14 @@ def main():
             origin = html.escape(place or "Herkomst onbekend")
             source = safe_url(person["Bron herkomst"])
             source_link = f' <a href="{source}" target="_blank" rel="noopener">Bron</a>' if source else ""
-            people.append(f'<li><strong>{html.escape(person["Artiest"])}</strong><span>{origin}{source_link}</span></li>')
+            profile = profiles.get(person["Artiest"], {})
+            age = profile.get("Leeftijd", "")
+            age_text = f" · {html.escape(age)} jaar" if age else ""
+            photo = profile.get("Afbeelding", "")
+            portrait = f'<img class="portrait" src="{html.escape(photo, quote=True)}" alt="Foto van {html.escape(person["Artiest"], quote=True)}" loading="lazy" referrerpolicy="no-referrer">' if photo.startswith("https://commons.wikimedia.org/wiki/Special:FilePath/") else ""
+            photo_source = profile.get("Bron afbeelding", "")
+            photo_credit = f' <a href="{html.escape(photo_source, quote=True)}" target="_blank" rel="noopener">Foto</a>' if photo_source.startswith("https://www.wikidata.org/wiki/") else ""
+            people.append(f'<li class="artist-entry">{portrait}<div><strong>{html.escape(person["Artiest"])}</strong><span>{origin}{age_text}{source_link}{photo_credit}</span></div></li>')
         band_sections = []
         for person in credited:
             band_members = bands.get(person["Artiest"], [])
@@ -84,10 +92,10 @@ h2{font-size:19px;margin:2px 0 5px;line-height:1.2}.credit{margin:0;color:#b9c7d
 .label{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:#91a2b8;margin-bottom:8px}
 small{display:block;color:#aab9cc;margin-top:5px}ul{list-style:none;padding:0;margin:0}li{display:flex;flex-wrap:wrap;gap:5px 12px;margin-bottom:9px}li span{color:#b5c6d8}
 a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
-.bands{margin-top:14px;border-top:1px solid #2b3648;padding-top:14px}.bands summary{cursor:pointer;color:#a8ccff;font-weight:650}.band{padding:10px 0}.band h3{margin:4px 0;font-size:16px}.band p{margin:5px 0 10px}.note{background:#222c3f;padding:14px;border-radius:12px;color:#c9d3e2;font-size:14px;line-height:1.5}
+.artist-entry{align-items:center;gap:12px}.artist-entry>div{display:flex;flex-direction:column;gap:3px}.portrait{width:64px;height:64px;object-fit:cover;border-radius:12px;background:#26344a}.bands{margin-top:14px;border-top:1px solid #2b3648;padding-top:14px}.bands summary{cursor:pointer;color:#a8ccff;font-weight:650}.band{padding:10px 0}.band h3{margin:4px 0;font-size:16px}.band p{margin:5px 0 10px}.note{background:#222c3f;padding:14px;border-radius:12px;color:#c9d3e2;font-size:14px;line-height:1.5}
 @media(max-width:620px){main{padding:18px 12px 55px}.song{padding:15px}.info{grid-template-columns:1fr;gap:15px}h2{font-size:18px}}
 </style></head><body><main><header><span class="pill">#100 → #1</span>
-<h1>Billboard Hot 100</h1><p class="sub">Reversed · artiesten, steden, staten en releasedata</p>
+<h1>Billboard Hot 100</h1><p class="sub">Reversed · artiesten, foto’s, leeftijden, herkomst en releasedata</p>
 <div class="note">De releasedata zijn voorlopig: MusicBrainz geeft de vroegste daar bekende opname-uitgave, maar bevestigt niet altijd de eerste officiële single-release. Lege gegevens worden niet gegokt. De herkomst van een groep kan de oprichtingsplaats zijn.</div>
 </header><label for="search">Zoek artiest, nummer of positie</label><input id="search" type="search" placeholder="Bijv. Drake, Olivia Rodrigo, #88">
 <p id="count">100 nummers</p><section class="songs" id="songs">
