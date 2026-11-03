@@ -27,25 +27,26 @@ def main_artist(value):
     return re.split(r"\s+(?:featuring|feat\.?|ft\.?|with|x)\s+|\s*&\s*|,", value, 1, re.I)[0].strip()
 
 def split_artists(value):
-    """Split credited collaborations without splitting names of established bands."""
-    protected = [
-        "King Gizzard & The Lizard Wizard",
-        "Earth, Wind & Fire",
-        "Tyler, the Creator",
-    ]
+    """Split collaborators, preserving known group names inside combined credits."""
+    protected = ["King Gizzard & The Lizard Wizard", "Earth, Wind & Fire", "Tyler, the Creator"]
     masked = value
     placeholders = {}
     for i, name in enumerate(protected):
-        match = re.search(re.escape(name), masked, flags=re.I)
-        if match:
-            token = f"PROTECTEDARTIST{i}TOKEN"
-            placeholders[token] = match.group()
-            masked = masked[:match.start()] + token + masked[match.end():]
+        token = f"PROTECTEDARTIST{i}TOKEN"
+        if re.search(re.escape(name), masked, flags=re.I):
+            masked = re.sub(re.escape(name), lambda m: placeholders.setdefault(token, m.group()), masked, flags=re.I)
     parts = re.split(
         r"\\s+(?:featuring|feat\\.?|ft\\.?|with|x)\\s+|\\s*&\\s*|\\s*,\\s*",
         masked, flags=re.I
     )
-    return list(dict.fromkeys(placeholders.get(p.strip(), p.strip()) for p in parts if p.strip()))
+    restored = []
+    for part in parts:
+        part = part.strip()
+        for token, name in placeholders.items():
+            part = part.replace(token, name)
+        if part and part not in restored:
+            restored.append(part)
+    return restored
 
 def mb_get(entity, params):
     global last_call
