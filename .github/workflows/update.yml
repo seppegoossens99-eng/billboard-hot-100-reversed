@@ -54,6 +54,9 @@ jobs:
           SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
           SPOTIFY_PLAYLIST_ID: ${{ secrets.SPOTIFY_PLAYLIST_ID }}
         run: python update_spotify.py
+      - name: Verify artist-name parsing
+        if: steps.clock.outputs.proceed == 'true'
+        run: python -m unittest test_artist_parsing.py
       - name: Generate details CSV
         if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
         run: python generate_details.py
