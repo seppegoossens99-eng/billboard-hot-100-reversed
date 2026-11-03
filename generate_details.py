@@ -175,6 +175,18 @@ def main():
             for row in csv.DictReader(f):
                 existing[(norm(row.get("Artiest", "")), norm(row.get("Nummer", "")))] = row
 
+    # Reuse previously verified artist identities instead of querying the same
+    # artist again for every song on the chart.
+    known_artists = {}
+    if ARTISTS_OUTPUT.exists():
+        with ARTISTS_OUTPUT.open(encoding="utf-8-sig", newline="") as f:
+            for old in csv.DictReader(f):
+                if old.get("Bron herkomst", "").startswith("https://musicbrainz.org/artist/"):
+                    known_artists[norm(old["Artiest"])] = (
+                        old.get("Land", ""), old.get("Staat/regio", ""),
+                        old.get("Stad", ""), old["Bron herkomst"])
+    artist_cache.update(known_artists)
+
     rows = []
     artist_rows = []
     for i, song in enumerate(sorted(songs, key=lambda s: s["this_week"], reverse=True), 1):
