@@ -41,6 +41,19 @@ def main():
     for name, source in sorted(unique):
         artist_id = source.rsplit("/", 1)[-1] if source.startswith("https://musicbrainz.org/artist/") else ""
         data = cache.get(artist_id, {}).get("data", {})
+        # A valid MusicBrainz match may be new and absent from the band cache.
+        # Fetch its identity and Wikidata link rather than leaving the portrait blank.
+        if artist_id and not data:
+            try:
+                response = requests.get(
+                    f"https://musicbrainz.org/ws/2/artist/{artist_id}",
+                    params={"inc": "url-rels", "fmt": "json"},
+                    headers=HEADERS, timeout=20,
+                )
+                response.raise_for_status()
+                data = response.json()
+            except (requests.RequestException, ValueError) as exc:
+                print(f"MusicBrainz profile unavailable for {name}: {exc}", flush=True)
         qid = wikidata_id(data)
         if qid:
             qids.add(qid)
