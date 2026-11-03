@@ -36,7 +36,7 @@ def split_artists(value):
         if re.search(re.escape(name), masked, flags=re.I):
             masked = re.sub(re.escape(name), lambda m: placeholders.setdefault(token, m.group()), masked, flags=re.I)
     parts = re.split(
-        r"\\s+(?:featuring|feat\\.?|ft\\.?|with|x)\\s+|\\s*&\\s*|\\s*,\\s*",
+        r"\s+(?:featuring|feat\.?|ft\.?|with|x)\s+|\s*&\s*|\s*,\s*",
         masked, flags=re.I
     )
     restored = []
