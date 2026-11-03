@@ -27,7 +27,7 @@ def main_artist(value):
     return re.split(r"\s+(?:featuring|feat\.?|ft\.?|with|x)\s+|\s*&\s*|,", value, 1, re.I)[0].strip()
 
 def split_artists(value):
-    """Split collaborators, preserving known group names inside combined credits."""
+    """Split collaborations without breaking the names of credited groups."""
     protected = ["King Gizzard & The Lizard Wizard", "Earth, Wind & Fire", "Tyler, the Creator"]
     masked = value
     placeholders = {}
