@@ -23,30 +23,36 @@ def norm(value):
     value = unicodedata.normalize("NFKD", value.casefold())
     return re.sub(r"[^a-z0-9]+", " ", "".join(c for c in value if not unicodedata.combining(c))).strip()
 
-def main_artist(value):
-    return re.split(r"\s+(?:featuring|feat\.?|ft\.?|with|x)\s+|\s*&\s*|,", value, 1, re.I)[0].strip()
+# Artist names containing separators must not be split into separate people.
+PROTECTED_ARTISTS = (
+    "King Gizzard & The Lizard Wizard",
+    "Earth, Wind & Fire",
+    "Tyler, the Creator",
+)
+COLLAB_SEPARATOR = r"\s+(?:featuring|feat\.?|ft\.?|with|x)\s+|\s*&\s*|\s*,\s*"
 
 def split_artists(value):
-    """Split collaborations without breaking the names of credited groups."""
-    protected = ["King Gizzard & The Lizard Wizard", "Earth, Wind & Fire", "Tyler, the Creator"]
+    """Split collaborations, keeping established group names intact."""
     masked = value
     placeholders = {}
-    for i, name in enumerate(protected):
+    for i, name in enumerate(PROTECTED_ARTISTS):
         token = f"PROTECTEDARTIST{i}TOKEN"
-        if re.search(re.escape(name), masked, flags=re.I):
-            masked = re.sub(re.escape(name), lambda m: placeholders.setdefault(token, m.group()), masked, flags=re.I)
-    parts = re.split(
-        r"\s+(?:featuring|feat\.?|ft\.?|with|x)\s+|\s*&\s*|\s*,\s*",
-        masked, flags=re.I
-    )
-    restored = []
+        pattern = re.compile(re.escape(name), re.I)
+        if pattern.search(masked):
+            masked = pattern.sub(lambda match: placeholders.setdefault(token, match.group()), masked)
+    parts = re.split(COLLAB_SEPARATOR, masked, flags=re.I)
+    result = []
     for part in parts:
         part = part.strip()
         for token, name in placeholders.items():
             part = part.replace(token, name)
-        if part and part not in restored:
-            restored.append(part)
-    return restored
+        if part and part not in result:
+            result.append(part)
+    return result
+
+def main_artist(value):
+    parts = split_artists(value)
+    return parts[0] if parts else value.strip()
 
 def mb_get(entity, params):
     global last_call
