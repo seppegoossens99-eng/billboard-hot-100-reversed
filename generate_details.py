@@ -27,9 +27,18 @@ def main_artist(value):
     return re.split(r"\s+(?:featuring|feat\.?|ft\.?|with|x)\s+|\s*&\s*|,", value, 1, re.I)[0].strip()
 
 def split_artists(value):
-    """Split explicit artist collaborations, never split a band's name blindly."""
+    """Split collaborations while preserving established artist/group names."""
+    protected = {
+        "king gizzard & the lizard wizard",
+        "dan + shay",
+        "dexter and the moonrocks",
+        "earth, wind & fire",
+        "tyler, the creator",
+    }
+    if value.strip().casefold() in protected:
+        return [value.strip()]
     parts = re.split(
-        r"\s+(?:featuring|feat\.?|ft\.?|with|x)\s+|\s*&\s*|\s*,\s*",
+        r"\\s+(?:featuring|feat\\.?|ft\\.?|with|x)\\s+|\\s*&\\s*|\\s*,\\s*",
         value, flags=re.I
     )
     return list(dict.fromkeys(p.strip() for p in parts if p.strip()))
