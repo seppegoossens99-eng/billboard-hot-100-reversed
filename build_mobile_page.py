@@ -16,6 +16,7 @@ def safe_url(url):
 
 def main():
     tracks = read_csv("billboard_hot_100_details.csv")
+    chart_date = (ROOT / "billboard_chart_date.txt").read_text(encoding="utf-8").strip()
     artists = read_csv("billboard_hot_100_artists.csv")
     if len(tracks) != 100 or [int(x["Billboard-positie"]) for x in tracks] != list(range(100, 0, -1)):
         raise RuntimeError("Invalid chart order; HTML unchanged.")
@@ -99,7 +100,7 @@ a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
 .artist-entry{display:flex;align-items:flex-start;gap:16px;padding:10px 0}.artist-entry>div{display:flex;flex-direction:column;gap:6px;flex:1;min-width:0}.artist-entry strong{font-size:17px}.portrait{width:180px;height:220px;flex:none;object-fit:cover;object-position:center 22%;border-radius:14px;background:#26344a;cursor:zoom-in}.portrait:focus{outline:2px solid #99c4ff}.portrait-empty{display:flex;align-items:center;justify-content:center;padding:18px;text-align:center;color:#b5c6d8;font-size:14px;cursor:default}.photo-modal{border:0;padding:0;background:transparent;max-width:min(94vw,900px);max-height:94vh}.photo-modal::backdrop{background:rgba(0,0,0,.9)}.photo-modal img{display:block;max-width:94vw;max-height:86vh;object-fit:contain}.photo-modal button{display:block;margin:8px 0 0 auto;background:#263a59;border:0;border-radius:8px;padding:10px 16px;color:white;cursor:pointer}.bands{margin-top:14px;border-top:1px solid #2b3648;padding-top:14px}.bands summary{cursor:pointer;color:#a8ccff;font-weight:650}.band{padding:10px 0}.band h3{margin:4px 0;font-size:16px}.band p{margin:5px 0 10px}.note{background:#222c3f;padding:14px;border-radius:12px;color:#c9d3e2;font-size:14px;line-height:1.5}
 @media(max-width:620px){main{padding:18px 12px 55px}.song{padding:15px}.info{grid-template-columns:1fr;gap:15px}h2{font-size:18px}.artist-entry{flex-direction:column}.portrait{width:100%;height:auto;max-height:440px;aspect-ratio:4/5;object-fit:cover}.artist-entry>div{width:100%}}
 </style></head><body><main><header><span class="pill">#100 → #1</span>
-<h1>Billboard Hot 100</h1><p class="sub">Reversed · artiesten, foto’s, leeftijden, herkomst en releasedata</p>
+<h1>Billboard Hot 100</h1><p class="sub">Hitlijst van __CHART_DATE__ · #100 tot #1 · artiesten, foto’s, leeftijden en herkomst</p>
 <div class="note">De releasedata zijn voorlopig: MusicBrainz geeft de vroegste daar bekende opname-uitgave, maar bevestigt niet altijd de eerste officiële single-release. Lege gegevens worden niet gegokt. De herkomst van een groep kan de oprichtingsplaats zijn.</div>
 </header><label for="search">Zoek artiest, nummer of positie</label><input id="search" type="search" placeholder="Bijv. Drake, Olivia Rodrigo, #88">
 <p id="count">100 nummers</p><section class="songs" id="songs">
@@ -114,6 +115,7 @@ input.addEventListener('input',()=>{const q=input.value.trim().toLocaleLowerCase
 for(const song of songs){const show=song.dataset.search.includes(q);song.hidden=!show;if(show)visible++;}
 count.textContent=visible+' van '+songs.length+' nummers';});
 </script></body></html>"""
+    document = document.replace("__CHART_DATE__", html.escape(chart_date))
     (ROOT / "billboard_hot_100.html").write_text(document, encoding="utf-8")
     print("Created billboard_hot_100.html with",len(tracks),"songs and",len(artists),"artist credits")
 
