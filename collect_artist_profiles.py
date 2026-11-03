@@ -1,6 +1,7 @@
 """Artist portraits (Wikidata/Commons) and ages (MusicBrainz), no guessed identities."""
 import csv
 import json
+import time
 from datetime import date
 from pathlib import Path
 from urllib.parse import quote
@@ -44,6 +45,7 @@ def main():
         # A valid MusicBrainz match may be new and absent from the band cache.
         # Fetch its identity and Wikidata link rather than leaving the portrait blank.
         if artist_id and not data:
+            time.sleep(1.1)  # MusicBrainz public API rate limit
             try:
                 response = requests.get(
                     f"https://musicbrainz.org/ws/2/artist/{artist_id}",
