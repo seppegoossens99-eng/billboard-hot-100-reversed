@@ -4,137 +4,102 @@ Dit overzicht wordt automatisch vernieuwd bij een website-update.
 Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave is geverifieerd.
 
 - Nummers: 100
-- Unieke vermelde artiesten: 81
-- Artiesten zonder foto: 41
-- Artiesten zonder bevestigde MusicBrainz-identiteit: 27
-- Soloartiesten zonder bevestigde leeftijd: 6
-- Artiesten zonder land: 41
+- Unieke vermelde artiesten: 90
+- Artiesten zonder foto: 32
+- Artiesten zonder bevestigde MusicBrainz-identiteit: 10
+- Soloartiesten zonder bevestigde leeftijd: 9
+- Artiesten zonder land: 29
 - Nummers zonder voorlopige releasedatum: 2
 
 ## Ontbrekende foto's
 
 - Alyssa Grace
 - Ashe
-- Belly Gang Kushington & 21 Savage
+- Belly Gang Kushington
 - Blake Whiten
 - Cameron Whitcomb
+- Chandler Moore
+- Chase Matthew
 - Corey Kent
 - Dexter And The Moonrocks
-- Dolly Babe Featuring Megan Thee Stallion
-- Drake & Don Toliver
-- Drake Featuring Loe Shimmy
-- Drake, Don Toliver & Yebba
-- Elevation Worship & Chandler Moore
+- Dolly Babe
 - Greylan James
 - Hudson Westbrook
 - JADE
 - Jamie Miller
-- Jhene Aiko Featuring Kendrick Lamar
 - John Morgan
-- Justice, Tame Impala, SZA & PROTECTEDARTIST0TOKEN
-- Karol G With Drake
-- Karol G With Judeline & rusowsky
-- Koe Wetzel & Ella Langley
-- Lainey Wilson & John Mayer
-- Lauren Alaina Featuring Chase Matthew
+- Justice
+- King Gizzard
+- Loe Shimmy
 - Mack Geiger
 - Malcolm Todd
 - Megan Moroney
-- Miranda Lambert & Ella Langley
-- Olivia Rodrigo & Chappell Roan
-- Olivia Rodrigo & Robert Smith
+- Robert Smith
 - Rockwell
-- Shakira X Burna Boy
-- Stella Lefty With Vincent Mason
-- Tame Impala & JENNIE
 - Temper City
 - The Citizens of Halloween
+- The Lizard Wizard
 - Thekidszn
-- Zach Bryan Featuring Lana Del Rey
-- Zach Bryan Featuring Turnpike Troubadours
+- Vincent Mason
+- Yebba
 - Zach John King
 - comehelpglo
+- rusowsky
 
 ## Ontbrekende leeftijden
 
 - Alyssa Grace
 - BabyChiefDoit
+- Belly Gang Kushington
 - Blake Whiten
 - Greylan James
+- Loe Shimmy
 - Mack Geiger
 - Zach John King
+- rusowsky
 
 ## Artiesten zonder bevestigde identiteit
 
 - Ashe
-- Belly Gang Kushington & 21 Savage
-- Dolly Babe Featuring Megan Thee Stallion
-- Drake & Don Toliver
-- Drake Featuring Loe Shimmy
-- Drake, Don Toliver & Yebba
-- Elevation Worship & Chandler Moore
 - JADE
 - Jamie Miller
-- Jhene Aiko Featuring Kendrick Lamar
 - John Morgan
-- Justice, Tame Impala, SZA & PROTECTEDARTIST0TOKEN
-- Karol G With Drake
-- Karol G With Judeline & rusowsky
-- Koe Wetzel & Ella Langley
-- Lainey Wilson & John Mayer
-- Lauren Alaina Featuring Chase Matthew
-- Miranda Lambert & Ella Langley
-- Olivia Rodrigo & Chappell Roan
-- Olivia Rodrigo & Robert Smith
+- Justice
+- King Gizzard
+- Robert Smith
 - Rockwell
-- Shakira X Burna Boy
-- Stella Lefty With Vincent Mason
-- Tame Impala & JENNIE
 - The Citizens of Halloween
-- Zach Bryan Featuring Lana Del Rey
-- Zach Bryan Featuring Turnpike Troubadours
+- The Lizard Wizard
 
 ## Ontbrekende landen
 
 - Alyssa Grace
 - Ashe
 - BabyChiefDoit
-- Belly Gang Kushington & 21 Savage
+- Belly Gang Kushington
 - Blake Whiten
 - Cameron Whitcomb
+- Chandler Moore
 - Dexter And The Moonrocks
-- Dolly Babe Featuring Megan Thee Stallion
+- Dolly Babe
 - Dominic Fike
-- Drake & Don Toliver
-- Drake Featuring Loe Shimmy
-- Drake, Don Toliver & Yebba
-- Elevation Worship & Chandler Moore
 - Ella Langley
 - Harry Styles
 - Hudson Westbrook
 - JADE
 - Jamie Miller
 - Jelly Roll
-- Jhene Aiko Featuring Kendrick Lamar
 - John Morgan
-- Justice, Tame Impala, SZA & PROTECTEDARTIST0TOKEN
-- Karol G With Drake
-- Karol G With Judeline & rusowsky
-- Koe Wetzel & Ella Langley
-- Lainey Wilson & John Mayer
-- Lauren Alaina Featuring Chase Matthew
-- Miranda Lambert & Ella Langley
-- Olivia Rodrigo & Chappell Roan
-- Olivia Rodrigo & Robert Smith
+- Justice
+- King Gizzard
+- Loe Shimmy
+- Robert Smith
 - Rockwell
-- Shakira X Burna Boy
-- Stella Lefty With Vincent Mason
-- Tame Impala & JENNIE
 - Temper City
 - The Citizens of Halloween
+- The Lizard Wizard
 - Thekidszn
-- Zach Bryan Featuring Lana Del Rey
-- Zach Bryan Featuring Turnpike Troubadours
+- Vincent Mason
 - Zach John King
 - comehelpglo
 
