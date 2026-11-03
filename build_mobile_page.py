@@ -66,6 +66,29 @@ def main():
             source_link = f'<a href="{source}" target="_blank" rel="noopener">MusicBrainz</a>' if source else ""
             band_sections.append(f'<div class="band"><h3>{html.escape(person["Artiest"])}</h3><p class="sub">{html.escape(label)} · {source_link}</p><ul>{"".join(member_items) or "<li>Leden nog niet gedocumenteerd</li>"}</ul><small>Aantal mogelijk onvolledig.</small></div>')
         band_markup = f'<details class="bands"><summary>Bandleden en instrumenten</summary>{"".join(band_sections)}</details>' if band_sections else ""
+        last_week = track.get("Vorige week", "")
+        weeks = track.get("Weken in Hot 100", "")
+        peak = track.get("Hoogste positie", "")
+        if last_week:
+            difference = int(last_week) - int(pos)
+            movement = (f"▲ {difference} plaatsen gestegen" if difference > 0
+                        else f"▼ {abs(difference)} plaatsen gedaald" if difference < 0
+                        else "▬ Ongewijzigd")
+            previous_label = f"#{last_week}"
+        elif weeks == "1":
+            movement = "NIEUW in de Hot 100"
+            previous_label = "Nieuw"
+        else:
+            movement = "TERUG in de Hot 100"
+            previous_label = "Niet genoteerd"
+        chart_stats = (
+            '<div class="chart-stats">'
+            f'<div><span class="label">Vorige week</span><strong>{html.escape(previous_label)}</strong></div>'
+            f'<div><span class="label">Weken in Hot 100</span><strong>{html.escape(weeks or "Onbekend")}</strong></div>'
+            f'<div><span class="label">Hoogste positie</span><strong>#{html.escape(peak)}</strong></div>'
+            '</div>'
+            f'<p class="movement">{html.escape(movement)}</p>'
+        )
         date = track["Eerste officiële releasedatum"]
         date_display = html.escape(date) if date else "Nog niet gevonden"
         date_source = safe_url(track["Bron releasedatum"])
@@ -75,6 +98,7 @@ def main():
         blocks.append(f"""
         <article class="song" data-search="{search}">
           <div class="heading"><span class="rank">#{pos}</span><div><h2>{html.escape(name)}</h2><p class="credit">{html.escape(track["Artiest"])}</p></div></div>
+          {chart_stats}
           <div class="info"><div><div class="label">Releasedatum</div><strong>{date_display}</strong><small>{status} · {date_link}</small></div>
           <div><div class="label">Herkomst per artiest</div><ul>{''.join(people)}</ul></div></div>
           {band_markup}
@@ -93,14 +117,14 @@ input{width:100%;font:inherit;padding:15px 17px;border:1px solid #4a566e;border-
 .song{border:1px solid #29354a;border-radius:17px;background:#151d2c;padding:18px}
 .heading{display:flex;gap:14px;align-items:start}.rank{flex:none;font-weight:800;color:#9dc3ff;background:#263a59;border-radius:9px;padding:8px 10px}
 h2{font-size:19px;margin:2px 0 5px;line-height:1.2}.credit{margin:0;color:#b9c7d8}
-.info{display:grid;grid-template-columns:minmax(150px,1fr) minmax(0,2fr);gap:18px;margin-top:16px;border-top:1px solid #2b3648;padding-top:14px}
+.chart-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:16px}.chart-stats>div{background:#202c40;border-radius:11px;padding:12px;min-width:0}.chart-stats strong{display:block;font-size:18px}.chart-stats .label{font-size:10px;line-height:1.4}.movement{font-weight:700;color:#a8ccff;margin:11px 0 0;font-size:14px}.info{display:grid;grid-template-columns:minmax(150px,1fr) minmax(0,2fr);gap:18px;margin-top:16px;border-top:1px solid #2b3648;padding-top:14px}
 .label{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:#91a2b8;margin-bottom:8px}
 small{display:block;color:#aab9cc;margin-top:5px}ul{list-style:none;padding:0;margin:0}li{display:flex;flex-wrap:wrap;gap:5px 12px;margin-bottom:9px}li span{color:#b5c6d8}
 a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
 .artist-entry{display:flex;align-items:flex-start;gap:16px;padding:10px 0}.artist-entry>div{display:flex;flex-direction:column;gap:6px;flex:1;min-width:0}.artist-entry strong{font-size:17px}.portrait{width:180px;height:220px;flex:none;object-fit:cover;object-position:center 22%;border-radius:14px;background:#26344a;cursor:zoom-in}.portrait:focus{outline:2px solid #99c4ff}.portrait-empty{display:flex;align-items:center;justify-content:center;padding:18px;text-align:center;color:#b5c6d8;font-size:14px;cursor:default}.photo-modal{border:0;padding:0;background:transparent;max-width:min(94vw,900px);max-height:94vh}.photo-modal::backdrop{background:rgba(0,0,0,.9)}.photo-modal img{display:block;max-width:94vw;max-height:86vh;object-fit:contain}.photo-modal button{display:block;margin:8px 0 0 auto;background:#263a59;border:0;border-radius:8px;padding:10px 16px;color:white;cursor:pointer}.bands{margin-top:14px;border-top:1px solid #2b3648;padding-top:14px}.bands summary{cursor:pointer;color:#a8ccff;font-weight:650}.band{padding:10px 0}.band h3{margin:4px 0;font-size:16px}.band p{margin:5px 0 10px}.note{background:#222c3f;padding:14px;border-radius:12px;color:#c9d3e2;font-size:14px;line-height:1.5}
 @media(max-width:620px){main{padding:18px 12px 55px}.song{padding:15px}.info{grid-template-columns:1fr;gap:15px}h2{font-size:18px}.artist-entry{flex-direction:column}.portrait{width:100%;height:auto;max-height:440px;aspect-ratio:4/5;object-fit:cover}.artist-entry>div{width:100%}}
 </style></head><body><main><header><span class="pill">#100 → #1</span>
-<h1>Billboard Hot 100</h1><p class="sub">Hitlijst van __CHART_DATE__ · #100 tot #1 · artiesten, foto’s, leeftijden en herkomst</p>
+<h1>Billboard Hot 100</h1><p class="sub">Hitlijst van __CHART_DATE__ · #100 tot #1 · positie vorige week, weken in de lijst, artiesten, foto’s en herkomst</p>
 <div class="note">De releasedata zijn voorlopig: MusicBrainz geeft de vroegste daar bekende opname-uitgave, maar bevestigt niet altijd de eerste officiële single-release. Lege gegevens worden niet gegokt. De herkomst van een groep kan de oprichtingsplaats zijn.</div>
 </header><label for="search">Zoek artiest, nummer of positie</label><input id="search" type="search" placeholder="Bijv. Drake, Olivia Rodrigo, #88">
 <p id="count">100 nummers</p><section class="songs" id="songs">
