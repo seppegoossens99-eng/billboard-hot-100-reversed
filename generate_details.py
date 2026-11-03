@@ -150,6 +150,9 @@ def main():
     response.raise_for_status()
     chart_data = response.json()
     songs = chart_data.get("data", [])
+    chart_date = chart_data.get("date", "")
+    if not re.fullmatch(r"\\d{4}-\\d{2}-\\d{2}", str(chart_date)):
+        raise RuntimeError("Chart has no valid date; existing website unchanged.")
     if len(songs) != 100 or sorted(s.get("this_week") for s in songs) != list(range(1, 101)):
         raise RuntimeError("Incomplete Billboard chart; existing CSV unchanged.")
 
@@ -208,6 +211,7 @@ def main():
         writer = csv.DictWriter(f, fieldnames=ARTIST_FIELDS)
         writer.writeheader()
         writer.writerows(artist_rows)
+    Path("billboard_chart_date.txt").write_text(chart_date + "\n", encoding="utf-8")
     print(f"Saved {len(artist_rows)} artist credits to {ARTISTS_OUTPUT}", flush=True)
     print("Saved 100 chart rows. MusicBrainz dates are provisional and need verification.", flush=True)
 
