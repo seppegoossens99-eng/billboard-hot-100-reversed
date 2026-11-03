@@ -12,7 +12,7 @@ MB = "https://musicbrainz.org/ws/2"
 OUTPUT = Path("billboard_hot_100_details.csv")
 ARTISTS_OUTPUT = Path("billboard_hot_100_artists.csv")
 ARTIST_FIELDS = ["Billboard-positie", "Nummer", "Artiest", "Land", "Staat/regio", "Stad", "Bron herkomst"]
-FIELDS = ["Billboard-positie", "Artiest", "Nummer", "Land", "Staat/regio", "Stad",
+FIELDS = ["Billboard-positie", "Artiest", "Nummer", "Vorige week", "Weken in Hot 100", "Hoogste positie", "Land", "Staat/regio", "Stad",
           "Eerste officiële releasedatum", "Bron herkomst", "Bron releasedatum"]
 HEADERS = {"User-Agent": "BillboardReverseMetadata/1.0 (https://github.com/seppegoossens99-eng/billboard-hot-100-reversed)"}
 session = requests.Session()
@@ -200,7 +200,19 @@ def main():
         artist, title = song["artist"], song["song"]
         prior = existing.get((norm(artist), norm(title)), {})
         row = {"Billboard-positie": song["this_week"], "Artiest": artist, "Nummer": title}
-        row.update({field: prior.get(field, "") for field in FIELDS[3:]})
+        row.update({field: prior.get(field, "") for field in FIELDS[6:]})
+        last_week = song.get("last_week")
+        weeks = song.get("weeks_on_chart")
+        peak = song.get("peak_position")
+        if not isinstance(weeks, int) or weeks < 1:
+            raise RuntimeError(f"Missing/invalid weeks_on_chart for #{song['this_week']}")
+        if not isinstance(peak, int) or not 1 <= peak <= 100:
+            raise RuntimeError(f"Missing/invalid peak_position for #{song['this_week']}")
+        if last_week is not None and (not isinstance(last_week, int) or not 1 <= last_week <= 100):
+            raise RuntimeError(f"Invalid last_week for #{song['this_week']}")
+        row["Vorige week"] = str(last_week) if last_week is not None else ""
+        row["Weken in Hot 100"] = str(weeks)
+        row["Hoogste positie"] = str(peak)
         # Convert legacy ISO country codes without re-querying the artist.
         if len(row["Land"]) == 2 and row["Land"].isupper():
             row["Land"] = country_name(row["Land"])
