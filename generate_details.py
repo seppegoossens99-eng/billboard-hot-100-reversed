@@ -39,7 +39,8 @@ def split_artists(value):
         token = f"PROTECTEDARTIST{i}TOKEN"
         pattern = re.compile(re.escape(name), re.I)
         if pattern.search(masked):
-            masked = pattern.sub(lambda match: (placeholders.__setitem__(token, match.group()), token)[1], masked)
+            placeholders[token] = pattern.search(masked).group()
+            masked = pattern.sub(lambda match: token, masked)
     parts = re.split(COLLAB_SEPARATOR, masked, flags=re.I)
     result = []
     for part in parts:
