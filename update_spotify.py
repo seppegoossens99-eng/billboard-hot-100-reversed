@@ -104,7 +104,7 @@ def main():
         cache_path=None,
     )
     access_token = oauth.refresh_access_token(need_env("SPOTIFY_REFRESH_TOKEN"))["access_token"]
-    spotify = spotipy.Spotify(auth=access_token, requests_timeout=30, retries=3)
+    spotify = spotipy.Spotify(auth=access_token, requests_timeout=30, retries=0)
     target = need_env("SPOTIFY_PLAYLIST_ID")
 
     result_ids = []
