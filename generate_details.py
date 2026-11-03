@@ -27,21 +27,25 @@ def main_artist(value):
     return re.split(r"\s+(?:featuring|feat\.?|ft\.?|with|x)\s+|\s*&\s*|,", value, 1, re.I)[0].strip()
 
 def split_artists(value):
-    """Split collaborations while preserving established artist/group names."""
-    protected = {
-        "king gizzard & the lizard wizard",
-        "dan + shay",
-        "dexter and the moonrocks",
-        "earth, wind & fire",
-        "tyler, the creator",
-    }
-    if value.strip().casefold() in protected:
-        return [value.strip()]
+    """Split credited collaborations without splitting names of established bands."""
+    protected = [
+        "King Gizzard & The Lizard Wizard",
+        "Earth, Wind & Fire",
+        "Tyler, the Creator",
+    ]
+    masked = value
+    placeholders = {}
+    for i, name in enumerate(protected):
+        match = re.search(re.escape(name), masked, flags=re.I)
+        if match:
+            token = f"PROTECTEDARTIST{i}TOKEN"
+            placeholders[token] = match.group()
+            masked = masked[:match.start()] + token + masked[match.end():]
     parts = re.split(
         r"\\s+(?:featuring|feat\\.?|ft\\.?|with|x)\\s+|\\s*&\\s*|\\s*,\\s*",
-        value, flags=re.I
+        masked, flags=re.I
     )
-    return list(dict.fromkeys(p.strip() for p in parts if p.strip()))
+    return list(dict.fromkeys(placeholders.get(p.strip(), p.strip()) for p in parts if p.strip()))
 
 def mb_get(entity, params):
     global last_call
