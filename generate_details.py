@@ -151,7 +151,7 @@ def main():
     chart_data = response.json()
     songs = chart_data.get("data", [])
     chart_date = chart_data.get("date", "")
-    if not re.fullmatch(r"\\d{4}-\\d{2}-\\d{2}", str(chart_date)):
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(chart_date)):
         raise RuntimeError("Chart has no valid date; existing website unchanged.")
     if len(songs) != 100 or sorted(s.get("this_week") for s in songs) != list(range(1, 101)):
         raise RuntimeError("Incomplete Billboard chart; existing CSV unchanged.")
