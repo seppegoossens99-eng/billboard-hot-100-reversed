@@ -4,11 +4,11 @@ Dit overzicht wordt automatisch vernieuwd bij een website-update.
 Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave is geverifieerd.
 
 - Nummers: 100
-- Unieke vermelde artiesten: 90
-- Artiesten zonder foto: 32
-- Artiesten zonder bevestigde MusicBrainz-identiteit: 10
+- Unieke vermelde artiesten: 89
+- Artiesten zonder foto: 30
+- Artiesten zonder bevestigde MusicBrainz-identiteit: 8
 - Soloartiesten zonder bevestigde leeftijd: 9
-- Artiesten zonder land: 29
+- Artiesten zonder land: 27
 - Nummers zonder voorlopige releasedatum: 2
 
 ## Ontbrekende foto's
@@ -29,7 +29,6 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Jamie Miller
 - John Morgan
 - Justice
-- King Gizzard
 - Loe Shimmy
 - Mack Geiger
 - Malcolm Todd
@@ -38,7 +37,6 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Rockwell
 - Temper City
 - The Citizens of Halloween
-- The Lizard Wizard
 - Thekidszn
 - Vincent Mason
 - Yebba
@@ -65,11 +63,9 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Jamie Miller
 - John Morgan
 - Justice
-- King Gizzard
 - Robert Smith
 - Rockwell
 - The Citizens of Halloween
-- The Lizard Wizard
 
 ## Ontbrekende landen
 
@@ -91,13 +87,11 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Jelly Roll
 - John Morgan
 - Justice
-- King Gizzard
 - Loe Shimmy
 - Robert Smith
 - Rockwell
 - Temper City
 - The Citizens of Halloween
-- The Lizard Wizard
 - Thekidszn
 - Vincent Mason
 - Zach John King
