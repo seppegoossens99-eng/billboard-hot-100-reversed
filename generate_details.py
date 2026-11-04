@@ -73,6 +73,14 @@ def mb_get(entity, params):
         print(f"MusicBrainz unavailable for {entity}: {exc}", flush=True)
         return {}
 
+VERIFIED_ARTIST_IDS = {
+    "Ashe": "36086094-c2a4-49b9-8572-0fbf12fc3409",
+    "JADE": "f4108df8-cf1f-4279-a840-599b2a291127",
+    "Jamie Miller": "081e71fb-4291-4a0c-a0f7-52b6c9ea8b31",
+    "Justice": "860b2707-6153-4e3a-aa57-74d2b42c55b5",
+    "Robert Smith": "7d1a1624-784b-4f89-8ff9-b9b493cd059d",
+    "Rockwell": "57ea7aef-42d6-4c16-a4a7-88b4ba8283a4",
+}
 artist_cache = {}
 recording_cache = {}
 area_cache = {}
@@ -123,9 +131,14 @@ def artist_details(name):
     if key in artist_cache:
         return artist_cache[key]
     result = ("", "", "", "")
-    data = mb_get("artist", {"query": f'artist:"{name}"', "limit": 8})
-    candidates = [a for a in data.get("artists", []) if norm(a.get("name", "")) == key
-                  and int(a.get("score", 0)) >= 90]
+    verified_id = VERIFIED_ARTIST_IDS.get(name)
+    if verified_id:
+        record = mb_get(f"artist/{verified_id}", {"inc": "url-rels"})
+        candidates = [record] if record.get("id") == verified_id else []
+    else:
+        data = mb_get("artist", {"query": f'artist:"{name}"', "limit": 8})
+        candidates = [a for a in data.get("artists", []) if norm(a.get("name", "")) == key
+                      and int(a.get("score", 0)) >= 90]
     # Multiple identically named artists: do not guess.
     if len(candidates) == 1:
         artist = candidates[0]
@@ -194,6 +207,8 @@ def main():
                         old.get("Land", ""), old.get("Staat/regio", ""),
                         old.get("Stad", ""), old["Bron herkomst"])
     artist_cache.update(known_artists)
+    for verified_name in VERIFIED_ARTIST_IDS:
+        artist_cache.pop(norm(verified_name), None)
 
     rows = []
     artist_rows = []
