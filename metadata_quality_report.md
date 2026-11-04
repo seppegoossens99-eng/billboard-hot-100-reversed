@@ -8,7 +8,7 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Artiesten zonder foto: 25
 - Artiesten zonder bevestigde MusicBrainz-identiteit: 2
 - Soloartiesten zonder bevestigde leeftijd: 9
-- Artiesten zonder land: 21
+- Artiesten zonder land: 20
 - Nummers zonder voorlopige releasedatum: 2
 
 ## Ontbrekende foto's
@@ -71,7 +71,6 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Harry Styles
 - Hudson Westbrook
 - Jelly Roll
-- John Morgan
 - Loe Shimmy
 - Temper City
 - The Citizens of Halloween
