@@ -127,6 +127,8 @@ def us_state(area_id):
 
 
 def artist_details(name):
+    if name == "John Morgan":
+        return ("Verenigde Staten", "North Carolina", "", "https://www.opry.com/artists/john-morgan")
     key = norm(name)
     if key in artist_cache:
         return artist_cache[key]
@@ -155,6 +157,8 @@ def artist_details(name):
     return result
 
 def earliest_recording_date(title, artist):
+    if norm(title) == "kid myself" and norm(artist) == "john morgan":
+        return ("2025-03-21", "https://themusicuniverse.com/john-morgan-shares-kid-myself/")
     key = (norm(title), norm(artist))
     if key in recording_cache:
         return recording_cache[key]
@@ -243,6 +247,8 @@ def main():
                 if city:
                     row["Stad"] = city
                 row["Bron herkomst"] = source
+        if norm(title) == "kid myself" and norm(lead) == "john morgan":
+            row["Eerste officiële releasedatum"], row["Bron releasedatum"] = earliest_recording_date(title, lead)
         if not row["Bron releasedatum"]:
             date, source = earliest_recording_date(title, lead)
             if source:
