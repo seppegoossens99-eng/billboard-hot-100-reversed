@@ -1,7 +1,7 @@
 ﻿Billboard-positie,Nummer,Artiest,Land,Staat/regio,Stad,Bron herkomst
 100,Water At A Wedding,Greylan James,Verenigde Staten,Tennessee,Knoxville,https://musicbrainz.org/artist/c539265b-99c9-49fb-b47f-bb1dce6d5cf3
 99,What's Wrong With Me,Olivia Rodrigo,Verenigde Staten,California,Murrieta,https://musicbrainz.org/artist/6925db17-f35e-42f3-a4eb-84ee6bf5d4b0
-99,What's Wrong With Me,Robert Smith,,,,
+99,What's Wrong With Me,Robert Smith,United Kingdom,,,https://musicbrainz.org/artist/7d1a1624-784b-4f89-8ff9-b9b493cd059d
 98,Pop It,Gunna,Verenigde Staten,Georgia,College Park,https://musicbrainz.org/artist/100b8734-f4f0-4536-9960-47f7c59d1b4c
 97,String By,Mack Geiger,Australia,,,https://musicbrainz.org/artist/e07e1915-2fe7-4ffb-acd8-8ae47ce58207
 96,Medicine,Megan Moroney,Verenigde Staten,Georgia,Savannah,https://musicbrainz.org/artist/9eb2030a-c311-4cbf-a8f2-c57a58aa18ce
@@ -20,7 +20,7 @@
 87,Ahi,Drake,Canada,,Toronto,https://musicbrainz.org/artist/9fff2f8a-21e6-47de-a2b8-7f449929d43f
 86,All My Exes,Lauren Alaina,Verenigde Staten,,Rossville,https://musicbrainz.org/artist/f2506ff4-4091-4e57-ac5b-156110732aa9
 86,All My Exes,Chase Matthew,Verenigde Staten,Tennessee,Sevierville,https://musicbrainz.org/artist/b9bdc8af-9641-4958-8eb3-1bead9ff632d
-85,Flower In A Hurricane,Justice,,,,
+85,Flower In A Hurricane,Justice,France,,,https://musicbrainz.org/artist/860b2707-6153-4e3a-aa57-74d2b42c55b5
 85,Flower In A Hurricane,Tame Impala,Australia,,Sydney,https://musicbrainz.org/artist/63aa26c3-d59b-4da4-84ac-716b54f1ef4d
 85,Flower In A Hurricane,SZA,Verenigde Staten,Missouri,St. Louis,https://musicbrainz.org/artist/272989c8-5535-492d-a25c-9f58803e027f
 85,Flower In A Hurricane,King Gizzard & The Lizard Wizard,Australia,,Melbourne,https://musicbrainz.org/artist/f58384a4-2ad2-4f24-89c5-c7b74ae1cce7
@@ -39,7 +39,7 @@
 73,Kid Myself,John Morgan,,,,
 72,Draw You Out,Noah Kahan,Verenigde Staten,Vermont,Strafford,https://musicbrainz.org/artist/a2a3f910-b188-43e7-81d0-f1ac2a2f3e12
 71,Ghetto Love Story,BabyChiefDoit,,,,https://musicbrainz.org/artist/df033c30-93af-439f-9124-431b00c392a8
-70,Angel Of My Dreams,JADE,,,,
+70,Angel Of My Dreams,JADE,United Kingdom,,,https://musicbrainz.org/artist/f4108df8-cf1f-4279-a840-599b2a291127
 69,Pink Blush,Dolly Babe,,,,https://musicbrainz.org/artist/fb3a2585-9523-49b7-b8eb-a5009f4a68c2
 69,Pink Blush,Megan Thee Stallion,Verenigde Staten,Texas,San Antonio,https://musicbrainz.org/artist/ee27b2d8-648c-4a9d-a68c-e55066959975
 68,Thin Ice,Megan Thee Stallion,Verenigde Staten,Texas,San Antonio,https://musicbrainz.org/artist/ee27b2d8-648c-4a9d-a68c-e55066959975
@@ -67,7 +67,7 @@
 48,Cold Shoulder,Drake,Canada,,Toronto,https://musicbrainz.org/artist/9fff2f8a-21e6-47de-a2b8-7f449929d43f
 48,Cold Shoulder,Don Toliver,Verenigde Staten,Texas,Houston,https://musicbrainz.org/artist/a0723a3c-4135-438e-85c5-012712144ede
 48,Cold Shoulder,Yebba,Verenigde Staten,Arkansas,West Memphis,https://musicbrainz.org/artist/0aeea1ef-8d96-4556-8c4a-84b88ae271bb
-47,Babydoll,Jamie Miller,,,,
+47,Babydoll,Jamie Miller,Verenigde Staten,,,https://musicbrainz.org/artist/081e71fb-4291-4a0c-a0f7-52b6c9ea8b31
 46,Quebec,Drake,Canada,,Toronto,https://musicbrainz.org/artist/9fff2f8a-21e6-47de-a2b8-7f449929d43f
 45,WTF GOIN,Belly Gang Kushington,,,,https://musicbrainz.org/artist/f3cb8059-add2-4bf9-a19e-5664588e30ba
 45,WTF GOIN,21 Savage,Verenigde Staten,,,https://musicbrainz.org/artist/37b2cb82-ef79-4d46-a184-a549450aa231
@@ -77,7 +77,7 @@
 42,Take Me Back (Leave Me There),Cody Johnson,Verenigde Staten,,,https://musicbrainz.org/artist/faabeed5-3dd0-4be5-aec5-e6486e68db2f
 41,This Is Halloween,The Citizens of Halloween,,,,
 40,Great Expectation,Sienna Spiro,United Kingdom,,London,https://musicbrainz.org/artist/ea696191-407a-4bf2-8302-7e05f6c163c5
-39,Somebody's Watching Me,Rockwell,,,,
+39,Somebody's Watching Me,Rockwell,Verenigde Staten,,,https://musicbrainz.org/artist/57ea7aef-42d6-4c16-a4a7-88b4ba8283a4
 38,So Good,Jhene Aiko,Verenigde Staten,California,Los Angeles,https://musicbrainz.org/artist/ceb3f5b7-9f1a-430f-afbe-976fdcf30482
 38,So Good,Kendrick Lamar,Verenigde Staten,California,Compton,https://musicbrainz.org/artist/381086ea-f511-4aba-bdf9-71c753dc5077
 37,Petal,Ariana Grande,Verenigde Staten,Florida,Boca Raton,https://musicbrainz.org/artist/f4fdbb4c-e4b7-47a0-b83b-d91bbfcfa387
@@ -95,7 +95,7 @@
 26,Mr. Know It All,Teddy Swims,Verenigde Staten,Georgia,Conyers,https://musicbrainz.org/artist/35feae82-8b2c-4f8f-ae7a-af5662848947
 25,Janice STFU,Drake,Canada,,Toronto,https://musicbrainz.org/artist/9fff2f8a-21e6-47de-a2b8-7f449929d43f
 24,Ain't In LA,ADELA,Slovakia,,Bratislava,https://musicbrainz.org/artist/f40856e6-079f-4a0a-916e-9e6a5e04f646
-23,Stop The Wedding!,Ashe,,,,
+23,Stop The Wedding!,Ashe,Verenigde Staten,California,,https://musicbrainz.org/artist/36086094-c2a4-49b9-8572-0fbf12fc3409
 22,Last Thing You Need,Morgan Wallen,Verenigde Staten,Tennessee,Sneedville,https://musicbrainz.org/artist/2077273e-eaa1-4f49-903c-f286ededecb9
 21,Earrings,Malcolm Todd,Verenigde Staten,California,Los Angeles,https://musicbrainz.org/artist/6c2a79b8-2b5c-4c2d-b495-6a446811bf9d
 20,Thriller,Michael Jackson,Verenigde Staten,Indiana,Gary,https://musicbrainz.org/artist/f27ec8db-af05-4f36-916e-3d57f91ecf5e

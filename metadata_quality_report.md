@@ -5,16 +5,15 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 - Nummers: 100
 - Unieke vermelde artiesten: 89
-- Artiesten zonder foto: 30
-- Artiesten zonder bevestigde MusicBrainz-identiteit: 8
+- Artiesten zonder foto: 25
+- Artiesten zonder bevestigde MusicBrainz-identiteit: 2
 - Soloartiesten zonder bevestigde leeftijd: 9
-- Artiesten zonder land: 27
+- Artiesten zonder land: 21
 - Nummers zonder voorlopige releasedatum: 2
 
 ## Ontbrekende foto's
 
 - Alyssa Grace
-- Ashe
 - Belly Gang Kushington
 - Blake Whiten
 - Cameron Whitcomb
@@ -25,15 +24,11 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Dolly Babe
 - Greylan James
 - Hudson Westbrook
-- JADE
-- Jamie Miller
 - John Morgan
-- Justice
 - Loe Shimmy
 - Mack Geiger
 - Malcolm Todd
 - Megan Moroney
-- Robert Smith
 - Rockwell
 - Temper City
 - The Citizens of Halloween
@@ -58,19 +53,12 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 ## Artiesten zonder bevestigde identiteit
 
-- Ashe
-- JADE
-- Jamie Miller
 - John Morgan
-- Justice
-- Robert Smith
-- Rockwell
 - The Citizens of Halloween
 
 ## Ontbrekende landen
 
 - Alyssa Grace
-- Ashe
 - BabyChiefDoit
 - Belly Gang Kushington
 - Blake Whiten
@@ -82,14 +70,9 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Ella Langley
 - Harry Styles
 - Hudson Westbrook
-- JADE
-- Jamie Miller
 - Jelly Roll
 - John Morgan
-- Justice
 - Loe Shimmy
-- Robert Smith
-- Rockwell
 - Temper City
 - The Citizens of Halloween
 - Thekidszn
