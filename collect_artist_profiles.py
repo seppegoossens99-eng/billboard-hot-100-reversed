@@ -199,6 +199,32 @@ def main():
                     print(f"Ambiguous or missing Spotify artist search: {name} ({len(exact)} exact)", flush=True)
             except (requests.RequestException, ValueError) as exc:
                 print(f"Spotify search unavailable for {name}: {exc}", flush=True)
+    # Resolve Rockwell through the verified 1984 recording, not a potentially
+    # ambiguous artist-name search. Spotify's track artist ID is authoritative.
+    if token and "Rockwell" not in spotify_images:
+        try:
+            response = requests.get("https://api.spotify.com/v1/tracks/2gGdO0zLa9W8ce1Ig0BzFK",
+                headers={"Authorization": "Bearer " + token}, timeout=20)
+            response.raise_for_status()
+            track = response.json()
+            if track.get("name", "").casefold().startswith("somebody's watching me"):
+                matches = [a for a in track.get("artists", [])
+                           if a.get("name", "").casefold() == "rockwell"]
+                if len(matches) == 1:
+                    sid = matches[0]["id"]
+                    detail = requests.get("https://api.spotify.com/v1/artists/" + sid,
+                        headers={"Authorization": "Bearer " + token}, timeout=20)
+                    detail.raise_for_status()
+                    artist = detail.json()
+                    if artist.get("id") == sid and artist.get("images"):
+                        url = artist["images"][0].get("url", "")
+                        if url.startswith("https://"):
+                            spotify_images["Rockwell"] = (
+                                url, "https://open.spotify.com/artist/" + sid)
+                            spotify_ids["Rockwell"] = sid
+                            print("Verified Rockwell portrait through Somebody's Watching Me", flush=True)
+        except (requests.RequestException, ValueError, KeyError) as exc:
+            print(f"Rockwell recording match unavailable: {exc}", flush=True)
     print(f"Spotify verified artist portraits: {len(spotify_images)}", flush=True)
     with OUT.open("w", encoding="utf-8-sig", newline="") as f:
         writer = csv.writer(f)
