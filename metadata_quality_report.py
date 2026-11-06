@@ -21,6 +21,8 @@ def main():
     missing_photo = [name for name in unique if name not in NON_APPLICABLE and not profiles.get(name,{}).get("Afbeelding")]
     missing_identity = [name for name in unique if not any(r["Bron herkomst"].startswith(("https://musicbrainz.org/artist/", "https://www.opry.com/artists/", "https://www.allmusic.com/artist/", "https://press.warnerrecords.com/", "https://www.missinglinkmusic.com/", "https://www.famousbirthdays.com/people/", "https://www.power1061.com/lsp/artist/bio/", "https://music.apple.com/us/artist/")) for r in artists if r["Artiest"] == name)]
     missing_age = [name for name in unique if profiles.get(name,{}).get("Type")=="Person" and not profiles[name].get("Leeftijd")]
+    confirmed_birth = [name for name in unique if profiles.get(name, {}).get("Type") == "Person" and len(profiles[name].get("Geboortedatum", "")) == 10]
+    missing_birth_source = [name for name in confirmed_birth if not profiles[name].get("Bron leeftijd", "").startswith("https://")]
     # A reported age or birth year is useful but not an exact verified date.
     partial_birth_info = {
         "Belly Gang Kushington": "Verjaardag 4 februari (Famous Birthdays); 35 jaar gemeld in juli 2026 (XXL); geboortejaar onbevestigd",
@@ -52,6 +54,8 @@ def main():
         f"- Unieke vermelde artiesten: {len(unique)}",
         f"- Artiesten zonder foto: {len(missing_photo)}",
         f"- Artiesten zonder gedocumenteerde identiteit: {len(missing_identity)}",
+        f"- Soloartiesten met ingevulde volledige geboortedatum: {len(confirmed_birth)}",
+        f"- Volledige geboortedata zonder bronlink: {len(missing_birth_source)}",
         f"- Soloartiesten zonder bevestigde leeftijd: {len(missing_age)}",
         f"- Daarvan met gedeeltelijke geboorte- of leeftijdsinformatie: {len(partial_birth)}",
         f"- Zonder bruikbare geboorte- of leeftijdsinformatie: {len(no_birth_info)}",
@@ -64,6 +68,7 @@ def main():
     for heading, values in [
         ("Ontbrekende foto's",missing_photo),
         ("Ontbrekende leeftijden",missing_age),
+        ("Volledige geboortedata zonder bronlink",missing_birth_source),
         ("Gedeeltelijke leeftijdsinformatie (geen exacte geboortedatum)",partial_birth),
         ("Zonder geboorte- of leeftijdsinformatie",no_birth_info),
         ("Artiesten zonder gedocumenteerde identiteit",missing_identity),
