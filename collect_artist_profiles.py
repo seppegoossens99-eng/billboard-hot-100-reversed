@@ -45,6 +45,12 @@ VERIFIED_SPOTIFY_IDS = {
     "Yebba": "1ooV8YZC1KbpEcrmI8WH0F",
 }
 
+# Exact birth dates corroborated by independent artist biographies.
+VERIFIED_BIRTHDATES = {
+    "Greylan James": ("1996-06-18", "https://www.allmusic.com/artist/greylan-james-mn0002828742"),
+    "Zach John King": ("1997-03-25", "https://en.wikipedia.org/wiki/Zach_John_King"),
+}
+
 def spotify_token():
     client_id = os.getenv("SPOTIFY_CLIENT_ID", "")
     secret = os.getenv("SPOTIFY_CLIENT_SECRET", "")
@@ -106,7 +112,11 @@ def main():
         if qid:
             qids.add(qid)
         birth = (data.get("life-span") or {}).get("begin", "") if data.get("type") == "Person" else ""
-        entries.append((name, data.get("type", ""), birth, age_at(birth), qid, source))
+        kind = data.get("type", "")
+        if name in VERIFIED_BIRTHDATES and not age_at(birth):
+            birth = VERIFIED_BIRTHDATES[name][0]
+            kind = "Person"
+        entries.append((name, kind, birth, age_at(birth), qid, source))
     # Preserve previously verified photos if Wikidata temporarily fails.
     previous = {}
     if OUT.exists():
@@ -306,7 +316,7 @@ def main():
             photo = images.get(qid, "") or wikipedia_images.get(qid, "") or spotify_images.get(name, ("", ""))[0] or (
                 prior.get("Afbeelding", "") if wikidata_match or wikipedia_match or spotify_match else "")
             photo_source = ("https://www.wikidata.org/wiki/" + qid if images.get(qid) else ("https://en.wikipedia.org/wiki/" + quote(wikipedia_pages[qid].replace(" ", "_"), safe="()_") if wikipedia_images.get(qid) else (spotify_images[name][1] if name in spotify_images else (prior.get("Bron afbeelding", "") if photo else ""))))
-            age_source = source if age else ""
+            age_source = (VERIFIED_BIRTHDATES[name][1] if name in VERIFIED_BIRTHDATES and birth == VERIFIED_BIRTHDATES[name][0] else source) if age else ""
             if kind == "Person" and not age and qid and qid in wikidata_births:
                 birth = wikidata_births[qid]
                 age = age_at(birth)
