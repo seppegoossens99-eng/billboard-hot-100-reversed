@@ -61,6 +61,7 @@ VERIFIED_SPOTIFY_IDS = {
 VERIFIED_BIRTHDATES = {
     "Greylan James": ("1996-06-18", "https://www.allmusic.com/artist/greylan-james-mn0002828742"),
     "Loe Shimmy": ("1999-03-24", "https://www.allmusic.com/artist/loe-shimmy-mn0004272175"),
+    "Dolly Babe": ("1998-10-22", "https://www.famousbirthdays.com/people/dolly-babe.html"),
     "Zach John King": ("1997-03-25", "https://en.wikipedia.org/wiki/Zach_John_King"),
 }
 
