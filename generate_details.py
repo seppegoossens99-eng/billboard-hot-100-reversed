@@ -219,6 +219,9 @@ def main():
         code = record.get("country", "")
         if code:
             artist_cache[cached_name] = (country_name(code), region, city, source)
+        elif (record.get("area") or {}).get("iso-3166-1-codes"):
+            code = record["area"]["iso-3166-1-codes"][0]
+            artist_cache[cached_name] = (country_name(code), region, city, source)
     for verified_name in VERIFIED_ARTIST_IDS:
         artist_cache.pop(norm(verified_name), None)
 
