@@ -57,6 +57,13 @@ def main():
             if relation.get("type") == "wikidata" and match:
                 linked[row["Artiest"]] = match.group(1)
     by_name = {r["Artiest"]: r for r in profiles}
+    # Every credited artist receives a stable row, including newly charting acts
+    # without an established Wikidata identity. Never fabricate unknown values.
+    for name in by_name:
+        old.setdefault(name, {"Artiest": name, **{field: "" for field in FIELDS if field != "Artiest"}})
+    for name, profile in by_name.items():
+        if not old[name].get("Gender") and profile.get("Type") == "Group":
+            old[name]["Gender"] = "Groep"
     qids = {name: q for name, q in linked.items()}
     for row in profiles:
         qid = qid_from_profile(row)
