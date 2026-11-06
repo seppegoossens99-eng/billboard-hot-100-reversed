@@ -134,6 +134,8 @@ VERIFIED_ORIGINS = {
     "Thekidszn": ("Verenigde Staten", "New York", "", "https://www.missinglinkmusic.com/Topic/378/New-Signing-Thekidszn"),
     "comehelpglo": ("Verenigde Staten", "Ohio", "Ashland", "https://www.famousbirthdays.com/people/comehelpglo.html"),
     "Dolly Babe": ("Verenigde Staten", "Texas", "", "https://www.power1061.com/lsp/artist/bio/dolly-babe/"),
+    # Soundtrack vocal ensemble, not a band with a geographic hometown.
+    "The Citizens of Halloween": ("", "", "", "https://music.apple.com/us/artist/the-citizens-of-halloween/1656038206"),
 }
 
 def artist_details(name):
