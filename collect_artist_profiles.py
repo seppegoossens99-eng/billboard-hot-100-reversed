@@ -72,14 +72,18 @@ def main():
             previous = {row["Artiest"]: row for row in csv.DictReader(old_file)}
     images = {}
     wikidata_births = {}
+    wikipedia_pages = {}
     ids = sorted(qids)
     for offset in range(0, len(ids), 50):
         try:
             response = requests.get("https://www.wikidata.org/w/api.php", params={
                 "action": "wbgetentities", "ids": "|".join(ids[offset:offset + 50]),
-                "props": "claims", "format": "json"}, headers=HEADERS, timeout=30)
+                "props": "claims|sitelinks", "format": "json"}, headers=HEADERS, timeout=30)
             response.raise_for_status()
             for qid, entity in response.json().get("entities", {}).items():
+                enwiki = entity.get("sitelinks", {}).get("enwiki", {}).get("title", "")
+                if enwiki:
+                    wikipedia_pages[qid] = enwiki
                 for claim in entity.get("claims", {}).get("P569", []):
                     value = (claim.get("mainsnak", {}).get("datavalue") or {}).get("value", {})
                     if not isinstance(value, dict) or value.get("precision") != 11:
@@ -96,13 +100,29 @@ def main():
                         images[qid] = "https://commons.wikimedia.org/wiki/Special:FilePath/" + quote(filename.replace(" ", "_"), safe="")
         except (requests.RequestException, ValueError) as exc:
             print(f"Wikidata batch unavailable: {exc}", flush=True)
+    wikipedia_images = {}
+    for qid, title in wikipedia_pages.items():
+        if qid in images:
+            continue
+        try:
+            response = requests.get("https://en.wikipedia.org/w/api.php", params={
+                "action": "query", "titles": title, "prop": "pageimages",
+                "pithumbsize": 600, "format": "json"
+            }, headers=HEADERS, timeout=15)
+            response.raise_for_status()
+            for page in response.json().get("query", {}).get("pages", {}).values():
+                url = page.get("thumbnail", {}).get("source", "")
+                if url.startswith("https://upload.wikimedia.org/"):
+                    wikipedia_images[qid] = url
+        except (requests.RequestException, ValueError) as exc:
+            print(f"Wikipedia thumbnail unavailable for {qid}: {exc}", flush=True)
     with OUT.open("w", encoding="utf-8-sig", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(FIELDS)
         for name, kind, birth, age, qid, source in entries:
             prior = previous.get(name, {})
-            photo = images.get(qid, "") or (prior.get("Afbeelding", "") if prior.get("Bron afbeelding", "") and (not qid or prior.get("Bron afbeelding", "").endswith("/" + qid)) else "")
-            photo_source = ("https://www.wikidata.org/wiki/" + qid if images.get(qid) else (prior.get("Bron afbeelding", "") if photo else ""))
+            photo = images.get(qid, "") or wikipedia_images.get(qid, "") or (prior.get("Afbeelding", "") if prior.get("Bron afbeelding", "") and (not qid or prior.get("Bron afbeelding", "").endswith("/" + qid)) else "")
+            photo_source = ("https://www.wikidata.org/wiki/" + qid if images.get(qid) else ("https://en.wikipedia.org/wiki/" + quote(wikipedia_pages[qid].replace(" ", "_"), safe="()_") if wikipedia_images.get(qid) else (prior.get("Bron afbeelding", "") if photo else "")))
             age_source = source if age else ""
             if kind == "Person" and not age and qid and qid in wikidata_births:
                 birth = wikidata_births[qid]
