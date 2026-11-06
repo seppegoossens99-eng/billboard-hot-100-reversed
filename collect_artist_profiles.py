@@ -71,6 +71,7 @@ def main():
         with OUT.open(encoding="utf-8-sig", newline="") as old_file:
             previous = {row["Artiest"]: row for row in csv.DictReader(old_file)}
     images = {}
+    wikidata_births = {}
     ids = sorted(qids)
     for offset in range(0, len(ids), 50):
         try:
@@ -79,6 +80,15 @@ def main():
                 "props": "claims", "format": "json"}, headers=HEADERS, timeout=30)
             response.raise_for_status()
             for qid, entity in response.json().get("entities", {}).items():
+                for claim in entity.get("claims", {}).get("P569", []):
+                    value = (claim.get("mainsnak", {}).get("datavalue") or {}).get("value", {})
+                    if not isinstance(value, dict) or value.get("precision") != 11:
+                        continue
+                    raw = value.get("time", "")
+                    candidate = raw[1:11] if raw.startswith("+") else ""
+                    if age_at(candidate):
+                        wikidata_births[qid] = candidate
+                        break
                 claims = entity.get("claims", {}).get("P18", [])
                 if claims:
                     filename = claims[0].get("mainsnak", {}).get("datavalue", {}).get("value", "")
@@ -93,7 +103,12 @@ def main():
             prior = previous.get(name, {})
             photo = images.get(qid, "") or (prior.get("Afbeelding", "") if prior.get("Bron afbeelding", "") and (not qid or prior.get("Bron afbeelding", "").endswith("/" + qid)) else "")
             photo_source = ("https://www.wikidata.org/wiki/" + qid if images.get(qid) else (prior.get("Bron afbeelding", "") if photo else ""))
-            writer.writerow([name, kind, birth if age else "", age, photo, photo_source, source if age else ""])
+            age_source = source if age else ""
+            if kind == "Person" and not age and qid and qid in wikidata_births:
+                birth = wikidata_births[qid]
+                age = age_at(birth)
+                age_source = "https://www.wikidata.org/wiki/" + qid
+            writer.writerow([name, kind, birth if age else "", age, photo, photo_source, age_source])
     print(f"Profiles: {len(entries)}, photos: {sum(bool(images.get(e[4])) for e in entries)}, ages: {sum(bool(e[3]) for e in entries)}", flush=True)
 
 if __name__ == "__main__":
