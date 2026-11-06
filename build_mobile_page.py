@@ -43,11 +43,11 @@ def main():
             age = profile.get("Leeftijd", "")
             age_text = f" · {html.escape(age)} jaar" if age else (" · Leeftijd onbekend" if profile.get("Type") == "Person" else "")
             photo = profile.get("Afbeelding", "")
-            portrait = f'<img class="portrait" src="{html.escape(photo, quote=True)}" alt="Foto van {html.escape(person["Artiest"], quote=True)}" loading="lazy" referrerpolicy="no-referrer">' if photo.startswith("https://commons.wikimedia.org/wiki/Special:FilePath/") else ""
+            portrait = f'<img class="portrait" src="{html.escape(photo, quote=True)}" alt="Foto van {html.escape(person["Artiest"], quote=True)}" loading="lazy" referrerpolicy="no-referrer">' if photo.startswith(("https://commons.wikimedia.org/wiki/Special:FilePath/", "https://image-cdn-ak.spotifycdn.com/image/", "https://image-cdn-fa.spotifycdn.com/image/", "https://i.scdn.co/image/")) else ""
             if not portrait:
                 portrait = '<div class="portrait portrait-empty">Foto niet beschikbaar</div>'
             photo_source = profile.get("Bron afbeelding", "")
-            photo_credit = f' <a href="{html.escape(photo_source, quote=True)}" target="_blank" rel="noopener">Foto</a>' if photo_source.startswith("https://www.wikidata.org/wiki/") else ""
+            photo_credit = f' <a href="{html.escape(photo_source, quote=True)}" target="_blank" rel="noopener">Foto</a>' if photo_source.startswith(("https://www.wikidata.org/wiki/", "https://open.spotify.com/artist/")) else ""
             people.append(f'<li class="artist-entry">{portrait}<div><strong>{html.escape(person["Artiest"])}</strong><span>{origin}{age_text}{source_link}{photo_credit}</span></div></li>')
         band_sections = []
         for person in credited:
