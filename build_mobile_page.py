@@ -28,6 +28,7 @@ def main():
     for member in band_rows:
         bands[member["Artiest"]].append(member)
     profiles = {row["Artiest"]: row for row in read_csv("billboard_artist_profiles.csv")}
+    extras = {row["Artiest"]: row for row in read_csv("billboard_artist_extra.csv")}
     blocks = []
     for track in tracks:
         pos = track["Billboard-positie"]
@@ -70,7 +71,8 @@ def main():
             member_count = next((x.get("Leden (bevestigd huidig)", "") for x in member_rows if x.get("Leden (bevestigd huidig)", "")), "")
             members_display = (member_count or "Onbekend") if profile.get("Type") == "Group" else ("Solo" if profile.get("Type") == "Person" else "Onbekend")
             age_display = html.escape(age + " jaar") if age else ("Zie leeftijdsinfo" if person["Artiest"] in REPORTED_AGE_CONTEXT else "Onbekend")
-            tiles = [("Start muziek", "Nog te verifiëren"), ("Leden", members_display), ("Populariteit", "Niet beschikbaar"), ("Gender", "Nog te verifiëren"), ("Genre", "Nog te verifiëren"), ("Land", country)]
+            extra = extras.get(person["Artiest"], {})
+            tiles = [("Start muziek", extra.get("Start muziek") or "Nog te verifiëren"), ("Leden", members_display), ("Populariteit", "Niet beschikbaar"), ("Gender", extra.get("Gender") or "Nog te verifiëren"), ("Genre", extra.get("Genre") or "Nog te verifiëren"), ("Land", country)]
             tiles_html = "".join(f'<div class="artist-tile"><span>{html.escape(k)}</span><strong>{html.escape(v)}</strong></div>' for k, v in tiles)
             people.append(f'<li class="artist-entry"><details class="artist-details"><summary class="artist-summary">{portrait}<span class="artist-heading"><strong>{artist_name}</strong><span class="artist-age">{age_display}</span><small>Tik voor meer artiesteninfo</small></span><span class="artist-chevron" aria-hidden="true">⌄</span></summary><div class="artist-expanded"><div class="artist-tiles">{tiles_html}</div><p class="artist-origin">Herkomst: {origin}{birth_text}{age_text}{source_link}{photo_credit}</p></div></details></li>')
         band_sections = []
