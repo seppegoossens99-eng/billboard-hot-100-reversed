@@ -5,7 +5,7 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 - Nummers: 100
 - Unieke vermelde artiesten: 89
-- Artiesten zonder foto: 3
+- Artiesten zonder foto: 2
 - Artiesten zonder gedocumenteerde identiteit: 2
 - Soloartiesten zonder bevestigde leeftijd: 5
 - Artiesten zonder land: 1
@@ -13,7 +13,6 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 ## Ontbrekende foto's
 
-- Dolly Babe
 - The Citizens of Halloween
 - Yebba
 
