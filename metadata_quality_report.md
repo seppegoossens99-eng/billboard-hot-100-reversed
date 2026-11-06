@@ -27,7 +27,7 @@ Geen.
 
 ## Gedeeltelijke leeftijdsinformatie (geen exacte geboortedatum)
 
-- Belly Gang Kushington: 35 jaar gemeld in juli 2026 (XXL)
+- Belly Gang Kushington: Verjaardag 4 februari (Famous Birthdays); 35 jaar gemeld in juli 2026 (XXL); geboortejaar onbevestigd
 - Mack Geiger: 21 jaar gemeld op artiestenwebsite (datum van vermelding niet vastgelegd)
 - rusowsky: Geboortejaar 1999 gemeld; dag en maand onbekend
 
