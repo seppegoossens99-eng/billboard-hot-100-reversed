@@ -87,8 +87,8 @@ def main():
         writer.writerow(FIELDS)
         for name, kind, birth, age, qid, source in entries:
             prior = previous.get(name, {})
-            photo = images.get(qid, "") or (prior.get("Afbeelding", "") if qid and prior.get("Bron afbeelding", "").endswith("/" + qid) else "")
-            photo_source = ("https://www.wikidata.org/wiki/" + qid if photo else "")
+            photo = images.get(qid, "") or (prior.get("Afbeelding", "") if prior.get("Bron afbeelding", "") and (not qid or prior.get("Bron afbeelding", "").endswith("/" + qid)) else "")
+            photo_source = ("https://www.wikidata.org/wiki/" + qid if images.get(qid) else (prior.get("Bron afbeelding", "") if photo else ""))
             writer.writerow([name, kind, birth if age else "", age, photo, photo_source, source if age else ""])
     print(f"Profiles: {len(entries)}, photos: {sum(bool(images.get(e[4])) for e in entries)}, ages: {sum(bool(e[3]) for e in entries)}", flush=True)
 
