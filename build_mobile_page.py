@@ -50,7 +50,7 @@ def main():
             # Keep these out of the exact-age CSV and its quality statistics.
             REPORTED_AGE_CONTEXT = {
                 "Mack Geiger": ("21 jaar (volgens officiële artiestensite)", "https://mackgeiger.com/"),
-                "Belly Gang Kushington": ("35 jaar in juli 2026 (XXL-interview; geboortedatum onbekend)", "https://www.xxlmag.com/belly-gang-kushington/"),
+                "Belly Gang Kushington": ("Verjaardag: 4 februari (Famous Birthdays); 35 jaar gemeld in juli 2026 (XXL); geboortejaar niet bevestigd", "https://www.famousbirthdays.com/people/belly-gang-kushington.html"),
                 "rusowsky": ("geboren in 1999 (exacte leeftijd onbekend)", "https://es.wikipedia.org/wiki/Rusowsky"),
             }
             age_text = f" · {html.escape(age)} jaar" if age else (" · Leeftijd onbekend" if profile.get("Type") == "Person" else "")
