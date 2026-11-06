@@ -5,7 +5,7 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 - Nummers: 100
 - Unieke vermelde artiesten: 89
-- Artiesten zonder foto: 25
+- Artiesten zonder foto: 8
 - Artiesten zonder gedocumenteerde identiteit: 1
 - Soloartiesten zonder bevestigde leeftijd: 7
 - Artiesten zonder land: 2
@@ -14,30 +14,13 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 ## Ontbrekende foto's
 
 - Alyssa Grace
-- Belly Gang Kushington
 - Blake Whiten
-- Cameron Whitcomb
-- Chandler Moore
-- Chase Matthew
-- Corey Kent
-- Dexter And The Moonrocks
-- Dolly Babe
-- Greylan James
-- Hudson Westbrook
 - John Morgan
-- Loe Shimmy
-- Mack Geiger
-- Malcolm Todd
-- Megan Moroney
 - Rockwell
-- Temper City
 - The Citizens of Halloween
 - Thekidszn
-- Vincent Mason
 - Yebba
-- Zach John King
 - comehelpglo
-- rusowsky
 
 ## Ontbrekende leeftijden
 
