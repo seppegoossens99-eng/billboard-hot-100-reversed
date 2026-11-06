@@ -22,7 +22,7 @@ GENRES = {
 def qid_from_profile(row):
     for field in ("Bron afbeelding", "Bron leeftijd"):
         value = row.get(field, "")
-        match = re.fullmatch(r"https://www.wikidata.org/wiki/(Q\\d+)", value)
+        match = re.fullmatch(r"https://www.wikidata.org/wiki/(Q\d+)", value)
         if match:
             return match.group(1)
     return ""
@@ -53,7 +53,7 @@ def main():
         mbid = source.rsplit("/", 1)[-1] if source.startswith("https://musicbrainz.org/artist/") else ""
         for relation in cache.get(mbid, {}).get("data", {}).get("relations", []):
             url = (relation.get("url") or {}).get("resource", "")
-            match = re.fullmatch(r"https?://www.wikidata.org/wiki/(Q\\d+)", url)
+            match = re.fullmatch(r"https?://www.wikidata.org/wiki/(Q\d+)", url)
             if relation.get("type") == "wikidata" and match:
                 linked[row["Artiest"]] = match.group(1)
     by_name = {r["Artiest"]: r for r in profiles}
