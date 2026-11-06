@@ -23,7 +23,7 @@ def main():
     missing_age = [name for name in unique if profiles.get(name,{}).get("Type")=="Person" and not profiles[name].get("Leeftijd")]
     # A reported age or birth year is useful but not an exact verified date.
     partial_birth_info = {
-        "Belly Gang Kushington": "35 jaar gemeld in juli 2026 (XXL)",
+        "Belly Gang Kushington": "Verjaardag 4 februari (Famous Birthdays); 35 jaar gemeld in juli 2026 (XXL); geboortejaar onbevestigd",
         "Mack Geiger": "21 jaar gemeld op artiestenwebsite (datum van vermelding niet vastgelegd)",
         "rusowsky": "Geboortejaar 1999 gemeld; dag en maand onbekend",
     }
