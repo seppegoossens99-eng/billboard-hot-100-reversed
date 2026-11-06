@@ -133,6 +133,7 @@ VERIFIED_ORIGINS = {
     "Blake Whiten": ("Verenigde Staten", "South Carolina", "Six Mile", "https://press.warnerrecords.com/sites/g/files/g2000014901/files/2026-01/Blake%20Whiten%202025%20Bio.pdf"),
     "Thekidszn": ("Verenigde Staten", "New York", "", "https://www.missinglinkmusic.com/Topic/378/New-Signing-Thekidszn"),
     "comehelpglo": ("Verenigde Staten", "Ohio", "Ashland", "https://www.famousbirthdays.com/people/comehelpglo.html"),
+    "Dolly Babe": ("Verenigde Staten", "Texas", "Dallas", "https://en.wikipedia.org/wiki/Dolly_Babe"),
 }
 
 def artist_details(name):
