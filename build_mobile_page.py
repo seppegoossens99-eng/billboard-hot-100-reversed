@@ -80,7 +80,7 @@ def main():
             source = safe_url(band_members[0]["Bron"])
             source_link = f'<a href="{source}" target="_blank" rel="noopener">MusicBrainz</a>' if source else ""
             band_sections.append(f'<div class="band"><h3>{html.escape(person["Artiest"])}</h3><p class="sub">{html.escape(label)} · {source_link}</p><ul>{"".join(member_items) or "<li>Leden nog niet gedocumenteerd</li>"}</ul><small>Aantal mogelijk onvolledig.</small></div>')
-        band_markup = f'<details class="bands"><summary>Bandleden en instrumenten</summary>{"".join(band_sections)}</details>' if band_sections else ""
+        band_markup = f'<section class="bands"><h3>Bandleden en instrumenten</h3>{"".join(band_sections)}</section>' if band_sections else ""
         last_week = track.get("Vorige week", "")
         weeks = track.get("Weken in Hot 100", "")
         peak = track.get("Hoogste positie", "")
@@ -96,6 +96,7 @@ def main():
         else:
             movement = "TERUG in de Hot 100"
             previous_label = "Niet genoteerd"
+        movement_class = ("up" if last_week and int(last_week) > int(pos) else "down" if last_week and int(last_week) < int(pos) else "same" if last_week else "new" if weeks == "1" else "reentry")
         chart_stats = (
             '<div class="chart-stats">'
             f'<div><span class="label">Vorige week</span><strong>{html.escape(previous_label)}</strong></div>'
@@ -111,12 +112,8 @@ def main():
         status = "Voorlopige datum" if date else "Datum onbekend"
         search = html.escape((pos + " " + name + " " + track["Artiest"] + " " + " ".join(p["Artiest"] for p in credited)).casefold(), quote=True)
         blocks.append(f"""
-        <article class="song" data-search="{search}">
-          <div class="heading"><span class="rank">#{pos}</span><div><h2>{html.escape(name)}</h2><p class="credit">{html.escape(track["Artiest"])}</p></div></div>
-          {chart_stats}
-          <div class="info"><div><div class="label">Releasedatum</div><strong>{date_display}</strong><small>{status} · {date_link}</small></div>
-          <div><div class="label">Herkomst per artiest</div><ul>{''.join(people)}</ul></div></div>
-          {band_markup}
+        <article class="song {movement_class}" data-search="{search}">
+          <div class="song-layout"><aside class="left"><span class="rank">#{pos}</span>{chart_stats}</aside><div class="center"><h2>{html.escape(name)}</h2><p class="credit">{html.escape(track["Artiest"])}</p><div class="release"><div class="label">Releasedatum</div><strong>{date_display}</strong><small>{status} · {date_link}</small></div></div><div class="right"><div class="label">Info artiest</div><ul>{''.join(people)}</ul>{band_markup}</div></div>
         </article>""")
     document = """<!doctype html><html lang="nl"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -130,6 +127,9 @@ header{padding:28px 0 18px}h1{font-size:clamp(30px,6vw,48px);letter-spacing:-.04
 input{width:100%;font:inherit;padding:15px 17px;border:1px solid #4a566e;border-radius:12px;background:#182235;color:white;margin:18px 0 10px}
 #count{color:#aab9cc;font-size:14px;margin:0 0 15px}.songs{display:grid;gap:12px}
 .song{border:1px solid #29354a;border-radius:17px;background:#151d2c;padding:18px}
+.song.up{background:#174e36}.song.down{background:#713038}.song.new{background:#204d83}.song.reentry{background:#583778}.song.same{background:#303744}
+.song-layout{display:grid;grid-template-columns:145px minmax(0,1.05fr) minmax(0,1fr);gap:18px}.left{border-right:1px solid #ffffff50;padding-right:12px}.center{padding:10px 0}.right{border-left:1px solid #ffffff50;padding-left:16px}.release{margin-top:35px}.song .chart-stats{display:flex;flex-direction:column;gap:7px}.song .chart-stats>div{background:#00000024}.song .rank{display:block;text-align:center;font-size:29px;background:#00000030;color:white}.song .label,.song small,.song li span,.song .credit,.song .sub{color:#f0f2f5}.song a{color:#fff;text-decoration:underline;text-underline-offset:3px}.song .movement{color:#fff}.song .portrait{width:100px;height:125px}.song .artist-entry{gap:10px}.song .bands{border-color:#ffffff50}.song .bands h3{font-size:15px}
+@media(max-width:700px){.song-layout{grid-template-columns:86px minmax(0,1fr);gap:12px}.left{grid-row:1/3}.center{grid-column:2}.right{grid-column:2;border-left:0;border-top:1px solid #ffffff50;padding:12px 0 0}.song .chart-stats strong{font-size:14px}.song .chart-stats>div{padding:7px}.song .rank{font-size:23px}.song .portrait{width:95px;height:120px}.song .artist-entry{flex-direction:row}}
 .heading{display:flex;gap:14px;align-items:start}.rank{flex:none;font-weight:800;color:#9dc3ff;background:#263a59;border-radius:9px;padding:8px 10px}
 h2{font-size:19px;margin:2px 0 5px;line-height:1.2}.credit{margin:0;color:#b9c7d8}
 .chart-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:16px}.chart-stats>div{background:#202c40;border-radius:11px;padding:12px;min-width:0}.chart-stats strong{display:block;font-size:18px}.chart-stats .label{font-size:10px;line-height:1.4}.movement{font-weight:700;color:#a8ccff;margin:11px 0 0;font-size:14px}.info{display:grid;grid-template-columns:minmax(150px,1fr) minmax(0,2fr);gap:18px;margin-top:16px;border-top:1px solid #2b3648;padding-top:14px}
@@ -137,7 +137,7 @@ h2{font-size:19px;margin:2px 0 5px;line-height:1.2}.credit{margin:0;color:#b9c7d
 small{display:block;color:#aab9cc;margin-top:5px}ul{list-style:none;padding:0;margin:0}li{display:flex;flex-wrap:wrap;gap:5px 12px;margin-bottom:9px}li span{color:#b5c6d8}
 a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
 .artist-entry{display:flex;align-items:flex-start;gap:16px;padding:10px 0}.artist-entry>div{display:flex;flex-direction:column;gap:6px;flex:1;min-width:0}.artist-entry strong{font-size:17px}.portrait{width:180px;height:220px;flex:none;object-fit:cover;object-position:center 22%;border-radius:14px;background:#26344a;cursor:zoom-in}.portrait:focus{outline:2px solid #99c4ff}.portrait-empty{display:flex;align-items:center;justify-content:center;padding:18px;text-align:center;color:#b5c6d8;font-size:14px;cursor:default}.photo-modal{border:0;padding:0;background:transparent;max-width:min(94vw,900px);max-height:94vh}.photo-modal::backdrop{background:rgba(0,0,0,.9)}.photo-modal img{display:block;max-width:94vw;max-height:86vh;object-fit:contain}.photo-modal button{display:block;margin:8px 0 0 auto;background:#263a59;border:0;border-radius:8px;padding:10px 16px;color:white;cursor:pointer}.bands{margin-top:14px;border-top:1px solid #2b3648;padding-top:14px}.bands summary{cursor:pointer;color:#a8ccff;font-weight:650}.band{padding:10px 0}.band h3{margin:4px 0;font-size:16px}.band p{margin:5px 0 10px}.note{background:#222c3f;padding:14px;border-radius:12px;color:#c9d3e2;font-size:14px;line-height:1.5}
-@media(max-width:620px){main{padding:18px 12px 55px}.song{padding:15px}.info{grid-template-columns:1fr;gap:15px}h2{font-size:18px}.artist-entry{flex-direction:column}.portrait{width:100%;height:auto;max-height:440px;aspect-ratio:4/5;object-fit:cover}.artist-entry>div{width:100%}}
+@media(max-width:620px){main{padding:18px 12px 55px}.song{padding:15px}.info{grid-template-columns:1fr;gap:15px}h2{font-size:18px}.artist-entry{flex-direction:row}.portrait{width:95px;height:120px;object-fit:cover}.artist-entry>div{width:100%}}
 </style></head><body><main><header><span class="pill">#100 → #1</span>
 <h1>Billboard Hot 100</h1><p class="sub">Hitlijst van __CHART_DATE__ · #100 tot #1 · positie vorige week, weken in de lijst, artiesten, foto’s en herkomst</p>
 <div class="note">De releasedata zijn voorlopig: MusicBrainz geeft de vroegste daar bekende opname-uitgave, maar bevestigt niet altijd de eerste officiële single-release. Lege gegevens worden niet gegokt. De herkomst van een groep kan de oprichtingsplaats zijn.</div>
