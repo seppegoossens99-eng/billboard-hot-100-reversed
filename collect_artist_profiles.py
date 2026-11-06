@@ -23,6 +23,17 @@ def wikidata_id(data):
                 return qid
     return ""
 
+def spotify_id_candidates(data):
+    """Collect all artist links from an independently verified MusicBrainz record."""
+    ids = []
+    for rel in data.get("relations", []):
+        url = (rel.get("url") or {}).get("resource", "")
+        if "open.spotify.com/artist/" in url:
+            sid = url.split("/artist/", 1)[1].split("?", 1)[0].strip("/")
+            if len(sid) == 22 and sid.isalnum() and sid not in ids:
+                ids.append(sid)
+    return ids
+
 def spotify_id(data):
     """Only trust Spotify IDs linked to the verified MusicBrainz artist."""
     for rel in data.get("relations", []):
@@ -91,6 +102,7 @@ def main():
     entries = []
     qids = set()
     spotify_ids = dict(VERIFIED_SPOTIFY_IDS)
+    spotify_alternates = {}
     for name, source in sorted(unique):
         artist_id = source.rsplit("/", 1)[-1] if source.startswith("https://musicbrainz.org/artist/") else ""
         data = cache.get(artist_id, {}).get("data", {})
@@ -112,7 +124,8 @@ def main():
                 print(f"MusicBrainz profile unavailable for {name}: {exc}", flush=True)
         qid = wikidata_id(data)
         sid = spotify_id(data)
-        if sid:
+        spotify_alternates[name] = spotify_id_candidates(data)
+        if sid and name not in spotify_ids:
             spotify_ids[name] = sid
         if artist_id and qid:
             print(f"Verified Wikidata link: {name} -> {qid}", flush=True)
@@ -179,18 +192,24 @@ def main():
     spotify_images = {}
     token = spotify_token() if spotify_ids else ""
     if token:
-        for name, sid in spotify_ids.items():
-            try:
-                response = requests.get("https://api.spotify.com/v1/artists/" + sid,
-                    headers={"Authorization": "Bearer " + token}, timeout=15)
-                response.raise_for_status()
-                artist = response.json()
-                if artist.get("id") == sid and artist.get("images"):
-                    url = artist["images"][0].get("url", "")
-                    if url.startswith("https://"):
-                        spotify_images[name] = (url, "https://open.spotify.com/artist/" + sid)
-            except (requests.RequestException, ValueError) as exc:
-                print(f"Spotify artist photo unavailable for {name}: {exc}", flush=True)
+        for name, primary_sid in spotify_ids.items():
+            # A verified MusicBrainz profile can link multiple Spotify artist
+            # pages; try each, while retaining a previously verified ID first.
+            for sid in dict.fromkeys([primary_sid] + spotify_alternates.get(name, [])):
+                if name in spotify_images:
+                    break
+                try:
+                    response = requests.get("https://api.spotify.com/v1/artists/" + sid,
+                        headers={"Authorization": "Bearer " + token}, timeout=15)
+                    response.raise_for_status()
+                    artist = response.json()
+                    if artist.get("id") == sid and artist.get("images"):
+                        url = artist["images"][0].get("url", "")
+                        if url.startswith("https://"):
+                            spotify_images[name] = (url, "https://open.spotify.com/artist/" + sid)
+                            spotify_ids[name] = sid
+                except (requests.RequestException, ValueError) as exc:
+                    print(f"Spotify artist photo unavailable for {name} ({sid}): {exc}", flush=True)
     # For artist identities confirmed by independent editorial/label sources,
     # resolve a Spotify portrait only if the exact artist name is unique.
     editorial_sources = (
