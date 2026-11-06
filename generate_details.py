@@ -211,6 +211,14 @@ def main():
                         old.get("Land", ""), old.get("Staat/regio", ""),
                         old.get("Stad", ""), old["Bron herkomst"])
     artist_cache.update(known_artists)
+    # Recheck artists whose verified MusicBrainz identity lacks country metadata.
+    for cached_name, (country, region, city, source) in known_artists.items():
+        if country or not source.startswith("https://musicbrainz.org/artist/"):
+            continue
+        record = mb_get("artist/" + source.rsplit("/", 1)[-1], {})
+        code = record.get("country", "")
+        if code:
+            artist_cache[cached_name] = (country_name(code), region, city, source)
     for verified_name in VERIFIED_ARTIST_IDS:
         artist_cache.pop(norm(verified_name), None)
 
