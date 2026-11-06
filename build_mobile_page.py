@@ -14,6 +14,12 @@ def read_csv(filename):
 def safe_url(url):
     return html.escape(url, quote=True) if url.startswith("https://musicbrainz.org/") else ""
 
+def display_date(value):
+    """Show ISO dates as DD/MM/YYYY, retaining unknown or partial values."""
+    if len(value) == 10 and value[4] == "-" and value[7] == "-":
+        return f"{value[8:10]}/{value[5:7]}/{value[:4]}"
+    return value
+
 def main():
     tracks = read_csv("billboard_hot_100_details.csv")
     chart_date = (ROOT / "billboard_chart_date.txt").read_text(encoding="utf-8").strip()
@@ -43,7 +49,7 @@ def main():
             profile = profiles.get(person["Artiest"], {})
             age = profile.get("Leeftijd", "")
             birth = profile.get("Geboortedatum", "")
-            birth_text = (" · Geboren: " + html.escape(birth[8:10] + "-" + birth[5:7] + "-" + birth[:4])) if len(birth) == 10 else (" · Geboortedatum onbekend" if profile.get("Type") == "Person" else "")
+            birth_text = (" · Geboren: " + html.escape(display_date(birth))) if len(birth) == 10 else (" · Geboortedatum onbekend" if profile.get("Type") == "Person" else "")
             birth_source = profile.get("Bron leeftijd", "")
             if len(birth) == 10 and birth_source.startswith("https://"):
                 birth_text += ' <a href="' + html.escape(birth_source, quote=True) + '" target="_blank" rel="noopener">Bron geboortedatum</a>'
@@ -117,7 +123,7 @@ def main():
             f'<p class="movement">{html.escape(movement)}</p>'
         )
         date = track["Eerste officiële releasedatum"]
-        date_display = html.escape(date) if date else "Nog niet gevonden"
+        date_display = html.escape(display_date(date)) if date else "Nog niet gevonden"
         date_source = safe_url(track["Bron releasedatum"])
         date_link = f'<a href="{date_source}" target="_blank" rel="noopener">MusicBrainz-bron</a>' if date_source else ""
         status = "Voorlopige datum" if date else "Datum onbekend"
@@ -166,7 +172,7 @@ input.addEventListener('input',()=>{const q=input.value.trim().toLocaleLowerCase
 for(const song of songs){const show=song.dataset.search.includes(q);song.hidden=!show;if(show)visible++;}
 count.textContent=visible+' van '+songs.length+' nummers';});
 </script></body></html>"""
-    document = document.replace("__CHART_DATE__", html.escape(chart_date))
+    document = document.replace("__CHART_DATE__", html.escape(display_date(chart_date)))
     (ROOT / "billboard_hot_100.html").write_text(document, encoding="utf-8")
     print("Created billboard_hot_100.html with",len(tracks),"songs and",len(artists),"artist credits")
 
