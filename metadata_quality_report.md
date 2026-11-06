@@ -7,7 +7,7 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Unieke vermelde artiesten: 89
 - Artiesten zonder foto: 0
 - Artiesten zonder gedocumenteerde identiteit: 0
-- Soloartiesten zonder bevestigde leeftijd: 5
+- Soloartiesten zonder bevestigde leeftijd: 4
 - Artiesten zonder land: 0
 - Nummers zonder voorlopige releasedatum: 0
 - Soundtrackensembles met niet-toepasselijke foto/herkomst: 1
@@ -20,7 +20,6 @@ Geen.
 
 - BabyChiefDoit
 - Belly Gang Kushington
-- Dolly Babe
 - Mack Geiger
 - rusowsky
 
