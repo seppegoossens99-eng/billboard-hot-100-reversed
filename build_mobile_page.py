@@ -41,6 +41,8 @@ def main():
             source_link = f' <a href="{source}" target="_blank" rel="noopener">Bron</a>' if source else ""
             profile = profiles.get(person["Artiest"], {})
             age = profile.get("Leeftijd", "")
+            birth = profile.get("Geboortedatum", "")
+            birth_text = (" · Geboren: " + html.escape(birth[8:10] + "-" + birth[5:7] + "-" + birth[:4])) if len(birth) == 10 else (" · Geboortedatum onbekend" if profile.get("Type") == "Person" else "")
             # Publicly reported age context is distinct from a confirmed birth date.
             # Keep these out of the exact-age CSV and its quality statistics.
             REPORTED_AGE_CONTEXT = {
@@ -58,7 +60,7 @@ def main():
                 portrait = '<div class="portrait portrait-empty">Foto niet beschikbaar</div>'
             photo_source = profile.get("Bron afbeelding", "")
             photo_credit = f' <a href="{html.escape(photo_source, quote=True)}" target="_blank" rel="noopener">Foto</a>' if photo_source.startswith(("https://www.wikidata.org/wiki/", "https://open.spotify.com/artist/")) else ""
-            people.append(f'<li class="artist-entry">{portrait}<div><strong>{html.escape(person["Artiest"])}</strong><span>{origin}{age_text}{source_link}{photo_credit}</span></div></li>')
+            people.append(f'<li class="artist-entry">{portrait}<div><strong>{html.escape(person["Artiest"])}</strong><span>{origin}{birth_text}{age_text}{source_link}{photo_credit}</span></div></li>')
         band_sections = []
         for person in credited:
             band_members = bands.get(person["Artiest"], [])
