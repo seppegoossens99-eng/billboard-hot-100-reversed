@@ -15,7 +15,7 @@ def main():
     bands = read("billboard_band_members.csv")
     unique = sorted(set(r["Artiest"] for r in artists))
     missing_photo = [name for name in unique if not profiles.get(name,{}).get("Afbeelding")]
-    missing_identity = [name for name in unique if not any(r["Bron herkomst"].startswith(("https://musicbrainz.org/artist/", "https://www.opry.com/artists/", "https://www.allmusic.com/artist/", "https://press.warnerrecords.com/", "https://www.missinglinkmusic.com/", "https://www.famousbirthdays.com/people/")) for r in artists if r["Artiest"] == name)]
+    missing_identity = [name for name in unique if not any(r["Bron herkomst"].startswith(("https://musicbrainz.org/artist/", "https://www.opry.com/artists/", "https://www.allmusic.com/artist/", "https://press.warnerrecords.com/", "https://www.missinglinkmusic.com/", "https://www.famousbirthdays.com/people/", "https://www.power1061.com/lsp/artist/bio/")) for r in artists if r["Artiest"] == name)]
     missing_age = [name for name in unique if profiles.get(name,{}).get("Type")=="Person" and not profiles[name].get("Leeftijd")]
     missing_origin = [name for name in unique if not any(r["Land"] for r in artists if r["Artiest"]==name)]
     missing_dates = [f'#{r["Billboard-positie"]} {r["Artiest"]} - {r["Nummer"]}' for r in songs if not r["Eerste officiële releasedatum"]]
