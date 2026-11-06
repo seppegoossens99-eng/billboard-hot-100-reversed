@@ -39,6 +39,7 @@ VERIFIED_SPOTIFY_IDS = {
     "Yebba": "1ooV8YZC1KbpEcrmI8WH0F",
     "John Morgan": "7FetIwKD9uIJFiUwdHfq6g",
     "Blake Whiten": "1BjlNhp6EsDG0UMroeJbRM",
+    "Rockwell": "3xs0LEzcPXtgNfMNcHzLIP",
 }
 
 def spotify_token():
