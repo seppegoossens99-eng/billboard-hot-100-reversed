@@ -275,6 +275,10 @@ def main():
                 if city:
                     row["Stad"] = city
                 row["Bron herkomst"] = source
+        # Collaboration credits are split into individual artists for profile
+        # lookup, but release-date overrides must use the full chart credit.
+        if norm(title).startswith("dai dai") and "shakira" in norm(artist) and "burna boy" in norm(artist):
+            row["Eerste officiële releasedatum"], row["Bron releasedatum"] = earliest_recording_date(title, artist)
         if norm(title) == "kid myself" and norm(lead) == "john morgan":
             row["Eerste officiële releasedatum"], row["Bron releasedatum"] = earliest_recording_date(title, lead)
         if not row["Bron releasedatum"]:
