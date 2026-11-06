@@ -53,7 +53,7 @@ Loe Shimmy,Person,,,https://image-cdn-fa.spotifycdn.com/image/ab676161000051741b
 Luke Bryan,Person,1976-07-17,50,https://commons.wikimedia.org/wiki/Special:FilePath/Luke_Bryan_%28cropped%29.jpg,https://www.wikidata.org/wiki/Q166197,https://musicbrainz.org/artist/aab35942-f176-4f77-bbf9-1d6aa98ccf3f
 Luke Combs,Person,1990-03-02,36,https://commons.wikimedia.org/wiki/Special:FilePath/Luke_Combs_interview.jpg,https://www.wikidata.org/wiki/Q23884740,https://musicbrainz.org/artist/c20ee61f-071f-4e65-9c81-45ee931a54ce
 Mack Geiger,Person,,,https://image-cdn-fa.spotifycdn.com/image/ab67616100005174c31f4304927dee28c2fd0282,https://open.spotify.com/artist/1ylRveckaItA2kOhQh8rnQ,
-Malcolm Todd,Person,2003-09-15,23,https://image-cdn-fa.spotifycdn.com/image/ab676161000051749f6f7c2d12975d2a4b3a0fd8,https://open.spotify.com/artist/7eKkW1zo5uzW8kUntiiBvz,https://musicbrainz.org/artist/6c2a79b8-2b5c-4c2d-b495-6a446811bf9d
+Malcolm Todd,Person,2003-09-15,23,https://image-cdn-ak.spotifycdn.com/image/ab676161000051749f6f7c2d12975d2a4b3a0fd8,https://open.spotify.com/artist/7eKkW1zo5uzW8kUntiiBvz,https://musicbrainz.org/artist/6c2a79b8-2b5c-4c2d-b495-6a446811bf9d
 Megan Moroney,Person,1997-10-09,29,https://image-cdn-ak.spotifycdn.com/image/ab6761610000517423435361a7e5cef9e8b73d1e,https://open.spotify.com/artist/5Ppie0uPnbnvGBYRwYmlt0,https://musicbrainz.org/artist/9eb2030a-c311-4cbf-a8f2-c57a58aa18ce
 Megan Thee Stallion,Person,1995-02-15,31,https://commons.wikimedia.org/wiki/Special:FilePath/Megan_Thee_Stallion_Adweek_02.jpg,https://www.wikidata.org/wiki/Q59268408,https://musicbrainz.org/artist/ee27b2d8-648c-4a9d-a68c-e55066959975
 Michael Jackson,Person,1958-08-29,68,https://commons.wikimedia.org/wiki/Special:FilePath/Michael_Jackson_1983_%283x4_cropped%29_%28contrast%29.jpg,https://www.wikidata.org/wiki/Q2831,https://musicbrainz.org/artist/f27ec8db-af05-4f36-916e-3d57f91ecf5e
@@ -75,11 +75,11 @@ Tate McRae,Person,2003-07-01,23,https://commons.wikimedia.org/wiki/Special:FileP
 Taylor Swift,Person,1989-12-13,36,https://commons.wikimedia.org/wiki/Special:FilePath/Taylor_Swift_at_the_2023_MTV_Video_Music_Awards_%283%29.png,https://www.wikidata.org/wiki/Q26876,https://musicbrainz.org/artist/20244d07-534f-4eff-b4d4-930878889970
 Teddy Swims,Person,1992-09-25,34,https://commons.wikimedia.org/wiki/Special:FilePath/Teddy_Swims_Warner_Records.jpg,https://www.wikidata.org/wiki/Q105542333,https://musicbrainz.org/artist/35feae82-8b2c-4f8f-ae7a-af5662848947
 Temper City,Group,,,https://image-cdn-fa.spotifycdn.com/image/ab6761610000517458cd69025e54b4f139005b6e,https://open.spotify.com/artist/5mHUmlJWkcoOk1NbjfrXWz,
-The Citizens of Halloween,,,,,,
-Thekidszn,,,,https://image-cdn-fa.spotifycdn.com/image/ab676161000051744b2d0467b6cb6852054216bb,https://open.spotify.com/artist/138UAIyJocdHT5PpR0iTJE,
+The Citizens of Halloween,Other,,,,,
+Thekidszn,,,,https://image-cdn-ak.spotifycdn.com/image/ab676161000051744b2d0467b6cb6852054216bb,https://open.spotify.com/artist/138UAIyJocdHT5PpR0iTJE,
 Turnpike Troubadours,Group,,,https://commons.wikimedia.org/wiki/Special:FilePath/Turnpike_Troubadours.jpg,https://www.wikidata.org/wiki/Q7856100,
-Vincent Mason,Person,2000-11-10,25,https://image-cdn-fa.spotifycdn.com/image/ab676161000051741eab73fe78390d5888720a41,https://open.spotify.com/artist/6QJ5CE7ujPr7oZCURhFZVS,https://musicbrainz.org/artist/483ccf02-0faf-458e-88fc-e39e03cb9875
-Yebba,Person,1995-01-16,31,https://image-cdn-ak.spotifycdn.com/image/ab676161000051743394876e0e0007203b167e2e,https://open.spotify.com/artist/1ooV8YZC1KbpEcrmI8WH0F,https://musicbrainz.org/artist/0aeea1ef-8d96-4556-8c4a-84b88ae271bb
+Vincent Mason,Person,2000-11-10,25,https://image-cdn-ak.spotifycdn.com/image/ab676161000051741eab73fe78390d5888720a41,https://open.spotify.com/artist/6QJ5CE7ujPr7oZCURhFZVS,https://musicbrainz.org/artist/483ccf02-0faf-458e-88fc-e39e03cb9875
+Yebba,Person,1995-01-16,31,https://image-cdn-fa.spotifycdn.com/image/ab676161000051743394876e0e0007203b167e2e,https://open.spotify.com/artist/1ooV8YZC1KbpEcrmI8WH0F,https://musicbrainz.org/artist/0aeea1ef-8d96-4556-8c4a-84b88ae271bb
 Zach Bryan,Person,1996-04-02,30,https://commons.wikimedia.org/wiki/Special:FilePath/Zach_Bryan_performing_at_Crypto.com_Arena_on_23_Aug_2023_%28cropped%29.jpg,https://www.wikidata.org/wiki/Q106770023,https://musicbrainz.org/artist/51e90731-08c0-4f60-89b6-5b78e5844de8
 Zach John King,Person,1997-03-25,29,https://image-cdn-fa.spotifycdn.com/image/ab67616100005174c1d29728735f13a2d66b2c70,https://open.spotify.com/artist/7d00Y5kG1ZIPvWNl8LgHqB,https://en.wikipedia.org/wiki/Zach_John_King
 Zach Top,Person,1997-09-26,29,https://commons.wikimedia.org/wiki/Special:FilePath/Zach_top_-_musician.webp,https://www.wikidata.org/wiki/Q126414316,https://musicbrainz.org/artist/9939a762-5ca9-4c12-a735-0d62e21df4e3

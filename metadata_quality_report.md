@@ -6,7 +6,7 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Nummers: 100
 - Unieke vermelde artiesten: 89
 - Artiesten zonder foto: 1
-- Artiesten zonder gedocumenteerde identiteit: 1
+- Artiesten zonder gedocumenteerde identiteit: 0
 - Soloartiesten zonder bevestigde leeftijd: 6
 - Artiesten zonder land: 1
 - Nummers zonder voorlopige releasedatum: 0
@@ -26,7 +26,7 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 ## Artiesten zonder gedocumenteerde identiteit
 
-- The Citizens of Halloween
+Geen.
 
 ## Ontbrekende landen
 
