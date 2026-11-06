@@ -226,6 +226,47 @@ def main():
                             print("Verified Rockwell portrait through Somebody's Watching Me", flush=True)
         except (requests.RequestException, ValueError, KeyError) as exc:
             print(f"Rockwell recording match unavailable: {exc}", flush=True)
+    # Resolve missing portraits through an exact Billboard song+artist match.
+    chart_songs = {}
+    for row in artists:
+        chart_songs.setdefault(row["Artiest"], set()).add(row["Nummer"])
+    if token:
+        for name in ("Alyssa Grace", "Thekidszn", "Yebba", "comehelpglo"):
+            if name in spotify_images:
+                continue
+            for title in sorted(chart_songs.get(name, ())):
+                try:
+                    response = requests.get("https://api.spotify.com/v1/search",
+                        params={"q": 'track:"' + title + '" artist:"' + name + '"',
+                                "type": "track", "limit": 20},
+                        headers={"Authorization": "Bearer " + token}, timeout=20)
+                    response.raise_for_status()
+                    tracks = response.json().get("tracks", {}).get("items", [])
+                    matched = {
+                        artist.get("id")
+                        for track in tracks
+                        if track.get("name", "").casefold() == title.casefold()
+                        for artist in track.get("artists", [])
+                        if artist.get("name", "").casefold() == name.casefold()
+                        and artist.get("id")
+                    }
+                    if len(matched) != 1:
+                        continue
+                    sid = matched.pop()
+                    detail = requests.get("https://api.spotify.com/v1/artists/" + sid,
+                        headers={"Authorization": "Bearer " + token}, timeout=20)
+                    detail.raise_for_status()
+                    profile = detail.json()
+                    if profile.get("id") == sid and profile.get("images"):
+                        url = profile["images"][0].get("url", "")
+                        if url.startswith("https://"):
+                            spotify_images[name] = (
+                                url, "https://open.spotify.com/artist/" + sid)
+                            spotify_ids[name] = sid
+                            print(f"Verified track-to-artist portrait: {title} / {name}", flush=True)
+                            break
+                except (requests.RequestException, ValueError) as exc:
+                    print(f"Spotify chart track match unavailable for {name}: {exc}", flush=True)
     # Spotify's public oEmbed metadata can provide a thumbnail when the
     # authenticated artist endpoint omits images. Use verified artist IDs only.
     for name, sid in spotify_ids.items():
