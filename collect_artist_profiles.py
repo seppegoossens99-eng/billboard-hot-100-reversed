@@ -1,6 +1,7 @@
 """Artist portraits (Wikidata/Commons) and ages (MusicBrainz), no guessed identities."""
 import csv
 import json
+import os
 import time
 from datetime import date
 from pathlib import Path
@@ -22,6 +23,31 @@ def wikidata_id(data):
                 return qid
     return ""
 
+def spotify_id(data):
+    """Only trust Spotify IDs linked to the verified MusicBrainz artist."""
+    for rel in data.get("relations", []):
+        url = (rel.get("url") or {}).get("resource", "")
+        if "open.spotify.com/artist/" in url:
+            identifier = url.split("/artist/", 1)[1].split("?", 1)[0].strip("/")
+            if len(identifier) == 22 and identifier.isalnum():
+                return identifier
+    return ""
+
+def spotify_token():
+    client_id = os.getenv("SPOTIFY_CLIENT_ID", "")
+    secret = os.getenv("SPOTIFY_CLIENT_SECRET", "")
+    if not client_id or not secret:
+        return ""
+    try:
+        response = requests.post("https://accounts.spotify.com/api/token",
+            data={"grant_type": "client_credentials"},
+            auth=(client_id, secret), timeout=20)
+        response.raise_for_status()
+        return response.json().get("access_token", "")
+    except (requests.RequestException, ValueError) as exc:
+        print(f"Spotify photo token unavailable: {exc}", flush=True)
+        return ""
+
 def age_at(birth):
     if not isinstance(birth, str) or not birth:
         return ""
@@ -39,6 +65,7 @@ def main():
     unique = {(r["Artiest"], r["Bron herkomst"]) for r in artists if r.get("Artiest")}
     entries = []
     qids = set()
+    spotify_ids = {}
     for name, source in sorted(unique):
         artist_id = source.rsplit("/", 1)[-1] if source.startswith("https://musicbrainz.org/artist/") else ""
         data = cache.get(artist_id, {}).get("data", {})
@@ -59,6 +86,9 @@ def main():
             except (requests.RequestException, ValueError) as exc:
                 print(f"MusicBrainz profile unavailable for {name}: {exc}", flush=True)
         qid = wikidata_id(data)
+        sid = spotify_id(data)
+        if sid:
+            spotify_ids[name] = sid
         if artist_id and qid:
             print(f"Verified Wikidata link: {name} -> {qid}", flush=True)
         if qid:
@@ -117,6 +147,22 @@ def main():
         except (requests.RequestException, ValueError) as exc:
             print(f"Wikipedia thumbnail unavailable for {qid}: {exc}", flush=True)
     print(f"Wikidata portraits: {len(images)}, Wikipedia fallback portraits: {len(wikipedia_images)}", flush=True)
+    spotify_images = {}
+    token = spotify_token() if spotify_ids else ""
+    if token:
+        for name, sid in spotify_ids.items():
+            try:
+                response = requests.get("https://api.spotify.com/v1/artists/" + sid,
+                    headers={"Authorization": "Bearer " + token}, timeout=15)
+                response.raise_for_status()
+                artist = response.json()
+                if artist.get("id") == sid and artist.get("images"):
+                    url = artist["images"][0].get("url", "")
+                    if url.startswith("https://"):
+                        spotify_images[name] = (url, "https://open.spotify.com/artist/" + sid)
+            except (requests.RequestException, ValueError) as exc:
+                print(f"Spotify artist photo unavailable for {name}: {exc}", flush=True)
+    print(f"Spotify verified artist portraits: {len(spotify_images)}", flush=True)
     with OUT.open("w", encoding="utf-8-sig", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(FIELDS)
@@ -126,9 +172,9 @@ def main():
             wikidata_match = bool(qid and prior_source == "https://www.wikidata.org/wiki/" + qid)
             wikipedia_match = bool(qid and qid in wikipedia_pages and prior_source == (
                 "https://en.wikipedia.org/wiki/" + quote(wikipedia_pages[qid].replace(" ", "_"), safe="()_")))
-            photo = images.get(qid, "") or wikipedia_images.get(qid, "") or (
+            photo = images.get(qid, "") or wikipedia_images.get(qid, "") or spotify_images.get(name, ("", ""))[0] or (
                 prior.get("Afbeelding", "") if wikidata_match or wikipedia_match else "")
-            photo_source = ("https://www.wikidata.org/wiki/" + qid if images.get(qid) else ("https://en.wikipedia.org/wiki/" + quote(wikipedia_pages[qid].replace(" ", "_"), safe="()_") if wikipedia_images.get(qid) else (prior.get("Bron afbeelding", "") if photo else "")))
+            photo_source = ("https://www.wikidata.org/wiki/" + qid if images.get(qid) else ("https://en.wikipedia.org/wiki/" + quote(wikipedia_pages[qid].replace(" ", "_"), safe="()_") if wikipedia_images.get(qid) else (spotify_images[name][1] if name in spotify_images else (prior.get("Bron afbeelding", "") if photo else ""))))
             age_source = source if age else ""
             if kind == "Person" and not age and qid and qid in wikidata_births:
                 birth = wikidata_births[qid]
