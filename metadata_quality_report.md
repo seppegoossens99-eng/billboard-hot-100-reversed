@@ -6,9 +6,9 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Nummers: 100
 - Unieke vermelde artiesten: 89
 - Artiesten zonder foto: 25
-- Artiesten zonder bevestigde MusicBrainz-identiteit: 2
-- Soloartiesten zonder bevestigde leeftijd: 9
-- Artiesten zonder land: 6
+- Artiesten zonder bevestigde MusicBrainz-identiteit: 6
+- Soloartiesten zonder bevestigde leeftijd: 7
+- Artiesten zonder land: 2
 - Nummers zonder voorlopige releasedatum: 2
 
 ## Ontbrekende foto's
@@ -41,10 +41,8 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 ## Ontbrekende leeftijden
 
-- Alyssa Grace
 - BabyChiefDoit
 - Belly Gang Kushington
-- Blake Whiten
 - Greylan James
 - Loe Shimmy
 - Mack Geiger
@@ -53,17 +51,17 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 ## Artiesten zonder bevestigde identiteit
 
-- John Morgan
-- The Citizens of Halloween
-
-## Ontbrekende landen
-
 - Alyssa Grace
 - Blake Whiten
-- Dolly Babe
+- John Morgan
 - The Citizens of Halloween
 - Thekidszn
 - comehelpglo
+
+## Ontbrekende landen
+
+- Dolly Babe
+- The Citizens of Halloween
 
 ## Ontbrekende releasedata
 
