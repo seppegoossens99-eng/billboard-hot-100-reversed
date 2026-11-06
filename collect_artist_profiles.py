@@ -36,10 +36,10 @@ def spotify_id(data):
 # Artist IDs cross-checked against the corresponding public Spotify profiles
 # and independent artist biographies; do not use name-only fuzzy matches.
 VERIFIED_SPOTIFY_IDS = {
-    "Yebba": "1ooV8YZC1KbpEcrmI8WH0F",
     "John Morgan": "7FetIwKD9uIJFiUwdHfq6g",
     "Blake Whiten": "1BjlNhp6EsDG0UMroeJbRM",
     "Rockwell": "3xs0LEzcPXtgNfMNcHzLIP",
+    "Yebba": "1ooV8YZC1KbpEcrmI8WH0F",
 }
 
 def spotify_token():
