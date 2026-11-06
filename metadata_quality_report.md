@@ -9,7 +9,7 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Artiesten zonder gedocumenteerde identiteit: 1
 - Soloartiesten zonder bevestigde leeftijd: 7
 - Artiesten zonder land: 2
-- Nummers zonder voorlopige releasedatum: 2
+- Nummers zonder voorlopige releasedatum: 1
 
 ## Ontbrekende foto's
 
@@ -61,7 +61,6 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 ## Ontbrekende releasedata
 
 - #74 Shakira X Burna Boy - Dai Dai (FIFA World Cup Official Song 2026)
-- #41 The Citizens of Halloween - This Is Halloween
 
 ## Bands zonder gedocumenteerde leden
 
