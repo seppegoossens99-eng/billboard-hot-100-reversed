@@ -7,6 +7,8 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Unieke vermelde artiesten: 89
 - Artiesten zonder foto: 0
 - Artiesten zonder gedocumenteerde identiteit: 0
+- Soloartiesten met ingevulde volledige geboortedatum: 71
+- Volledige geboortedata zonder bronlink: 0
 - Soloartiesten zonder bevestigde leeftijd: 4
 - Daarvan met gedeeltelijke geboorte- of leeftijdsinformatie: 3
 - Zonder bruikbare geboorte- of leeftijdsinformatie: 1
@@ -26,6 +28,10 @@ Geen.
 - Belly Gang Kushington
 - Mack Geiger
 - rusowsky
+
+## Volledige geboortedata zonder bronlink
+
+Geen.
 
 ## Gedeeltelijke leeftijdsinformatie (geen exacte geboortedatum)
 
