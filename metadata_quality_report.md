@@ -6,7 +6,7 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Nummers: 100
 - Unieke vermelde artiesten: 89
 - Artiesten zonder foto: 25
-- Artiesten zonder bevestigde MusicBrainz-identiteit: 6
+- Artiesten zonder gedocumenteerde identiteit: 1
 - Soloartiesten zonder bevestigde leeftijd: 7
 - Artiesten zonder land: 2
 - Nummers zonder voorlopige releasedatum: 2
@@ -49,14 +49,9 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Zach John King
 - rusowsky
 
-## Artiesten zonder bevestigde identiteit
+## Artiesten zonder gedocumenteerde identiteit
 
-- Alyssa Grace
-- Blake Whiten
-- John Morgan
 - The Citizens of Halloween
-- Thekidszn
-- comehelpglo
 
 ## Ontbrekende landen
 
