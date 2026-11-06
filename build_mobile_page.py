@@ -41,7 +41,16 @@ def main():
             source_link = f' <a href="{source}" target="_blank" rel="noopener">Bron</a>' if source else ""
             profile = profiles.get(person["Artiest"], {})
             age = profile.get("Leeftijd", "")
+            # Publicly reported age context is distinct from a confirmed birth date.
+            # Keep these out of the exact-age CSV and its quality statistics.
+            REPORTED_AGE_CONTEXT = {
+                "Mack Geiger": ("21 jaar (volgens officiële artiestensite)", "https://mackgeiger.com/"),
+                "rusowsky": ("geboren in 1999 (exacte leeftijd onbekend)", "https://es.wikipedia.org/wiki/Rusowsky"),
+            }
             age_text = f" · {html.escape(age)} jaar" if age else (" · Leeftijd onbekend" if profile.get("Type") == "Person" else "")
+            if not age and person["Artiest"] in REPORTED_AGE_CONTEXT:
+                age_label, age_url = REPORTED_AGE_CONTEXT[person["Artiest"]]
+                age_text = f' · {html.escape(age_label)} <a href="{html.escape(age_url, quote=True)}" target="_blank" rel="noopener">Bron</a>'
             photo = profile.get("Afbeelding", "")
             portrait = f'<img class="portrait" src="{html.escape(photo, quote=True)}" alt="Foto van {html.escape(person["Artiest"], quote=True)}" loading="lazy" referrerpolicy="no-referrer">' if photo.startswith(("https://commons.wikimedia.org/wiki/Special:FilePath/", "https://image-cdn-ak.spotifycdn.com/image/", "https://image-cdn-fa.spotifycdn.com/image/", "https://i.scdn.co/image/")) else ""
             if not portrait:
