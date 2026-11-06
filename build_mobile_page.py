@@ -49,6 +49,7 @@ def main():
             # Publicly reported age context is distinct from a confirmed birth date.
             # Keep these out of the exact-age CSV and its quality statistics.
             REPORTED_AGE_CONTEXT = {
+                "BabyChiefDoit": ("17 jaar in juli 2025 volgens XXL; exacte geboortedatum niet bevestigd", "https://www.xxlmag.com/babychiefdoit/"),
                 "Mack Geiger": ("21 jaar (volgens officiële artiestensite)", "https://mackgeiger.com/"),
                 "Belly Gang Kushington": ("Verjaardag: 4 februari (Famous Birthdays); 35 jaar gemeld in juli 2026 (XXL); geboortejaar niet bevestigd", "https://www.famousbirthdays.com/people/belly-gang-kushington.html"),
                 "rusowsky": ("geboren in 1999 (exacte leeftijd onbekend)", "https://es.wikipedia.org/wiki/Rusowsky"),
