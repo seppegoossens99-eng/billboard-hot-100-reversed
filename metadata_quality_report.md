@@ -5,7 +5,7 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 - Nummers: 100
 - Unieke vermelde artiesten: 89
-- Artiesten zonder foto: 8
+- Artiesten zonder foto: 7
 - Artiesten zonder gedocumenteerde identiteit: 1
 - Soloartiesten zonder bevestigde leeftijd: 7
 - Artiesten zonder land: 2
@@ -15,7 +15,6 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 - Alyssa Grace
 - Blake Whiten
-- John Morgan
 - Rockwell
 - The Citizens of Halloween
 - Thekidszn
