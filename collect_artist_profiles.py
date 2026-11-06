@@ -108,6 +108,14 @@ def main():
                 birth = wikidata_births[qid]
                 age = age_at(birth)
                 age_source = "https://www.wikidata.org/wiki/" + qid
+            # Keep an earlier sourced birth date if the current provider is
+            # temporarily missing it; recompute age on every weekly run.
+            if kind == "Person" and not age:
+                old_birth = prior.get("Geboortedatum", "")
+                old_source = prior.get("Bron leeftijd", "")
+                old_age = age_at(old_birth)
+                if old_age and old_source:
+                    birth, age, age_source = old_birth, old_age, old_source
             writer.writerow([name, kind, birth if age else "", age, photo, photo_source, age_source])
     print(f"Profiles: {len(entries)}, photos: {sum(bool(images.get(e[4])) for e in entries)}, ages: {sum(bool(e[3]) for e in entries)}", flush=True)
 
