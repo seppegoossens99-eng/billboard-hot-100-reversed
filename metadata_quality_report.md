@@ -6,7 +6,7 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Nummers: 100
 - Unieke vermelde artiesten: 89
 - Artiesten zonder foto: 2
-- Artiesten zonder gedocumenteerde identiteit: 2
+- Artiesten zonder gedocumenteerde identiteit: 1
 - Soloartiesten zonder bevestigde leeftijd: 6
 - Artiesten zonder land: 1
 - Nummers zonder voorlopige releasedatum: 0
@@ -27,7 +27,6 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 ## Artiesten zonder gedocumenteerde identiteit
 
-- Dolly Babe
 - The Citizens of Halloween
 
 ## Ontbrekende landen
