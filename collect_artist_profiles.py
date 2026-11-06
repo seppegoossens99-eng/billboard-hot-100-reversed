@@ -52,6 +52,12 @@ VERIFIED_BIRTHDATES = {
     "Zach John King": ("1997-03-25", "https://en.wikipedia.org/wiki/Zach_John_King"),
 }
 
+# The chart credit has an independently documented solo-artist biography.
+# This classification does not imply a known birth date.
+VERIFIED_ARTIST_TYPES = {
+    "Dolly Babe": "Person",
+}
+
 def spotify_token():
     client_id = os.getenv("SPOTIFY_CLIENT_ID", "")
     secret = os.getenv("SPOTIFY_CLIENT_SECRET", "")
@@ -113,7 +119,7 @@ def main():
         if qid:
             qids.add(qid)
         birth = (data.get("life-span") or {}).get("begin", "") if data.get("type") == "Person" else ""
-        kind = data.get("type", "")
+        kind = data.get("type", "") or VERIFIED_ARTIST_TYPES.get(name, "")
         if name in VERIFIED_BIRTHDATES and not age_at(birth):
             birth = VERIFIED_BIRTHDATES[name][0]
             kind = "Person"
