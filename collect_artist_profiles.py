@@ -33,6 +33,13 @@ def spotify_id(data):
                 return identifier
     return ""
 
+# Artist IDs cross-checked against the corresponding public Spotify profiles
+# and independent artist biographies; do not use name-only fuzzy matches.
+VERIFIED_SPOTIFY_IDS = {
+    "Yebba": "1ooV8YZC1KbpEcrmI8WH0F",
+    "John Morgan": "7FetIwKD9uIJFiUwdHfq6g",
+}
+
 def spotify_token():
     client_id = os.getenv("SPOTIFY_CLIENT_ID", "")
     secret = os.getenv("SPOTIFY_CLIENT_SECRET", "")
@@ -65,7 +72,7 @@ def main():
     unique = {(r["Artiest"], r["Bron herkomst"]) for r in artists if r.get("Artiest")}
     entries = []
     qids = set()
-    spotify_ids = {}
+    spotify_ids = dict(VERIFIED_SPOTIFY_IDS)
     for name, source in sorted(unique):
         artist_id = source.rsplit("/", 1)[-1] if source.startswith("https://musicbrainz.org/artist/") else ""
         data = cache.get(artist_id, {}).get("data", {})
