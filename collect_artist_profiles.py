@@ -170,10 +170,12 @@ def main():
             prior = previous.get(name, {})
             prior_source = prior.get("Bron afbeelding", "")
             wikidata_match = bool(qid and prior_source == "https://www.wikidata.org/wiki/" + qid)
+            spotify_match = bool(name in spotify_ids and prior_source ==
+                "https://open.spotify.com/artist/" + spotify_ids[name])
             wikipedia_match = bool(qid and qid in wikipedia_pages and prior_source == (
                 "https://en.wikipedia.org/wiki/" + quote(wikipedia_pages[qid].replace(" ", "_"), safe="()_")))
             photo = images.get(qid, "") or wikipedia_images.get(qid, "") or spotify_images.get(name, ("", ""))[0] or (
-                prior.get("Afbeelding", "") if wikidata_match or wikipedia_match else "")
+                prior.get("Afbeelding", "") if wikidata_match or wikipedia_match or spotify_match else "")
             photo_source = ("https://www.wikidata.org/wiki/" + qid if images.get(qid) else ("https://en.wikipedia.org/wiki/" + quote(wikipedia_pages[qid].replace(" ", "_"), safe="()_") if wikipedia_images.get(qid) else (spotify_images[name][1] if name in spotify_images else (prior.get("Bron afbeelding", "") if photo else ""))))
             age_source = source if age else ""
             if kind == "Person" and not age and qid and qid in wikidata_births:
