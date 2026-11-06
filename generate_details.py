@@ -129,9 +129,9 @@ def us_state(area_id):
 # Verified origins for artists whose MusicBrainz country field is missing.
 # Source links are retained in the artist CSV for review.
 VERIFIED_ORIGINS = {
-    "Alyssa Grace": ("Verenigde Staten", "California", "Torrance", "https://www.allmusic.com/artist/alyssa-grace-mn0005023955"),
+    "Alyssa Grace": ("Verenigde Staten", "California", "", "https://www.allmusic.com/artist/alyssa-grace-mn0005023955"),
     "Blake Whiten": ("Verenigde Staten", "South Carolina", "Six Mile", "https://press.warnerrecords.com/sites/g/files/g2000014901/files/2026-01/Blake%20Whiten%202025%20Bio.pdf"),
-    "Thekidszn": ("Verenigde Staten", "New York", "Rochester", "https://www.missinglinkmusic.com/Topic/378/New-Signing-Thekidszn"),
+    "Thekidszn": ("Verenigde Staten", "New York", "", "https://www.missinglinkmusic.com/Topic/378/New-Signing-Thekidszn"),
     "comehelpglo": ("Verenigde Staten", "Ohio", "Ashland", "https://www.famousbirthdays.com/people/comehelpglo.html"),
 }
 
