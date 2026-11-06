@@ -31,6 +31,16 @@ def main():
     no_birth_info = [name for name in missing_age if name not in partial_birth_info]
     missing_origin = [name for name in unique if name not in NON_APPLICABLE and not any(r["Land"] for r in artists if r["Artiest"]==name)]
     missing_dates = [f'#{r["Billboard-positie"]} {r["Artiest"]} - {r["Nummer"]}' for r in songs if not r["Eerste officiële releasedatum"]]
+    # A populated date is not automatically proof of the earliest official
+    # release. Make provenance gaps explicit rather than claiming completeness.
+    missing_release_sources = [
+        f'#{r["Billboard-positie"]} {r["Artiest"]} - {r["Nummer"]}'
+        for r in songs if r["Eerste officiële releasedatum"] and not r.get("Bron releasedatum", "").startswith("https://")
+    ]
+    provisional_release_dates = [
+        f'#{r["Billboard-positie"]} {r["Artiest"]} - {r["Nummer"]}'
+        for r in songs if r["Eerste officiële releasedatum"]
+    ]
     undocumented = sorted(set(r["Artiest"] for r in bands if not r["Lid"]))
     lines = [
         "# Billboard Hot 100 — controle ontbrekende gegevens",
@@ -47,6 +57,8 @@ def main():
         f"- Zonder bruikbare geboorte- of leeftijdsinformatie: {len(no_birth_info)}",
         f"- Artiesten zonder land: {len(missing_origin)}",
         f"- Nummers zonder voorlopige releasedatum: {len(missing_dates)}",
+        f"- Voorlopige releasedata nog niet als eerste officiële uitgave bevestigd: {len(provisional_release_dates)}",
+        f"- Ingevulde releasedata zonder bronlink: {len(missing_release_sources)}",
         f"- Soundtrackensembles met niet-toepasselijke foto/herkomst: {len(not_applicable)}",
     ]
     for heading, values in [
@@ -57,6 +69,7 @@ def main():
         ("Artiesten zonder gedocumenteerde identiteit",missing_identity),
         ("Ontbrekende landen",missing_origin),
         ("Ontbrekende releasedata",missing_dates),
+        ("Ingevulde releasedata zonder bronlink",missing_release_sources),
         ("Bands zonder gedocumenteerde leden",undocumented),
         ("Niet van toepassing: fictieve soundtrackensembles",not_applicable)
     ]:
