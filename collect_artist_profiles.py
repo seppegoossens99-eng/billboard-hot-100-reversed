@@ -60,6 +60,7 @@ VERIFIED_SPOTIFY_IDS = {
 # Exact birth dates corroborated by independent artist biographies.
 VERIFIED_BIRTHDATES = {
     "Greylan James": ("1996-06-18", "https://www.allmusic.com/artist/greylan-james-mn0002828742"),
+    "Loe Shimmy": ("1999-03-24", "https://www.allmusic.com/artist/loe-shimmy-mn0004272175"),
     "Zach John King": ("1997-03-25", "https://en.wikipedia.org/wiki/Zach_John_King"),
 }
 
