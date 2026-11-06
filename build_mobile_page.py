@@ -15,7 +15,7 @@ def safe_url(url):
     return html.escape(url, quote=True) if url.startswith("https://musicbrainz.org/") else ""
 
 def display_date(value):
-    """Show ISO dates as DD/MM/YYYY, retaining unknown or partial values."""
+    """Format complete ISO dates as DD/MM/YYYY; retain partial dates and years."""
     if len(value) == 10 and value[4] == "-" and value[7] == "-":
         return f"{value[8:10]}/{value[5:7]}/{value[:4]}"
     return value
