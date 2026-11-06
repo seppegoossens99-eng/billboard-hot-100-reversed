@@ -43,6 +43,9 @@ def main():
             age = profile.get("Leeftijd", "")
             birth = profile.get("Geboortedatum", "")
             birth_text = (" · Geboren: " + html.escape(birth[8:10] + "-" + birth[5:7] + "-" + birth[:4])) if len(birth) == 10 else (" · Geboortedatum onbekend" if profile.get("Type") == "Person" else "")
+            birth_source = profile.get("Bron leeftijd", "")
+            if len(birth) == 10 and birth_source.startswith("https://"):
+                birth_text += ' <a href="' + html.escape(birth_source, quote=True) + '" target="_blank" rel="noopener">Bron geboortedatum</a>'
             # Publicly reported age context is distinct from a confirmed birth date.
             # Keep these out of the exact-age CSV and its quality statistics.
             REPORTED_AGE_CONTEXT = {
