@@ -72,7 +72,7 @@ def main():
             photo_source = profile.get("Bron afbeelding", "")
             photo_credit = f' <a href="{html.escape(photo_source, quote=True)}" target="_blank" rel="noopener">Foto</a>' if photo_source.startswith(("https://www.wikidata.org/wiki/", "https://open.spotify.com/artist/")) else ""
             artist_name = html.escape(person["Artiest"])
-            country = html.escape(person.get("Land") or "Onbekend")
+            country = person.get("Land") or "Onbekend"
             member_rows = bands.get(person["Artiest"], [])
             member_count = next((x.get("Leden (bevestigd huidig)", "") for x in member_rows if x.get("Leden (bevestigd huidig)", "")), "")
             members_display = (member_count or "Onbekend") if profile.get("Type") == "Group" else ("Solo" if profile.get("Type") == "Person" else "Onbekend")
@@ -80,7 +80,8 @@ def main():
             extra = extras.get(person["Artiest"], {})
             tiles = [("Debuutalbum", extra.get("Debuutalbum") or "Nog te verifiëren"), ("Leden", members_display), ("Populariteit", "Niet beschikbaar"), ("Gender", extra.get("Gender") or "Nog te verifiëren"), ("Genre", extra.get("Genre") or "Nog te verifiëren"), ("Land", country)]
             tiles_html = "".join(f'<div class="artist-tile"><span>{html.escape(k)}</span><strong>{html.escape(v)}</strong></div>' for k, v in tiles)
-            people.append(f'<li class="artist-entry"><details class="artist-details"><summary class="artist-summary">{portrait}<span class="artist-heading"><strong>{artist_name}</strong><span class="artist-age">{age_display}</span><small>Tik voor meer artiesteninfo</small></span><span class="artist-chevron" aria-hidden="true">⌄</span></summary><div class="artist-expanded"><div class="artist-tiles">{tiles_html}</div><p class="artist-origin">Herkomst: {origin}{birth_text}{age_text}{source_link}{photo_credit}</p></div></details></li>')
+            extra_links = "".join('<a href="' + html.escape(extra[field], quote=True) + '" target="_blank" rel="noopener">' + label + '</a> ' for field, label in (("Bron debuutalbum", "Bron debuutalbum"), ("Bron genre", "Bron genre")) if extra.get(field, "").startswith("https://"))
+            people.append(f'<li class="artist-entry"><details class="artist-details"><summary class="artist-summary">{portrait}<span class="artist-heading"><strong>{artist_name}</strong><span class="artist-age">{age_display}</span><small>Tik voor meer artiesteninfo</small></span><span class="artist-chevron" aria-hidden="true">⌄</span></summary><div class="artist-expanded"><div class="artist-tiles">{tiles_html}</div><p class="artist-origin">Herkomst: {origin}{birth_text}{age_text}{source_link}{photo_credit} {extra_links}</p></div></details></li>')
         band_sections = []
         for person in credited:
             band_members = bands.get(person["Artiest"], [])
