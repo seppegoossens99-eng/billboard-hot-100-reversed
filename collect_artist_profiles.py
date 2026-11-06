@@ -162,6 +162,36 @@ def main():
                         spotify_images[name] = (url, "https://open.spotify.com/artist/" + sid)
             except (requests.RequestException, ValueError) as exc:
                 print(f"Spotify artist photo unavailable for {name}: {exc}", flush=True)
+    # For artist identities confirmed by independent editorial/label sources,
+    # resolve a Spotify portrait only if the exact artist name is unique.
+    editorial_sources = (
+        "https://www.allmusic.com/artist/",
+        "https://press.warnerrecords.com/",
+        "https://www.missinglinkmusic.com/",
+        "https://www.opry.com/artists/",
+    )
+    if token:
+        for name, source in sorted(unique):
+            if name in spotify_images or not source.startswith(editorial_sources):
+                continue
+            try:
+                response = requests.get("https://api.spotify.com/v1/search",
+                    params={"q": 'artist:"' + name + '"', "type": "artist", "limit": 50},
+                    headers={"Authorization": "Bearer " + token}, timeout=20)
+                response.raise_for_status()
+                candidates = response.json().get("artists", {}).get("items", [])
+                exact = [a for a in candidates if a.get("name", "").casefold() == name.casefold()]
+                if len(exact) == 1 and exact[0].get("images"):
+                    artist = exact[0]
+                    url = artist["images"][0].get("url", "")
+                    sid = artist.get("id", "")
+                    if url.startswith("https://") and len(sid) == 22 and sid.isalnum():
+                        spotify_images[name] = (url, "https://open.spotify.com/artist/" + sid)
+                        print(f"Unique exact Spotify artist match: {name}", flush=True)
+                else:
+                    print(f"Ambiguous or missing Spotify artist search: {name} ({len(exact)} exact)", flush=True)
+            except (requests.RequestException, ValueError) as exc:
+                print(f"Spotify search unavailable for {name}: {exc}", flush=True)
     print(f"Spotify verified artist portraits: {len(spotify_images)}", flush=True)
     with OUT.open("w", encoding="utf-8-sig", newline="") as f:
         writer = csv.writer(f)
