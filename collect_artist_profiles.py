@@ -39,6 +39,8 @@ VERIFIED_SPOTIFY_IDS = {
     "John Morgan": "7FetIwKD9uIJFiUwdHfq6g",
     "Blake Whiten": "1BjlNhp6EsDG0UMroeJbRM",
     "Rockwell": "3xs0LEzcPXtgNfMNcHzLIP",
+    "Alyssa Grace": "4eZer1QvRM8Pna0rLToV1K",
+    "Thekidszn": "138UAIyJocdHT5PpR0iTJE",
     "Yebba": "1ooV8YZC1KbpEcrmI8WH0F",
 }
 
