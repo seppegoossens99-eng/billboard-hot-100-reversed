@@ -12,6 +12,8 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Zonder bruikbare geboorte- of leeftijdsinformatie: 1
 - Artiesten zonder land: 0
 - Nummers zonder voorlopige releasedatum: 0
+- Voorlopige releasedata nog niet als eerste officiële uitgave bevestigd: 100
+- Ingevulde releasedata zonder bronlink: 0
 - Soundtrackensembles met niet-toepasselijke foto/herkomst: 1
 
 ## Ontbrekende foto's
@@ -44,6 +46,10 @@ Geen.
 Geen.
 
 ## Ontbrekende releasedata
+
+Geen.
+
+## Ingevulde releasedata zonder bronlink
 
 Geen.
 
