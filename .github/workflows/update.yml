@@ -79,6 +79,9 @@ jobs:
           SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
           SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
         run: python collect_artist_profiles.py
+      - name: Enrich artist genre and gender from Wikidata
+        if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
+        run: python enrich_artist_extras.py
       - name: Report missing metadata
         if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
         run: python metadata_quality_report.py
@@ -93,7 +96,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add billboard_hot_100_details.csv billboard_hot_100_artists.csv billboard_band_members.csv band_members_cache.json band_member_ages_cache.json billboard_artist_profiles.csv billboard_hot_100.html index.html metadata_quality_report.md billboard_chart_date.txt
+          git add billboard_artist_extra.csv billboard_hot_100_details.csv billboard_hot_100_artists.csv billboard_band_members.csv band_members_cache.json band_member_ages_cache.json billboard_artist_profiles.csv billboard_hot_100.html index.html metadata_quality_report.md billboard_chart_date.txt
           if ! git diff --cached --quiet; then
             git commit -m "Update Billboard details CSV"
             git push
