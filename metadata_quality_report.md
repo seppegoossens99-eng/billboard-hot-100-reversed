@@ -5,7 +5,7 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 - Nummers: 100
 - Unieke vermelde artiesten: 89
-- Artiesten zonder foto: 3
+- Artiesten zonder foto: 2
 - Artiesten zonder gedocumenteerde identiteit: 1
 - Soloartiesten zonder bevestigde leeftijd: 7
 - Artiesten zonder land: 2
@@ -15,7 +15,6 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 - The Citizens of Halloween
 - Yebba
-- comehelpglo
 
 ## Ontbrekende leeftijden
 
