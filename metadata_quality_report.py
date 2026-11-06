@@ -21,6 +21,14 @@ def main():
     missing_photo = [name for name in unique if name not in NON_APPLICABLE and not profiles.get(name,{}).get("Afbeelding")]
     missing_identity = [name for name in unique if not any(r["Bron herkomst"].startswith(("https://musicbrainz.org/artist/", "https://www.opry.com/artists/", "https://www.allmusic.com/artist/", "https://press.warnerrecords.com/", "https://www.missinglinkmusic.com/", "https://www.famousbirthdays.com/people/", "https://www.power1061.com/lsp/artist/bio/", "https://music.apple.com/us/artist/")) for r in artists if r["Artiest"] == name)]
     missing_age = [name for name in unique if profiles.get(name,{}).get("Type")=="Person" and not profiles[name].get("Leeftijd")]
+    # A reported age or birth year is useful but not an exact verified date.
+    partial_birth_info = {
+        "Belly Gang Kushington": "35 jaar gemeld in juli 2026 (XXL)",
+        "Mack Geiger": "21 jaar gemeld op artiestenwebsite (datum van vermelding niet vastgelegd)",
+        "rusowsky": "Geboortejaar 1999 gemeld; dag en maand onbekend",
+    }
+    partial_birth = [f"{name}: {partial_birth_info[name]}" for name in missing_age if name in partial_birth_info]
+    no_birth_info = [name for name in missing_age if name not in partial_birth_info]
     missing_origin = [name for name in unique if name not in NON_APPLICABLE and not any(r["Land"] for r in artists if r["Artiest"]==name)]
     missing_dates = [f'#{r["Billboard-positie"]} {r["Artiest"]} - {r["Nummer"]}' for r in songs if not r["Eerste officiële releasedatum"]]
     undocumented = sorted(set(r["Artiest"] for r in bands if not r["Lid"]))
@@ -35,6 +43,8 @@ def main():
         f"- Artiesten zonder foto: {len(missing_photo)}",
         f"- Artiesten zonder gedocumenteerde identiteit: {len(missing_identity)}",
         f"- Soloartiesten zonder bevestigde leeftijd: {len(missing_age)}",
+        f"- Daarvan met gedeeltelijke geboorte- of leeftijdsinformatie: {len(partial_birth)}",
+        f"- Zonder bruikbare geboorte- of leeftijdsinformatie: {len(no_birth_info)}",
         f"- Artiesten zonder land: {len(missing_origin)}",
         f"- Nummers zonder voorlopige releasedatum: {len(missing_dates)}",
         f"- Soundtrackensembles met niet-toepasselijke foto/herkomst: {len(not_applicable)}",
@@ -42,6 +52,8 @@ def main():
     for heading, values in [
         ("Ontbrekende foto's",missing_photo),
         ("Ontbrekende leeftijden",missing_age),
+        ("Gedeeltelijke leeftijdsinformatie (geen exacte geboortedatum)",partial_birth),
+        ("Zonder geboorte- of leeftijdsinformatie",no_birth_info),
         ("Artiesten zonder gedocumenteerde identiteit",missing_identity),
         ("Ontbrekende landen",missing_origin),
         ("Ontbrekende releasedata",missing_dates),
