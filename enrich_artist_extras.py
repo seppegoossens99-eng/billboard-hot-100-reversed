@@ -62,7 +62,10 @@ def main():
         qid = qid_from_profile(row)
         if qid:
             qids[row["Artiest"]] = qid
-    needed = {name: q for name, q in qids.items() if not old.get(name, {}).get("Gender") or not old.get(name, {}).get("Genre")}
+    # Some artist names are ambiguous across Wikidata (e.g. bôa and Steve Lacy).
+    # Do not auto-enrich these until their identity is explicitly cross-checked.
+    AMBIGUOUS_NAMES = {"boa", "Steve Lacy"}
+    needed = {name: q for name, q in qids.items() if name not in AMBIGUOUS_NAMES and (not old.get(name, {}).get("Gender") or not old.get(name, {}).get("Genre"))}
     entities = {}
     ids = sorted(set(needed.values()))
     for i in range(0, len(ids), 40):
