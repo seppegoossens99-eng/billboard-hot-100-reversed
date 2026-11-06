@@ -225,6 +225,26 @@ def main():
                             print("Verified Rockwell portrait through Somebody's Watching Me", flush=True)
         except (requests.RequestException, ValueError, KeyError) as exc:
             print(f"Rockwell recording match unavailable: {exc}", flush=True)
+    # Spotify's public oEmbed metadata can provide a thumbnail when the
+    # authenticated artist endpoint omits images. Use verified artist IDs only.
+    for name, sid in spotify_ids.items():
+        if name in spotify_images:
+            continue
+        try:
+            response = requests.get("https://open.spotify.com/oembed",
+                params={"url": "https://open.spotify.com/artist/" + sid},
+                headers=HEADERS, timeout=15)
+            response.raise_for_status()
+            metadata = response.json()
+            thumbnail = metadata.get("thumbnail_url", "")
+            if (metadata.get("type") == "rich"
+                    and metadata.get("title", "").casefold() == name.casefold()
+                    and thumbnail.startswith("https://")):
+                spotify_images[name] = (
+                    thumbnail, "https://open.spotify.com/artist/" + sid)
+                print(f"Verified Spotify oEmbed thumbnail: {name}", flush=True)
+        except (requests.RequestException, ValueError) as exc:
+            print(f"Spotify oEmbed unavailable for {name}: {exc}", flush=True)
     print(f"Spotify verified artist portraits: {len(spotify_images)}", flush=True)
     with OUT.open("w", encoding="utf-8-sig", newline="") as f:
         writer = csv.writer(f)
