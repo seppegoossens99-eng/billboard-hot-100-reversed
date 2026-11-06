@@ -44,7 +44,7 @@ def main():
         data = cache.get(artist_id, {}).get("data", {})
         # A valid MusicBrainz match may be new and absent from the band cache.
         # Fetch its identity and Wikidata link rather than leaving the portrait blank.
-        if artist_id and not data:
+        if artist_id and (not data or not wikidata_id(data)):
             time.sleep(1.1)  # MusicBrainz public API rate limit
             try:
                 response = requests.get(
@@ -53,10 +53,14 @@ def main():
                     headers=HEADERS, timeout=20,
                 )
                 response.raise_for_status()
-                data = response.json()
+                fresh = response.json()
+                if fresh.get("id") == artist_id:
+                    data = {**data, **fresh}
             except (requests.RequestException, ValueError) as exc:
                 print(f"MusicBrainz profile unavailable for {name}: {exc}", flush=True)
         qid = wikidata_id(data)
+        if artist_id and qid:
+            print(f"Verified Wikidata link: {name} -> {qid}", flush=True)
         if qid:
             qids.add(qid)
         birth = (data.get("life-span") or {}).get("begin", "") if data.get("type") == "Person" else ""
