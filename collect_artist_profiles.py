@@ -41,6 +41,7 @@ VERIFIED_SPOTIFY_IDS = {
     "Rockwell": "3xs0LEzcPXtgNfMNcHzLIP",
     "Alyssa Grace": "4eZer1QvRM8Pna0rLToV1K",
     "Thekidszn": "138UAIyJocdHT5PpR0iTJE",
+    "comehelpglo": "5Z9nWuFMEQ97O7ixur2c8l",
     "Yebba": "1ooV8YZC1KbpEcrmI8WH0F",
 }
 
