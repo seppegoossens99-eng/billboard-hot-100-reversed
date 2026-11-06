@@ -25,6 +25,7 @@ def main():
     missing_birth_source = [name for name in confirmed_birth if not profiles[name].get("Bron leeftijd", "").startswith("https://")]
     # A reported age or birth year is useful but not an exact verified date.
     partial_birth_info = {
+        "BabyChiefDoit": "17 jaar volgens XXL op 1 juli 2025; exacte geboortedatum niet bevestigd (https://www.xxlmag.com/babychiefdoit/)",
         "Belly Gang Kushington": "Verjaardag 4 februari (Famous Birthdays); 35 jaar gemeld in juli 2026 (XXL); geboortejaar onbevestigd",
         "Mack Geiger": "21 jaar gemeld op artiestenwebsite (datum van vermelding niet vastgelegd)",
         "rusowsky": "Geboortejaar 1999 gemeld; dag en maand onbekend",
