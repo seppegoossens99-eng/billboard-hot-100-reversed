@@ -67,6 +67,7 @@ VERIFIED_BIRTHDATES = {
 # This classification does not imply a known birth date.
 VERIFIED_ARTIST_TYPES = {
     "Dolly Babe": "Person",
+    "The Citizens of Halloween": "Other",  # Soundtrack vocal ensemble, not a conventional band
 }
 
 def spotify_token():
