@@ -116,12 +116,18 @@ def main():
                     wikipedia_images[qid] = url
         except (requests.RequestException, ValueError) as exc:
             print(f"Wikipedia thumbnail unavailable for {qid}: {exc}", flush=True)
+    print(f"Wikidata portraits: {len(images)}, Wikipedia fallback portraits: {len(wikipedia_images)}", flush=True)
     with OUT.open("w", encoding="utf-8-sig", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(FIELDS)
         for name, kind, birth, age, qid, source in entries:
             prior = previous.get(name, {})
-            photo = images.get(qid, "") or wikipedia_images.get(qid, "") or (prior.get("Afbeelding", "") if prior.get("Bron afbeelding", "") and (not qid or prior.get("Bron afbeelding", "").endswith("/" + qid)) else "")
+            prior_source = prior.get("Bron afbeelding", "")
+            wikidata_match = bool(qid and prior_source == "https://www.wikidata.org/wiki/" + qid)
+            wikipedia_match = bool(qid and qid in wikipedia_pages and prior_source == (
+                "https://en.wikipedia.org/wiki/" + quote(wikipedia_pages[qid].replace(" ", "_"), safe="()_")))
+            photo = images.get(qid, "") or wikipedia_images.get(qid, "") or (
+                prior.get("Afbeelding", "") if wikidata_match or wikipedia_match else "")
             photo_source = ("https://www.wikidata.org/wiki/" + qid if images.get(qid) else ("https://en.wikipedia.org/wiki/" + quote(wikipedia_pages[qid].replace(" ", "_"), safe="()_") if wikipedia_images.get(qid) else (prior.get("Bron afbeelding", "") if photo else "")))
             age_source = source if age else ""
             if kind == "Person" and not age and qid and qid in wikidata_births:
