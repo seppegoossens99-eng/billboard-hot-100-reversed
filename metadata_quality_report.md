@@ -8,7 +8,7 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Artiesten zonder foto: 25
 - Artiesten zonder bevestigde MusicBrainz-identiteit: 2
 - Soloartiesten zonder bevestigde leeftijd: 9
-- Artiesten zonder land: 20
+- Artiesten zonder land: 6
 - Nummers zonder voorlopige releasedatum: 2
 
 ## Ontbrekende foto's
@@ -59,24 +59,10 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 ## Ontbrekende landen
 
 - Alyssa Grace
-- BabyChiefDoit
-- Belly Gang Kushington
 - Blake Whiten
-- Cameron Whitcomb
-- Chandler Moore
-- Dexter And The Moonrocks
 - Dolly Babe
-- Dominic Fike
-- Ella Langley
-- Harry Styles
-- Hudson Westbrook
-- Jelly Roll
-- Loe Shimmy
-- Temper City
 - The Citizens of Halloween
 - Thekidszn
-- Vincent Mason
-- Zach John King
 - comehelpglo
 
 ## Ontbrekende releasedata
