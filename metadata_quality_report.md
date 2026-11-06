@@ -7,7 +7,7 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Unieke vermelde artiesten: 89
 - Artiesten zonder foto: 2
 - Artiesten zonder gedocumenteerde identiteit: 1
-- Soloartiesten zonder bevestigde leeftijd: 7
+- Soloartiesten zonder bevestigde leeftijd: 5
 - Artiesten zonder land: 2
 - Nummers zonder voorlopige releasedatum: 0
 
@@ -20,10 +20,8 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 - BabyChiefDoit
 - Belly Gang Kushington
-- Greylan James
 - Loe Shimmy
 - Mack Geiger
-- Zach John King
 - rusowsky
 
 ## Artiesten zonder gedocumenteerde identiteit
