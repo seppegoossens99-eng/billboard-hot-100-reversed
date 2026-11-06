@@ -168,6 +168,12 @@ def artist_details(name):
     return result
 
 def earliest_recording_date(title, artist):
+    # Individually checked against the original soundtrack and single releases.
+    # Keep the exact source beside the date for later auditing.
+    if norm(title) == "this is halloween" and norm(artist) == "the citizens of halloween":
+        return ("1993-10-12", "https://musicbrainz.org/release/f3a762e5-cfc0-30a1-a0bf-001f6ab5f6fa")
+    if norm(title).startswith("dai dai") and "shakira" in norm(artist) and "burna boy" in norm(artist):
+        return ("2026-05-14", "https://music.apple.com/us/song/6778672603")
     if norm(title) == "kid myself" and norm(artist) == "john morgan":
         return ("2025-03-21", "https://themusicuniverse.com/john-morgan-shares-kid-myself/")
     key = (norm(title), norm(artist))
