@@ -1,4 +1,4 @@
-"""Fill missing artist gender and genre using verified Wikidata IDs; preserve sourced EP and album debut years."""
+"""Fill missing artist gender and genre using verified Wikidata IDs; retain verified debut EP and album years."""
 import csv
 import json
 import re
