@@ -5,17 +5,17 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 - Nummers: 100
 - Unieke vermelde artiesten: 89
-- Artiesten zonder foto: 0
-- Artiesten zonder bevestigd debuutjaar: 13
-- Artiesten zonder genre: 12
-- Artiesten zonder gender/groepsaanduiding: 9
-- Artiesten zonder gedocumenteerde identiteit: 0
-- Soloartiesten met ingevulde volledige geboortedatum: 71
+- Artiesten zonder foto: 1
+- Artiesten zonder bevestigd debuutjaar: 9
+- Artiesten zonder genre: 8
+- Artiesten zonder gender/groepsaanduiding: 6
+- Artiesten zonder gedocumenteerde identiteit: 1
+- Soloartiesten met ingevulde volledige geboortedatum: 70
 - Volledige geboortedata zonder bronlink: 0
 - Soloartiesten zonder bevestigde leeftijd: 4
 - Daarvan met gedeeltelijke geboorte- of leeftijdsinformatie: 4
 - Zonder bruikbare geboorte- of leeftijdsinformatie: 0
-- Artiesten zonder land: 0
+- Artiesten zonder land: 1
 - Nummers zonder voorlopige releasedatum: 0
 - Voorlopige releasedata nog niet als eerste officiële uitgave bevestigd: 100
 - Ingevulde releasedata zonder bronlink: 0
@@ -23,7 +23,7 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 ## Ontbrekende foto's
 
-Geen.
+- Robert Smith
 
 ## Ontbrekende leeftijden
 
@@ -35,12 +35,8 @@ Geen.
 ## Ontbrekende debuutjaren
 
 - Alyssa Grace
-- BabyChiefDoit
 - Belly Gang Kushington
-- Blake Whiten
 - Dolly Babe
-- John Morgan
-- Loe Shimmy
 - Mack Geiger
 - Stella Lefty
 - Temper City
@@ -51,12 +47,8 @@ Geen.
 ## Ontbrekende genres
 
 - Alyssa Grace
-- BabyChiefDoit
 - Belly Gang Kushington
-- Blake Whiten
 - Dolly Babe
-- John Morgan
-- Loe Shimmy
 - Mack Geiger
 - Stella Lefty
 - Temper City
@@ -67,10 +59,7 @@ Geen.
 
 - Alyssa Grace
 - Belly Gang Kushington
-- Blake Whiten
 - Dolly Babe
-- John Morgan
-- Loe Shimmy
 - Mack Geiger
 - Thekidszn
 - comehelpglo
@@ -92,11 +81,11 @@ Geen.
 
 ## Artiesten zonder gedocumenteerde identiteit
 
-Geen.
+- Robert Smith
 
 ## Ontbrekende landen
 
-Geen.
+- Robert Smith
 
 ## Ontbrekende releasedata
 
