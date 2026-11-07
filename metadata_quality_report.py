@@ -58,7 +58,7 @@ def main():
         f"- Nummers: {len(songs)}",
         f"- Unieke vermelde artiesten: {len(unique)}",
         f"- Artiesten zonder foto: {len(missing_photo)}",
-        f"- Artiesten zonder bevestigd debuutstudioalbumjaar: {len(missing_debut)}",
+        f"- Artiesten zonder bevestigd debuutjaar: {len(missing_debut)}",
         f"- Artiesten zonder genre: {len(missing_genre)}",
         f"- Artiesten zonder gender/groepsaanduiding: {len(missing_gender)}",
         f"- Artiesten zonder gedocumenteerde identiteit: {len(missing_identity)}",
@@ -76,7 +76,7 @@ def main():
     for heading, values in [
         ("Ontbrekende foto's",missing_photo),
         ("Ontbrekende leeftijden",missing_age),
-        ("Ontbrekende debuutstudioalbumjaren",missing_debut),
+        ("Ontbrekende debuutjaren",missing_debut),
         ("Ontbrekende genres",missing_genre),
         ("Ontbrekende gender/groepsaanduidingen",missing_gender),
         ("Volledige geboortedata zonder bronlink",missing_birth_source),
