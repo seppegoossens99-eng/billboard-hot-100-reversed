@@ -5,17 +5,17 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 - Nummers: 100
 - Unieke vermelde artiesten: 89
-- Artiesten zonder foto: 0
-- Artiesten zonder bevestigd debuutjaar: 19
-- Artiesten zonder genre: 13
+- Artiesten zonder foto: 1
+- Artiesten zonder bevestigd debuutjaar: 16
+- Artiesten zonder genre: 12
 - Artiesten zonder gender/groepsaanduiding: 9
-- Artiesten zonder gedocumenteerde identiteit: 0
+- Artiesten zonder gedocumenteerde identiteit: 1
 - Soloartiesten met ingevulde volledige geboortedatum: 71
 - Volledige geboortedata zonder bronlink: 0
 - Soloartiesten zonder bevestigde leeftijd: 4
 - Daarvan met gedeeltelijke geboorte- of leeftijdsinformatie: 4
 - Zonder bruikbare geboorte- of leeftijdsinformatie: 0
-- Artiesten zonder land: 0
+- Artiesten zonder land: 1
 - Nummers zonder voorlopige releasedatum: 0
 - Voorlopige releasedata nog niet als eerste officiële uitgave bevestigd: 100
 - Ingevulde releasedata zonder bronlink: 0
@@ -23,7 +23,7 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 ## Ontbrekende foto's
 
-Geen.
+- Justice
 
 ## Ontbrekende leeftijden
 
@@ -39,15 +39,12 @@ Geen.
 - BabyChiefDoit
 - Belly Gang Kushington
 - Blake Whiten
-- Cameron Whitcomb
 - Chandler Moore
-- Dexter And The Moonrocks
 - Dolly Babe
 - John Morgan
 - Loe Shimmy
 - Mack Geiger
 - Robert Smith
-- Sienna Spiro
 - Stella Lefty
 - Temper City
 - Thekidszn
@@ -60,7 +57,6 @@ Geen.
 - BabyChiefDoit
 - Belly Gang Kushington
 - Blake Whiten
-- Dexter And The Moonrocks
 - Dolly Babe
 - John Morgan
 - Loe Shimmy
@@ -99,11 +95,11 @@ Geen.
 
 ## Artiesten zonder gedocumenteerde identiteit
 
-Geen.
+- Justice
 
 ## Ontbrekende landen
 
-Geen.
+- Justice
 
 ## Ontbrekende releasedata
 
