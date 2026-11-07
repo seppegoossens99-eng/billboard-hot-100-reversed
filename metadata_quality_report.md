@@ -6,8 +6,8 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Nummers: 100
 - Unieke vermelde artiesten: 89
 - Artiesten zonder foto: 0
-- Artiesten zonder bevestigd debuutjaar: 3
-- Artiesten zonder genre: 1
+- Artiesten zonder bevestigd debuutjaar: 2
+- Artiesten zonder genre: 0
 - Artiesten zonder gender/groepsaanduiding: 1
 - Artiesten zonder gedocumenteerde identiteit: 0
 - Soloartiesten met ingevulde volledige geboortedatum: 71
@@ -36,11 +36,10 @@ Geen.
 
 - Dolly Babe
 - comehelpglo
-- rusowsky
 
 ## Ontbrekende genres
 
-- comehelpglo
+Geen.
 
 ## Ontbrekende gender/groepsaanduidingen
 
