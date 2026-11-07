@@ -5,17 +5,17 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 - Nummers: 100
 - Unieke vermelde artiesten: 89
-- Artiesten zonder foto: 1
-- Artiesten zonder bevestigd debuutjaar: 33
-- Artiesten zonder genre: 20
-- Artiesten zonder gender/groepsaanduiding: 16
-- Artiesten zonder gedocumenteerde identiteit: 1
-- Soloartiesten met ingevulde volledige geboortedatum: 70
+- Artiesten zonder foto: 0
+- Artiesten zonder bevestigd debuutjaar: 26
+- Artiesten zonder genre: 16
+- Artiesten zonder gender/groepsaanduiding: 12
+- Artiesten zonder gedocumenteerde identiteit: 0
+- Soloartiesten met ingevulde volledige geboortedatum: 71
 - Volledige geboortedata zonder bronlink: 0
 - Soloartiesten zonder bevestigde leeftijd: 4
 - Daarvan met gedeeltelijke geboorte- of leeftijdsinformatie: 4
 - Zonder bruikbare geboorte- of leeftijdsinformatie: 0
-- Artiesten zonder land: 1
+- Artiesten zonder land: 0
 - Nummers zonder voorlopige releasedatum: 0
 - Voorlopige releasedata nog niet als eerste officiële uitgave bevestigd: 100
 - Ingevulde releasedata zonder bronlink: 0
@@ -23,7 +23,7 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 ## Ontbrekende foto's
 
-- Ashe
+Geen.
 
 ## Ontbrekende leeftijden
 
@@ -45,26 +45,19 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Corey Kent
 - Dexter And The Moonrocks
 - Dolly Babe
-- Elevation Worship
 - Greylan James
-- Hudson Westbrook
 - Jamie Miller
 - Jelly Roll
 - John Morgan
-- KATSEYE
 - Koe Wetzel
 - Loe Shimmy
 - Mack Geiger
-- Malcolm Todd
 - Robert Smith
 - Sienna Spiro
 - Stella Lefty
 - Temper City
 - Thekidszn
-- Turnpike Troubadours
-- Vincent Mason
 - Zach John King
-- boa
 - comehelpglo
 - rusowsky
 
@@ -78,18 +71,14 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Dexter And The Moonrocks
 - Dolly Babe
 - Greylan James
-- Hudson Westbrook
 - John Morgan
 - Loe Shimmy
 - Mack Geiger
-- Malcolm Todd
 - Stella Lefty
 - Temper City
 - Thekidszn
-- Vincent Mason
 - Zach John King
 - comehelpglo
-- rusowsky
 
 ## Ontbrekende gender/groepsaanduidingen
 
@@ -99,16 +88,12 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Chase Matthew
 - Dolly Babe
 - Greylan James
-- Hudson Westbrook
 - John Morgan
 - Loe Shimmy
 - Mack Geiger
-- Malcolm Todd
 - Thekidszn
-- Vincent Mason
 - Zach John King
 - comehelpglo
-- rusowsky
 
 ## Volledige geboortedata zonder bronlink
 
@@ -127,11 +112,11 @@ Geen.
 
 ## Artiesten zonder gedocumenteerde identiteit
 
-- Ashe
+Geen.
 
 ## Ontbrekende landen
 
-- Ashe
+Geen.
 
 ## Ontbrekende releasedata
 
