@@ -6,7 +6,7 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Nummers: 100
 - Unieke vermelde artiesten: 89
 - Artiesten zonder foto: 1
-- Artiesten zonder bevestigd debuutstudioalbumjaar: 33
+- Artiesten zonder bevestigd debuutjaar: 33
 - Artiesten zonder genre: 20
 - Artiesten zonder gender/groepsaanduiding: 16
 - Artiesten zonder gedocumenteerde identiteit: 1
@@ -23,7 +23,7 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 ## Ontbrekende foto's
 
-- Jamie Miller
+- Ashe
 
 ## Ontbrekende leeftijden
 
@@ -32,7 +32,7 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Mack Geiger
 - rusowsky
 
-## Ontbrekende debuutstudioalbumjaren
+## Ontbrekende debuutjaren
 
 - ADELA
 - Alyssa Grace
@@ -127,11 +127,11 @@ Geen.
 
 ## Artiesten zonder gedocumenteerde identiteit
 
-- Jamie Miller
+- Ashe
 
 ## Ontbrekende landen
 
-- Jamie Miller
+- Ashe
 
 ## Ontbrekende releasedata
 
