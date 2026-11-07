@@ -6,7 +6,7 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Nummers: 100
 - Unieke vermelde artiesten: 89
 - Artiesten zonder foto: 0
-- Artiesten zonder bevestigd debuutjaar: 23
+- Artiesten zonder bevestigd debuutjaar: 19
 - Artiesten zonder genre: 13
 - Artiesten zonder gender/groepsaanduiding: 9
 - Artiesten zonder gedocumenteerde identiteit: 0
@@ -41,13 +41,9 @@ Geen.
 - Blake Whiten
 - Cameron Whitcomb
 - Chandler Moore
-- Corey Kent
 - Dexter And The Moonrocks
 - Dolly Babe
-- Jamie Miller
-- Jelly Roll
 - John Morgan
-- Koe Wetzel
 - Loe Shimmy
 - Mack Geiger
 - Robert Smith
