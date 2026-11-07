@@ -6,9 +6,9 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Nummers: 100
 - Unieke vermelde artiesten: 89
 - Artiesten zonder foto: 0
-- Artiesten zonder bevestigd debuutjaar: 26
-- Artiesten zonder genre: 16
-- Artiesten zonder gender/groepsaanduiding: 12
+- Artiesten zonder bevestigd debuutjaar: 23
+- Artiesten zonder genre: 13
+- Artiesten zonder gender/groepsaanduiding: 9
 - Artiesten zonder gedocumenteerde identiteit: 0
 - Soloartiesten met ingevulde volledige geboortedatum: 71
 - Volledige geboortedata zonder bronlink: 0
@@ -41,11 +41,9 @@ Geen.
 - Blake Whiten
 - Cameron Whitcomb
 - Chandler Moore
-- Chase Matthew
 - Corey Kent
 - Dexter And The Moonrocks
 - Dolly Babe
-- Greylan James
 - Jamie Miller
 - Jelly Roll
 - John Morgan
@@ -57,7 +55,6 @@ Geen.
 - Stella Lefty
 - Temper City
 - Thekidszn
-- Zach John King
 - comehelpglo
 - rusowsky
 
@@ -67,17 +64,14 @@ Geen.
 - BabyChiefDoit
 - Belly Gang Kushington
 - Blake Whiten
-- Chase Matthew
 - Dexter And The Moonrocks
 - Dolly Babe
-- Greylan James
 - John Morgan
 - Loe Shimmy
 - Mack Geiger
 - Stella Lefty
 - Temper City
 - Thekidszn
-- Zach John King
 - comehelpglo
 
 ## Ontbrekende gender/groepsaanduidingen
@@ -85,14 +79,11 @@ Geen.
 - Alyssa Grace
 - Belly Gang Kushington
 - Blake Whiten
-- Chase Matthew
 - Dolly Babe
-- Greylan James
 - John Morgan
 - Loe Shimmy
 - Mack Geiger
 - Thekidszn
-- Zach John King
 - comehelpglo
 
 ## Volledige geboortedata zonder bronlink
