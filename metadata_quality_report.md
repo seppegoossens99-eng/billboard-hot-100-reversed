@@ -5,17 +5,17 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 - Nummers: 100
 - Unieke vermelde artiesten: 89
-- Artiesten zonder foto: 1
-- Artiesten zonder bevestigd debuutjaar: 16
+- Artiesten zonder foto: 0
+- Artiesten zonder bevestigd debuutjaar: 13
 - Artiesten zonder genre: 12
 - Artiesten zonder gender/groepsaanduiding: 9
-- Artiesten zonder gedocumenteerde identiteit: 1
+- Artiesten zonder gedocumenteerde identiteit: 0
 - Soloartiesten met ingevulde volledige geboortedatum: 71
 - Volledige geboortedata zonder bronlink: 0
 - Soloartiesten zonder bevestigde leeftijd: 4
 - Daarvan met gedeeltelijke geboorte- of leeftijdsinformatie: 4
 - Zonder bruikbare geboorte- of leeftijdsinformatie: 0
-- Artiesten zonder land: 1
+- Artiesten zonder land: 0
 - Nummers zonder voorlopige releasedatum: 0
 - Voorlopige releasedata nog niet als eerste officiële uitgave bevestigd: 100
 - Ingevulde releasedata zonder bronlink: 0
@@ -23,7 +23,7 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 ## Ontbrekende foto's
 
-- Justice
+Geen.
 
 ## Ontbrekende leeftijden
 
@@ -34,17 +34,14 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 ## Ontbrekende debuutjaren
 
-- ADELA
 - Alyssa Grace
 - BabyChiefDoit
 - Belly Gang Kushington
 - Blake Whiten
-- Chandler Moore
 - Dolly Babe
 - John Morgan
 - Loe Shimmy
 - Mack Geiger
-- Robert Smith
 - Stella Lefty
 - Temper City
 - Thekidszn
@@ -95,11 +92,11 @@ Geen.
 
 ## Artiesten zonder gedocumenteerde identiteit
 
-- Justice
+Geen.
 
 ## Ontbrekende landen
 
-- Justice
+Geen.
 
 ## Ontbrekende releasedata
 
