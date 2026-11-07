@@ -6,9 +6,9 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 - Nummers: 100
 - Unieke vermelde artiesten: 89
 - Artiesten zonder foto: 0
-- Artiesten zonder bevestigd debuutjaar: 5
-- Artiesten zonder genre: 4
-- Artiesten zonder gender/groepsaanduiding: 3
+- Artiesten zonder bevestigd debuutjaar: 3
+- Artiesten zonder genre: 1
+- Artiesten zonder gender/groepsaanduiding: 1
 - Artiesten zonder gedocumenteerde identiteit: 0
 - Soloartiesten met ingevulde volledige geboortedatum: 71
 - Volledige geboortedata zonder bronlink: 0
@@ -35,22 +35,15 @@ Geen.
 ## Ontbrekende debuutjaren
 
 - Dolly Babe
-- Temper City
-- Thekidszn
 - comehelpglo
 - rusowsky
 
 ## Ontbrekende genres
 
-- Dolly Babe
-- Temper City
-- Thekidszn
 - comehelpglo
 
 ## Ontbrekende gender/groepsaanduidingen
 
-- Dolly Babe
-- Thekidszn
 - comehelpglo
 
 ## Volledige geboortedata zonder bronlink
