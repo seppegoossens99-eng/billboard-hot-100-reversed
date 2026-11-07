@@ -13,6 +13,7 @@ def main():
     artists = read("billboard_hot_100_artists.csv")
     profiles = {r["Artiest"]:r for r in read("billboard_artist_profiles.csv")}
     bands = read("billboard_band_members.csv")
+    extras = {r["Artiest"]: r for r in read("billboard_artist_extra.csv")}
     unique = sorted(set(r["Artiest"] for r in artists))
     # Fictional soundtrack ensembles have no real-world hometown and may have
     # no representative artist portrait. Report them separately, not as errors.
@@ -45,6 +46,9 @@ def main():
         for r in songs if r["Eerste officiële releasedatum"]
     ]
     undocumented = sorted(set(r["Artiest"] for r in bands if not r["Lid"]))
+    missing_debut = [name for name in unique if name not in NON_APPLICABLE and not extras.get(name, {}).get("Debuutalbum")]
+    missing_genre = [name for name in unique if name not in NON_APPLICABLE and not extras.get(name, {}).get("Genre")]
+    missing_gender = [name for name in unique if name not in NON_APPLICABLE and not extras.get(name, {}).get("Gender")]
     lines = [
         "# Billboard Hot 100 — controle ontbrekende gegevens",
         "",
@@ -54,6 +58,9 @@ def main():
         f"- Nummers: {len(songs)}",
         f"- Unieke vermelde artiesten: {len(unique)}",
         f"- Artiesten zonder foto: {len(missing_photo)}",
+        f"- Artiesten zonder bevestigd debuutstudioalbumjaar: {len(missing_debut)}",
+        f"- Artiesten zonder genre: {len(missing_genre)}",
+        f"- Artiesten zonder gender/groepsaanduiding: {len(missing_gender)}",
         f"- Artiesten zonder gedocumenteerde identiteit: {len(missing_identity)}",
         f"- Soloartiesten met ingevulde volledige geboortedatum: {len(confirmed_birth)}",
         f"- Volledige geboortedata zonder bronlink: {len(missing_birth_source)}",
@@ -69,6 +76,9 @@ def main():
     for heading, values in [
         ("Ontbrekende foto's",missing_photo),
         ("Ontbrekende leeftijden",missing_age),
+        ("Ontbrekende debuutstudioalbumjaren",missing_debut),
+        ("Ontbrekende genres",missing_genre),
+        ("Ontbrekende gender/groepsaanduidingen",missing_gender),
         ("Volledige geboortedata zonder bronlink",missing_birth_source),
         ("Gedeeltelijke leeftijdsinformatie (geen exacte geboortedatum)",partial_birth),
         ("Zonder geboorte- of leeftijdsinformatie",no_birth_info),
