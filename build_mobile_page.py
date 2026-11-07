@@ -34,6 +34,7 @@ def main():
     for member in band_rows:
         bands[member["Artiest"]].append(member)
     profiles = {row["Artiest"]: row for row in read_csv("billboard_artist_profiles.csv")}
+    # Debuutjaar is the earliest documented release year, including singles and soundtrack appearances.
     extras = {row["Artiest"]: row for row in read_csv("billboard_artist_extra.csv")}
     blocks = []
     for track in tracks:
