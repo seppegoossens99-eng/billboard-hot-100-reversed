@@ -115,4 +115,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-# The sourced artist extras include verified debut EPs where available.
+# The sourced artist extras include debut EPs and first singles where available.
