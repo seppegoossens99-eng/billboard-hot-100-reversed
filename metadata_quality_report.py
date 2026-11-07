@@ -46,6 +46,7 @@ def main():
         for r in songs if r["Eerste officiële releasedatum"]
     ]
     undocumented = sorted(set(r["Artiest"] for r in bands if not r["Lid"]))
+    # Debut year includes the first documented EP or mixtape, not only studio albums.
     missing_debut = [name for name in unique if name not in NON_APPLICABLE and not extras.get(name, {}).get("Debuutalbum")]
     missing_genre = [name for name in unique if name not in NON_APPLICABLE and not extras.get(name, {}).get("Genre")]
     missing_gender = [name for name in unique if name not in NON_APPLICABLE and not extras.get(name, {}).get("Gender")]
