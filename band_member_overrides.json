@@ -1,0 +1,177 @@
+{
+  "boa": {
+    "source": "https://www.bandsintown.com/a/15531053-b-a",
+    "members": [
+      {
+        "name": "Jasmine Rodgers",
+        "id": "222eafd8-dffb-4499-a38c-b47476e1535e",
+        "role": "Zang, gitaar"
+      },
+      {
+        "name": "Alex Caird",
+        "id": "4d09d3b4-e52e-4863-b5bf-f4219cda3573",
+        "role": "Basgitaar, gitaar"
+      },
+      {
+        "name": "Lee Sullivan",
+        "id": "a6051125-5682-48a3-9017-66414ae136ca",
+        "role": "Drums"
+      }
+    ]
+  },
+  "Justice": {
+    "source": "https://www.synthhistory.com/post/interview-with-justice",
+    "members": [
+      {
+        "name": "Gaspard Augé",
+        "id": "11a76588-288c-4862-bf6b-9a6bb0e735f6",
+        "role": "Elektronische productie, synthesizers"
+      },
+      {
+        "name": "Xavier de Rosnay",
+        "id": "10361de3-1b9f-4da5-854b-4a4dc8a12faf",
+        "role": "Elektronische productie, synthesizers"
+      }
+    ]
+  },
+  "Dan + Shay": {
+    "source": "https://www.qobuz.com/nz-en/album/good-things-dan-shay/tdbu5be6vyw8b",
+    "members": [
+      {
+        "name": "Dan Smyers",
+        "id": "681b2289-5944-495a-b730-f2d6087764da",
+        "role": "Zang, gitaar, piano, productie"
+      },
+      {
+        "name": "Shay Mooney",
+        "id": "b0aa1fda-f694-4178-8c34-c698f16776c3",
+        "role": "Zang"
+      }
+    ]
+  },
+  "Temper City": {
+    "source": "https://themusic.com.au/news/honestly-surreal-temper-city-are-self-aware-when-it-comes-to-their-viral-rise/UtboREdGSUg/28-08-26",
+    "members": [
+      {
+        "name": "Eytan Peled",
+        "id": "65bacacc-4477-4812-91dd-bebbed063aa7",
+        "role": "Zang"
+      },
+      {
+        "name": "Chen Kordova",
+        "id": "fb8320bf-7d5f-4811-9ace-0b73ea76a3f5",
+        "role": "Gitaar"
+      },
+      {
+        "name": "Aviv Barenholtz",
+        "id": "36537bb1-9bcc-47c0-b60b-8001bb8e5752",
+        "role": "Drums"
+      }
+    ]
+  },
+  "Turnpike Troubadours": {
+    "source": "https://music.wmeagency.com/Music/turnpiketroubadours?client_profile=true&height=100%25&layout=grid&width=1230",
+    "members": [
+      {
+        "name": "Evan Felker",
+        "id": "d2428b34-4a34-45a0-95bc-afd662608625",
+        "role": "Zang, gitaar"
+      },
+      {
+        "name": "RC Edwards",
+        "role": "Basgitaar"
+      },
+      {
+        "name": "Kyle Nix",
+        "id": "8219a48b-77ae-4319-b724-47edeb6dba21",
+        "role": "Viool"
+      },
+      {
+        "name": "Ryan Engleman",
+        "id": "3df84cc4-9774-4e36-81ee-ad3480110978",
+        "role": "Elektrische gitaar, steelgitaar"
+      },
+      {
+        "name": "Gabe Pearson",
+        "id": "d8554a9c-780d-4f7d-a0be-ebdc4ff5860f",
+        "role": "Drums"
+      },
+      {
+        "name": "Hank Early",
+        "id": "ff4505b9-55ea-481e-904b-44d4f6b728e6",
+        "role": "Steelgitaar, accordeon"
+      }
+    ]
+  },
+  "KATSEYE": {
+    "source": "https://www.katseye.world/the-members/",
+    "members": [
+      {
+        "name": "Daniela",
+        "id": "136f98b4-9730-409c-a361-374e72b3830c",
+        "role": "Zang, dans"
+      },
+      {
+        "name": "Lara",
+        "id": "97760d94-e84e-4daa-90c8-5ccf80f3fb86",
+        "role": "Zang, dans"
+      },
+      {
+        "name": "Manon",
+        "id": "22ff5fa0-eab6-4782-9989-a96b9a938786",
+        "role": "Zang, dans"
+      },
+      {
+        "name": "Megan",
+        "id": "884d5bf2-8af4-47d1-b43c-5bf4dbd490f5",
+        "role": "Zang, dans"
+      },
+      {
+        "name": "Sophia",
+        "id": "557e2afa-96c5-4830-aed7-bab18faf4cb1",
+        "role": "Zang, dans"
+      },
+      {
+        "name": "Yoonchae",
+        "id": "691f26ba-e171-45b5-a890-93e4f585982b",
+        "role": "Zang, dans"
+      }
+    ]
+  },
+  "Elevation Worship": {
+    "source": "https://store.elevationchurch.org/products/so-be-it-vinyl",
+    "note": "Wisselende bezetting; hieronder de zeven uitgelichte zangleiders van So Be It (2026), geen volledige lijst van alle sessie- en tourmuzikanten.",
+    "status": "Uitgelichte zangleider · So Be It (2026)",
+    "members": [
+      {
+        "name": "Chris Brown",
+        "id": "1e544c7f-a7b7-47b6-9280-e4f2f987152e",
+        "role": "Zang"
+      },
+      {
+        "name": "Tiffany Hudson",
+        "role": "Zang"
+      },
+      {
+        "name": "Jonsal Barrientes",
+        "role": "Zang"
+      },
+      {
+        "name": "Jenna Barrientes",
+        "role": "Zang"
+      },
+      {
+        "name": "Isaiah Templeton",
+        "role": "Zang"
+      },
+      {
+        "name": "Davide Mutendji",
+        "role": "Zang"
+      },
+      {
+        "name": "Tori Elliott",
+        "role": "Zang"
+      }
+    ]
+  }
+}

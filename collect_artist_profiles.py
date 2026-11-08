@@ -7,6 +7,7 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import quote
 import requests
+from artist_identities import VERIFIED_ARTIST_IDS as IDENTITY_OVERRIDES
 
 ROOT = Path(__file__).resolve().parent
 CACHE = ROOT / "band_members_cache.json"
@@ -107,6 +108,8 @@ def main():
     spotify_ids = dict(VERIFIED_SPOTIFY_IDS)
     spotify_alternates = {}
     for name, source in sorted(unique):
+        if name in IDENTITY_OVERRIDES:
+            source = 'https://musicbrainz.org/artist/' + IDENTITY_OVERRIDES[name]
         artist_id = source.rsplit("/", 1)[-1] if source.startswith("https://musicbrainz.org/artist/") else ""
         data = cache.get(artist_id, {}).get("data", {})
         # A valid MusicBrainz match may be new and absent from the band cache.
@@ -356,10 +359,12 @@ def main():
                 old_birth = prior.get("Geboortedatum", "")
                 old_source = prior.get("Bron leeftijd", "")
                 old_age = age_at(old_birth)
-                if old_age and old_source:
+                same_identity = name not in IDENTITY_OVERRIDES or old_source in (source, 'https://www.wikidata.org/wiki/' + qid)
+                if old_age and old_source and same_identity:
                     birth, age, age_source = old_birth, old_age, old_source
             writer.writerow([name, kind, birth if age else "", age, photo, photo_source, age_source])
     print(f"Profiles: {len(entries)}, photos: {sum(bool(images.get(e[4])) for e in entries)}, ages: {sum(bool(e[3]) for e in entries)}", flush=True)
 
 if __name__ == "__main__":
     main()
+

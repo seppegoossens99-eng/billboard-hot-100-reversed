@@ -20,6 +20,28 @@ def display_date(value):
         return f"{value[8:10]}/{value[5:7]}/{value[:4]}"
     return value
 
+
+def render_band_members(rows):
+    if not rows:
+        return ""
+    current = [r for r in rows if r.get("Lid") and not r.get("Status", "").startswith("Voormalig")]
+    former = [r for r in rows if r.get("Lid") and r.get("Status", "").startswith("Voormalig")]
+    def member_list(members):
+        result = []
+        for member in members:
+            member_age = member.get("Leeftijd lid", "")
+            age_text = member_age + " jaar" if member_age else (member.get('Leeftijdsinfo') or "Leeftijd niet bevestigd")
+            age_url = member.get("Bron lid", "")
+            age_source = (' <a href="' + html.escape(age_url, quote=True) + '" target="_blank" rel="noopener">Bron leeftijd</a>') if (member_age or member.get('Leeftijdsinfo')) and age_url.startswith("https://") else ""
+            role = member.get("Functie/instrument") or "Instrument/rol niet bevestigd"
+            result.append('<li class="band-member"><strong>' + html.escape(member["Lid"]) + '</strong><span class="member-age">' + html.escape(age_text) + age_source + '</span><span class="member-role">Instrument/rol: ' + html.escape(role) + '</span></li>')
+        return '<ul class="band-member-list">' + "".join(result) + '</ul>'
+    note = rows[0].get("Volledigheid", "")
+    url = rows[0].get("Bron", "")
+    source = (' <a href="' + html.escape(url, quote=True) + '" target="_blank" rel="noopener">Bron bezetting en rollen</a>') if url.startswith("https://") else ""
+    old = '<details class="former-members"><summary>Voormalige leden</summary>' + member_list(former) + '</details>' if former else ""
+    return '<section class="band-members"><h3>Bandleden en instrumenten</h3>' + (member_list(current) if current else '<p>Huidige leden nog niet bevestigd.</p>') + old + '<p class="members-note">' + html.escape(note) + source + '</p></section>'
+
 def main():
     tracks = read_csv("billboard_hot_100_details.csv")
     chart_date = (ROOT / "billboard_chart_date.txt").read_text(encoding="utf-8").strip()
@@ -77,29 +99,12 @@ def main():
             member_rows = bands.get(person["Artiest"], [])
             member_count = next((x.get("Leden (bevestigd huidig)", "") for x in member_rows if x.get("Leden (bevestigd huidig)", "")), "")
             members_display = (member_count or "Onbekend") if profile.get("Type") == "Group" else ("Solo" if profile.get("Type") == "Person" else "Onbekend")
-            age_display = html.escape(age + " jaar") if age else ("Zie leeftijdsinfo" if person["Artiest"] in REPORTED_AGE_CONTEXT else "Onbekend")
+            age_display = ("Band · " + (member_count + " leden" if member_count else "leden hieronder")) if member_rows else (html.escape(age + " jaar") if age else ("Zie leeftijdsinfo" if person["Artiest"] in REPORTED_AGE_CONTEXT else "Onbekend"))
             extra = extras.get(person["Artiest"], {})
             tiles = [("Debuutjaar", extra.get("Debuutalbum") or "Nog te verifiëren"), ("Leden", members_display), ("Populariteit", "Niet beschikbaar"), ("Gender", extra.get("Gender") or ("Groep" if profile.get("Type") == "Group" else "Nog te verifiëren")), ("Genre", extra.get("Genre") or "Nog te verifiëren"), ("Land", country)]
             tiles_html = "".join(f'<div class="artist-tile"><span>{html.escape(k)}</span><strong>{html.escape(v)}</strong></div>' for k, v in tiles)
             extra_links = "".join('<a href="' + html.escape(extra[field], quote=True) + '" target="_blank" rel="noopener">' + label + '</a> ' for field, label in (("Bron debuutalbum", "Bron debuutjaar"), ("Bron genre", "Bron genre")) if extra.get(field, "").startswith("https://"))
-            people.append(f'<li class="artist-entry"><details class="artist-details"><summary class="artist-summary">{portrait}<span class="artist-heading"><strong>{artist_name}</strong><span class="artist-age">{age_display}</span><small>Tik voor meer artiesteninfo</small></span><span class="artist-chevron" aria-hidden="true">⌄</span></summary><div class="artist-expanded"><div class="artist-tiles">{tiles_html}</div><p class="artist-origin">Herkomst: {origin}{birth_text}{age_text}{source_link}{photo_credit} {extra_links}</p></div></details></li>')
-        band_sections = []
-        for person in credited:
-            band_members = bands.get(person["Artiest"], [])
-            if not band_members:
-                continue
-            count = next((x["Leden (bevestigd huidig)"] for x in band_members if x["Leden (bevestigd huidig)"]), "")
-            label = f"{count} gedocumenteerde huidige leden" if count else "Huidig ledenaantal onbekend"
-            member_items = []
-            for member in band_members:
-                if member["Lid"]:
-                    member_age = member.get("Leeftijd lid", "")
-                    age_label = f" · {html.escape(member_age)} jaar" if member_age else ""
-                    member_items.append(f'<li><strong>{html.escape(member["Lid"])}</strong><span>{html.escape(member["Functie/instrument"])}{age_label} · {html.escape(member["Status"])}</span></li>')
-            source = safe_url(band_members[0]["Bron"])
-            source_link = f'<a href="{source}" target="_blank" rel="noopener">MusicBrainz</a>' if source else ""
-            band_sections.append(f'<div class="band"><h3>{html.escape(person["Artiest"])}</h3><p class="sub">{html.escape(label)} · {source_link}</p><ul>{"".join(member_items) or "<li>Leden nog niet gedocumenteerd</li>"}</ul><small>Aantal mogelijk onvolledig.</small></div>')
-        band_markup = f'<details class="bands"><summary>Bandleden en instrumenten</summary>{"".join(band_sections)}</details>' if band_sections else ""
+            people.append(f'<li class="artist-entry"><details class="artist-details"><summary class="artist-summary">{portrait}<span class="artist-heading"><strong>{artist_name}</strong><span class="artist-age">{age_display}</span><small>Tik voor meer artiesteninfo</small></span><span class="artist-chevron" aria-hidden="true">⌄</span></summary><div class="artist-expanded"><div class="artist-tiles">{tiles_html}</div><p class="artist-origin">Herkomst: {origin}{birth_text}{age_text}{source_link}{photo_credit} {extra_links}</p>{render_band_members(member_rows)}</div></details></li>')
         last_week = track.get("Vorige week", "")
         weeks = track.get("Weken in Hot 100", "")
         peak = track.get("Hoogste positie", "")
@@ -132,7 +137,7 @@ def main():
         search = html.escape((pos + " " + name + " " + track["Artiest"] + " " + " ".join(p["Artiest"] for p in credited)).casefold(), quote=True)
         blocks.append(f"""
         <article class="song {movement_class}" data-rank="{pos}" data-search="{search}">
-          <div class="song-layout"><aside class="left"><span class="rank">#{pos}</span>{chart_stats}</aside><div class="center"><h2>{html.escape(name)}</h2><p class="credit">{html.escape(track["Artiest"])}</p><div class="release"><div class="label">Releasedatum</div><strong>{date_display}</strong><small>{status} · {date_link}</small></div></div><div class="right"><div class="label">Artiesten · tik voor details</div><ul>{''.join(people)}</ul>{band_markup}</div></div>
+          <div class="song-layout"><aside class="left"><span class="rank">#{pos}</span>{chart_stats}</aside><div class="center"><h2>{html.escape(name)}</h2><p class="credit">{html.escape(track["Artiest"])}</p><div class="release"><div class="label">Releasedatum</div><strong>{date_display}</strong><small>{status} · {date_link}</small></div></div><div class="right"><div class="label">Artiesten · tik voor details</div><ul>{''.join(people)}</ul></div></div>
         </article>""")
     document = """<!doctype html><html lang="nl"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -158,7 +163,7 @@ a{color:#99c4ff;text-decoration:none}a:hover{text-decoration:underline}
 .artist-entry{display:flex;align-items:flex-start;gap:16px;padding:10px 0}.artist-entry>div{display:flex;flex-direction:column;gap:6px;flex:1;min-width:0}.artist-entry strong{font-size:17px}.portrait{width:180px;height:220px;flex:none;object-fit:cover;object-position:center 22%;border-radius:14px;background:#26344a;cursor:zoom-in}.portrait:focus{outline:2px solid #99c4ff}.portrait-empty{display:flex;align-items:center;justify-content:center;padding:18px;text-align:center;color:#b5c6d8;font-size:14px;cursor:default}.photo-modal{border:0;padding:0;background:transparent;max-width:min(94vw,900px);max-height:94vh}.photo-modal::backdrop{background:rgba(0,0,0,.9)}.photo-modal img{display:block;max-width:94vw;max-height:86vh;object-fit:contain}.photo-modal button{display:block;margin:8px 0 0 auto;background:#263a59;border:0;border-radius:8px;padding:10px 16px;color:white;cursor:pointer}.bands{margin-top:14px;border-top:1px solid #2b3648;padding-top:14px}.bands summary{cursor:pointer;color:#a8ccff;font-weight:650}.band{padding:10px 0}.band h3{margin:4px 0;font-size:16px}.band p{margin:5px 0 10px}.note{background:#222c3f;padding:14px;border-radius:12px;color:#c9d3e2;font-size:14px;line-height:1.5}
 .artist-entry{display:block!important;width:100%;margin:0;padding:10px 0}.artist-details{width:100%;min-width:0}.artist-summary{display:flex;align-items:center;gap:12px;cursor:pointer;list-style:none;border-radius:12px;padding:6px 2px}.artist-summary::-webkit-details-marker{display:none}.artist-summary .portrait{width:72px!important;height:72px!important;border-radius:50%;object-fit:cover}.artist-heading{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}.artist-heading strong{font-size:clamp(18px,3vw,24px)}.artist-heading .artist-age{font-size:14px;color:#fff}.artist-heading small{font-size:12px;opacity:.8}.artist-chevron{font-size:25px}.artist-details[open] .artist-chevron{transform:rotate(180deg)}.artist-expanded{padding:14px 0 4px}.artist-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.artist-tile{background:linear-gradient(150deg,#4bb97a,#2e8758);border:1px solid #8adca8;border-radius:16px;min-height:95px;padding:13px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:inset 0 1px 2px #ffffff44;color:white}.artist-tile span{font-size:13px;line-height:1.3}.artist-tile strong{font-size:clamp(12px,2.3vw,19px);overflow-wrap:anywhere;line-height:1.3;margin-top:5px}.artist-origin{font-size:13px;line-height:1.6;margin:14px 0 0}.right>ul{width:100%}@media(max-width:420px){.artist-tiles{gap:6px}.artist-tile{min-height:85px;border-radius:12px;padding:8px 3px}.artist-tile span{font-size:11px}.artist-tile strong{font-size:12px}}
 @media(max-width:620px){main{padding:18px 12px 55px}.song{padding:15px}.info{grid-template-columns:1fr;gap:15px}h2{font-size:18px}.artist-entry{flex-direction:row}.portrait{width:95px;height:120px;object-fit:cover}.artist-entry>div{width:100%}}
-.song.same .artist-tile span{color:white}.song.same .artist-heading .artist-age{color:#251b09}.legend{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.legend span{padding:6px 10px;border-radius:8px;font-size:13px;color:white}.legend .up{background:#174e36}.legend .down{background:#713038}.legend .new{background:#204d83}.legend .reentry{background:#583778}.legend .same{background:#f3ce65;color:#251b09}\n</style></head><body><main><header><span class="pill">#100 → #1</span>
+.song.same .artist-tile span{color:white}.song.same .artist-heading .artist-age{color:#251b09}.legend{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.legend span{padding:6px 10px;border-radius:8px;font-size:13px;color:white}.legend .up{background:#174e36}.legend .down{background:#713038}.legend .new{background:#204d83}.legend .reentry{background:#583778}.legend .same{background:#f3ce65;color:#251b09}\n.band-members{margin-top:18px;border-top:1px solid #ffffff50;padding-top:12px}.band-members h3{font-size:16px;margin:0 0 10px}.band-member-list .band-member{display:flex;flex-direction:column;gap:5px;background:#00000024;border-radius:10px;padding:12px;margin-bottom:8px}.band-member strong{font-size:15px}.band-member .member-age,.band-member .member-role{font-size:13px;line-height:1.5}.members-note{font-size:12px;line-height:1.5}.former-members{margin:12px 0}.former-members summary{cursor:pointer;margin-bottom:10px}.song.same .band-members,.song.same .band-members span{color:#251b09}\n</style></head><body><main><header><span class="pill">#100 → #1</span>
 <h1>Billboard Hot 100</h1><p class="sub">Hitlijst van __CHART_DATE__ · #100 tot #1 · positie vorige week, weken in de lijst, artiesten, foto’s en herkomst</p>
 <div class="note">De releasedata zijn voorlopig: MusicBrainz geeft de vroegste daar bekende opname-uitgave, maar bevestigt niet altijd de eerste officiële single-release. Lege gegevens worden niet gegokt. De herkomst van een groep kan de oprichtingsplaats zijn.</div>
 <div class="legend" aria-label="Kleurenlegende"><span class="up">▲ Gestegen</span><span class="down">▼ Gedaald</span><span class="new">Nieuw</span><span class="reentry">Teruggekeerd</span><span class="same">▬ Ongewijzigd</span></div>\n</header><label for="search">Zoek artiest, nummer of positie</label><input id="search" type="search" placeholder="Bijv. Drake, Olivia Rodrigo, #88">
@@ -180,3 +185,4 @@ count.textContent=visible+' van '+songs.length+' nummers';});
 
 if __name__ == "__main__":
     main()
+

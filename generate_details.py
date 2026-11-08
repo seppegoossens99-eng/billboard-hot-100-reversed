@@ -6,6 +6,7 @@ import unicodedata
 from pathlib import Path
 import requests
 import pycountry
+from artist_identities import VERIFIED_ARTIST_IDS as IDENTITY_OVERRIDES
 
 CHART_URL = "https://raw.githubusercontent.com/mhollingshead/billboard-hot-100/main/recent.json"
 MB = "https://musicbrainz.org/ws/2"
@@ -82,6 +83,7 @@ VERIFIED_ARTIST_IDS = {
     "Rockwell": "57ea7aef-42d6-4c16-a4a7-88b4ba8283a4",
 }
 artist_cache = {}
+VERIFIED_ARTIST_IDS.update(IDENTITY_OVERRIDES)
 recording_cache = {}
 area_cache = {}
 
@@ -144,7 +146,8 @@ def artist_details(name):
     if name == "John Morgan":
         return ("Verenigde Staten", "North Carolina", "", "https://www.opry.com/artists/john-morgan")
     key = norm(name)
-    if key in artist_cache:
+    expected_source = 'https://musicbrainz.org/artist/' + VERIFIED_ARTIST_IDS[name] if name in VERIFIED_ARTIST_IDS else ''
+    if key in artist_cache and (not expected_source or artist_cache[key][3] == expected_source):
         return artist_cache[key]
     result = ("", "", "", "")
     verified_id = VERIFIED_ARTIST_IDS.get(name)
@@ -268,9 +271,11 @@ def main():
         if len(row["Land"]) == 2 and row["Land"].isupper():
             row["Land"] = country_name(row["Land"])
         lead = main_artist(artist)
-        if not row["Bron herkomst"] or (row["Land"] == "Verenigde Staten" and not row["Staat/regio"]):
+        if lead in IDENTITY_OVERRIDES or not row["Bron herkomst"] or (row["Land"] == "Verenigde Staten" and not row["Staat/regio"]):
             country, region, city, source = artist_details(lead)
             if source:
+                if lead in IDENTITY_OVERRIDES:
+                    row.update({"Land": country, "Staat/regio": region, "Stad": city})
                 if country:
                     row["Land"] = country
                 if region:
@@ -318,3 +323,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

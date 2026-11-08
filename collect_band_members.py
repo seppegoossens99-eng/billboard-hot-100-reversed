@@ -5,6 +5,7 @@ import time
 from datetime import date, timedelta
 from pathlib import Path
 import requests
+from artist_identities import VERIFIED_ARTIST_IDS as IDENTITY_OVERRIDES
 
 ROOT = Path(__file__).resolve().parent
 CACHE = ROOT / "band_members_cache.json"
@@ -38,7 +39,7 @@ def get_artist(artist_id):
 def memberships(data):
     members = {}
     for relation in data.get("relations", []):
-        if relation.get("type") != "member of band" or relation.get("target-type") != "artist":
+        if relation.get("type") != "member of band" or relation.get("target-type") != "artist" or relation.get("direction") != "backward":
             continue
         person = relation.get("artist") or {}
         if person.get("type") != "Person" or not person.get("id"):
@@ -59,6 +60,8 @@ def main():
     cutoff = (date.today() - timedelta(days=30)).isoformat()
     output = []
     for name, url in sorted({(row["Artiest"], row["Bron herkomst"]) for row in artists if row["Bron herkomst"].startswith("https://musicbrainz.org/artist/")}):
+        if name in IDENTITY_OVERRIDES:
+            url = 'https://musicbrainz.org/artist/' + IDENTITY_OVERRIDES[name]
         artist_id = url.rsplit("/", 1)[-1]
         item = cache.get(artist_id, {})
         if item.get("checked", "") < cutoff or not item.get("data") or not item.get("url_relations_fetched"):
@@ -81,6 +84,16 @@ def main():
                            person["name"], ", ".join(sorted(person["roles"])) or "Niet vermeld", status, url])
         if not current and not former:
             output.append([name, "Ja", "", "Geen ledengegevens beschikbaar", "", "", "", url])
+    # Editorial rosters correct missing or stale database relationships.
+    overrides = json.loads((ROOT / 'band_member_overrides.json').read_text(encoding='utf-8'))
+    chart_names = {row['Artiest'] for row in artists}
+    for name, roster in overrides.items():
+        if name not in chart_names:
+            continue
+        output = [row for row in output if row[0] != name]
+        for person in roster['members']:
+            output.append([name, 'Ja', str(len(roster['members'])), roster.get('note', 'Gecontroleerde huidige bezetting'),
+                           person['name'], person['role'], roster.get('status', 'Huidig'), roster['source']])
     with OUTPUT.open("w", encoding="utf-8-sig", newline="") as file:
         writer = csv.writer(file)
         writer.writerow(HEADERS)
@@ -90,3 +103,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

@@ -9,6 +9,8 @@ on:
       - main
     paths:
       - '*.py'
+      - 'band_member_overrides.json'
+      - 'band_member_birthdates.json'
       - 'requirements.txt'
       - '.github/workflows/update.yml'
   workflow_dispatch:
@@ -63,7 +65,7 @@ jobs:
         run: python update_spotify.py
       - name: Verify artist-name parsing
         if: steps.clock.outputs.proceed == 'true'
-        run: python -m unittest test_artist_parsing.py
+        run: python -m unittest test_artist_parsing.py test_artist_metadata.py
       - name: Generate details CSV
         if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
         run: python generate_details.py

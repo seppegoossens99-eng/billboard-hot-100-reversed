@@ -1,4 +1,4 @@
-﻿Artiest,Type,Geboortedatum,Leeftijd,Afbeelding,Bron afbeelding,Bron leeftijd
+Artiest,Type,Geboortedatum,Leeftijd,Afbeelding,Bron afbeelding,Bron leeftijd
 21 Savage,Person,1992-10-22,34,https://commons.wikimedia.org/wiki/Special:FilePath/21_Savage_2018.jpg,https://www.wikidata.org/wiki/Q25095399,https://musicbrainz.org/artist/37b2cb82-ef79-4d46-a184-a549450aa231
 ADELA,Person,2003-11-27,22,https://commons.wikimedia.org/wiki/Special:FilePath/ADELAINNYC.jpg,https://www.wikidata.org/wiki/Q131629817,https://musicbrainz.org/artist/f40856e6-079f-4a0a-916e-9e6a5e04f646
 Alyssa Grace,,,,https://image-cdn-fa.spotifycdn.com/image/ab67616100005174e95e39575c4f2c668eb11bc4,https://open.spotify.com/artist/4eZer1QvRM8Pna0rLToV1K,
@@ -39,7 +39,7 @@ Jhene Aiko,Person,1988-03-16,38,https://commons.wikimedia.org/wiki/Special:FileP
 John Mayer,Person,1977-10-16,49,https://commons.wikimedia.org/wiki/Special:FilePath/JohnMayerin2019.jpg,https://www.wikidata.org/wiki/Q215215,https://musicbrainz.org/artist/144ef525-85e9-40c3-8335-02c32d0861f3
 John Morgan,,,,https://image-cdn-fa.spotifycdn.com/image/ab67616100005174a3ee206b74cc92c89fb2fbd5,https://open.spotify.com/artist/7FetIwKD9uIJFiUwdHfq6g,
 Judeline,Person,2003-01-18,23,https://commons.wikimedia.org/wiki/Special:FilePath/Malaga_Film_Festival_2025_-_Judeline_%283x4_cropped%29.jpg,https://www.wikidata.org/wiki/Q123257584,https://musicbrainz.org/artist/b828d419-2928-4286-9509-5d920d524358
-Justice,,,,,,
+Justice,Group,,,https://commons.wikimedia.org/wiki/Special:FilePath/Justice.png,https://www.wikidata.org/wiki/Q329178,
 KATSEYE,Group,,,https://commons.wikimedia.org/wiki/Special:FilePath/2025-12-13_Katseye_Beautiful_Chaos_Tour_02_%28cropped%29.jpg,https://www.wikidata.org/wiki/Q123480242,
 Karol G,Person,1991-02-14,35,https://commons.wikimedia.org/wiki/Special:FilePath/2023-11-16_Gala_de_los_Latin_Grammy%2C_15_%28cropped_2%29.jpg,https://www.wikidata.org/wiki/Q22001324,https://musicbrainz.org/artist/de22adae-f8ac-414f-b653-b0162611bd60
 Kendrick Lamar,Person,1987-06-17,39,https://commons.wikimedia.org/wiki/Special:FilePath/Pulitzer2018-portraits-kendrick-lamar.jpg,https://www.wikidata.org/wiki/Q130798,https://musicbrainz.org/artist/381086ea-f511-4aba-bdf9-71c753dc5077
@@ -69,7 +69,7 @@ Shaboozey,Person,1995-05-09,31,https://commons.wikimedia.org/wiki/Special:FilePa
 Shakira,Person,1977-02-02,49,https://commons.wikimedia.org/wiki/Special:FilePath/2023-11-16_Gala_de_los_Latin_Grammy%2C_03_%28cropped%2901.jpg,https://www.wikidata.org/wiki/Q34424,https://musicbrainz.org/artist/bf24ca37-25f4-4e34-9aec-460b94364cfc
 Sienna Spiro,Person,2005-09-28,21,https://commons.wikimedia.org/wiki/Special:FilePath/Sienna_Spiro_2025.jpg,https://www.wikidata.org/wiki/Q131631266,https://musicbrainz.org/artist/ea696191-407a-4bf2-8302-7e05f6c163c5
 Stella Lefty,Person,2002-08-13,24,https://commons.wikimedia.org/wiki/Special:FilePath/Stella_Lefty_%40_Moroccan_Lounge_05_06_2025_%2854847577884%29_crop.jpg,https://www.wikidata.org/wiki/Q139917009,https://musicbrainz.org/artist/e881b225-42b1-41d9-9d5e-eff55568585b
-Steve Lacy,Person,1934-07-23,92,https://commons.wikimedia.org/wiki/Special:FilePath/Steve_Lacy.jpg,https://www.wikidata.org/wiki/Q504641,https://musicbrainz.org/artist/ca9766a0-1c30-43e6-a213-bac1334efc4a
+Steve Lacy,Person,1998-05-23,28,https://commons.wikimedia.org/wiki/Special:FilePath/Steve_Lacy_at_Icebox_in_2019.jpg,https://www.wikidata.org/wiki/Q56733980,https://musicbrainz.org/artist/b29020d6-5dbf-4c99-b16f-c009f8a712ff
 Tame Impala,Person,1986-01-20,40,https://commons.wikimedia.org/wiki/Special:FilePath/Tame_Impala.jpg,https://www.wikidata.org/wiki/Q9619,https://musicbrainz.org/artist/63aa26c3-d59b-4da4-84ac-716b54f1ef4d
 Tate McRae,Person,2003-07-01,23,https://commons.wikimedia.org/wiki/Special:FilePath/TMRKiaForum_%28cropped%29.jpg,https://www.wikidata.org/wiki/Q95129121,https://musicbrainz.org/artist/f9133869-f87c-459c-9aa7-2f176cda7e06
 Taylor Swift,Person,1989-12-13,36,https://commons.wikimedia.org/wiki/Special:FilePath/Taylor_Swift_at_the_2023_MTV_Video_Music_Awards_%283%29.png,https://www.wikidata.org/wiki/Q26876,https://musicbrainz.org/artist/20244d07-534f-4eff-b4d4-930878889970
@@ -84,7 +84,7 @@ Zach Bryan,Person,1996-04-02,30,https://commons.wikimedia.org/wiki/Special:FileP
 Zach John King,Person,1997-03-25,29,https://image-cdn-ak.spotifycdn.com/image/ab67616100005174c1d29728735f13a2d66b2c70,https://open.spotify.com/artist/7d00Y5kG1ZIPvWNl8LgHqB,https://en.wikipedia.org/wiki/Zach_John_King
 Zach Top,Person,1997-09-26,29,https://commons.wikimedia.org/wiki/Special:FilePath/Zach_top_-_musician.webp,https://www.wikidata.org/wiki/Q126414316,https://musicbrainz.org/artist/9939a762-5ca9-4c12-a735-0d62e21df4e3
 Zara Larsson,Person,1997-12-16,28,https://commons.wikimedia.org/wiki/Special:FilePath/Zara_Larsson_Concert_2026_%28cropped%29.jpg,https://www.wikidata.org/wiki/Q4177928,https://musicbrainz.org/artist/134e6410-6954-45d1-bd4a-0f2d2ad5471d
-boa,Person,1986-11-05,40,https://commons.wikimedia.org/wiki/Special:FilePath/BoA_at_Incheon_Airport_on_May_15%2C_2019_%282%29.png,https://www.wikidata.org/wiki/Q232449,https://musicbrainz.org/artist/a16d1433-ba89-4f72-a47b-a370add0bb55
+boa,Group,,,,,
 comehelpglo,,,,https://image-cdn-fa.spotifycdn.com/image/ab676161000051749640f10371c83806eb39a5c2,https://open.spotify.com/artist/5Z9nWuFMEQ97O7ixur2c8l,
 rusowsky,Person,,,https://image-cdn-ak.spotifycdn.com/image/ab676161000051742d66e1921d069934588aa080,https://open.spotify.com/artist/1XEVu7gdRFfzEFqsPrancH,
 sombr,Person,2005-07-05,21,https://commons.wikimedia.org/wiki/Special:FilePath/Guests_at_the_2026_Met_Gala_182.jpg,https://www.wikidata.org/wiki/Q133839234,https://musicbrainz.org/artist/502cf908-9921-48bc-bf0e-265c881c0156
