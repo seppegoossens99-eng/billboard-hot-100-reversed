@@ -1,4 +1,4 @@
-Billboard-positie,Nummer,Artiest,Land,Staat/regio,Stad,Bron herkomst
+﻿Billboard-positie,Nummer,Artiest,Land,Staat/regio,Stad,Bron herkomst
 100,Water At A Wedding,Greylan James,Verenigde Staten,Tennessee,Knoxville,https://musicbrainz.org/artist/c539265b-99c9-49fb-b47f-bb1dce6d5cf3
 99,What's Wrong With Me,Olivia Rodrigo,Verenigde Staten,California,Murrieta,https://musicbrainz.org/artist/6925db17-f35e-42f3-a4eb-84ee6bf5d4b0
 99,What's Wrong With Me,Robert Smith,United Kingdom,,,https://musicbrainz.org/artist/7d1a1624-784b-4f89-8ff9-b9b493cd059d
@@ -20,7 +20,7 @@ Billboard-positie,Nummer,Artiest,Land,Staat/regio,Stad,Bron herkomst
 87,Ahi,Drake,Canada,,Toronto,https://musicbrainz.org/artist/9fff2f8a-21e6-47de-a2b8-7f449929d43f
 86,All My Exes,Lauren Alaina,Verenigde Staten,,Rossville,https://musicbrainz.org/artist/f2506ff4-4091-4e57-ac5b-156110732aa9
 86,All My Exes,Chase Matthew,Verenigde Staten,Tennessee,Sevierville,https://musicbrainz.org/artist/b9bdc8af-9641-4958-8eb3-1bead9ff632d
-85,Flower In A Hurricane,Justice,Frankrijk,,Paris,https://musicbrainz.org/artist/860b2707-6153-4e3a-aa57-74d2b42c55b5
+85,Flower In A Hurricane,Justice,France,,,https://musicbrainz.org/artist/860b2707-6153-4e3a-aa57-74d2b42c55b5
 85,Flower In A Hurricane,Tame Impala,Australia,,Sydney,https://musicbrainz.org/artist/63aa26c3-d59b-4da4-84ac-716b54f1ef4d
 85,Flower In A Hurricane,SZA,Verenigde Staten,Missouri,St. Louis,https://musicbrainz.org/artist/272989c8-5535-492d-a25c-9f58803e027f
 85,Flower In A Hurricane,King Gizzard & The Lizard Wizard,Australia,,Melbourne,https://musicbrainz.org/artist/f58384a4-2ad2-4f24-89c5-c7b74ae1cce7
@@ -33,7 +33,7 @@ Billboard-positie,Nummer,Artiest,Land,Staat/regio,Stad,Bron herkomst
 78,My Way,Riley Green,Verenigde Staten,Alabama,Jacksonville,https://musicbrainz.org/artist/d8c85c0e-ad88-47a7-a1df-b70608c2f52f
 77,Tom And Jerry,John Mayer,Verenigde Staten,Connecticut,Bridgeport,https://musicbrainz.org/artist/144ef525-85e9-40c3-8335-02c32d0861f3
 76,Hands Up,Jelly Roll,Verenigde Staten,,Antioch,https://musicbrainz.org/artist/ab5a7a60-1b71-4e5b-b622-e0ae2ce84c32
-75,Duvet,boa,Verenigd Koninkrijk,,London,https://musicbrainz.org/artist/ca1dcba2-792c-4550-abf2-7b45396e81ca
+75,Duvet,boa,United Kingdom,,,https://musicbrainz.org/artist/ca1dcba2-792c-4550-abf2-7b45396e81ca
 74,Dai Dai (FIFA World Cup Official Song 2026),Shakira,Colombia,,Barranquilla,https://musicbrainz.org/artist/bf24ca37-25f4-4e34-9aec-460b94364cfc
 74,Dai Dai (FIFA World Cup Official Song 2026),Burna Boy,Nigeria,,Port Harcourt,https://musicbrainz.org/artist/78a19169-ac75-4868-b504-7e2e073118e0
 73,Kid Myself,John Morgan,Verenigde Staten,North Carolina,,https://www.opry.com/artists/john-morgan
@@ -51,9 +51,9 @@ Billboard-positie,Nummer,Artiest,Land,Staat/regio,Stad,Bron herkomst
 63,South Of Sanity,Zach Top,Verenigde Staten,Washington,Sunnyside,https://musicbrainz.org/artist/9939a762-5ca9-4c12-a735-0d62e21df4e3
 62,Cowgirl,Shaboozey,Verenigde Staten,Virginia,Fairfax,https://musicbrainz.org/artist/0b427dad-1ee5-48f1-aa4b-026680a3338e
 61,Get To Drinkin',Zach John King,Verenigde Staten,,,https://musicbrainz.org/artist/5a2ab31d-e000-4fb6-bea6-e494835dc20d
-60,The Feeling,Steve Lacy,Verenigde Staten,California,Compton,https://musicbrainz.org/artist/b29020d6-5dbf-4c99-b16f-c009f8a712ff
+60,The Feeling,Steve Lacy,Verenigde Staten,,,https://musicbrainz.org/artist/b29020d6-5dbf-4c99-b16f-c009f8a712ff
 59,Lodi When,Zach Bryan,Verenigde Staten,,,https://musicbrainz.org/artist/51e90731-08c0-4f60-89b6-5b78e5844de8
-58,Nothing,Steve Lacy,Verenigde Staten,California,Compton,https://musicbrainz.org/artist/b29020d6-5dbf-4c99-b16f-c009f8a712ff
+58,Nothing,Steve Lacy,Verenigde Staten,,,https://musicbrainz.org/artist/b29020d6-5dbf-4c99-b16f-c009f8a712ff
 57,Freakin' Out,Dexter And The Moonrocks,Verenigde Staten,,,https://musicbrainz.org/artist/38ed4923-005f-4ba0-baf7-749269dfea29
 56,Bloodstream,Alyssa Grace,Verenigde Staten,California,,https://www.allmusic.com/artist/alyssa-grace-mn0005023955
 55,Self Aware,Temper City,Verenigde Staten,,,https://musicbrainz.org/artist/c74a9a82-29bf-486d-bf93-b4516ac3e338
@@ -71,7 +71,7 @@ Billboard-positie,Nummer,Artiest,Land,Staat/regio,Stad,Bron herkomst
 46,Quebec,Drake,Canada,,Toronto,https://musicbrainz.org/artist/9fff2f8a-21e6-47de-a2b8-7f449929d43f
 45,WTF GOIN,Belly Gang Kushington,Verenigde Staten,,,https://musicbrainz.org/artist/f3cb8059-add2-4bf9-a19e-5664588e30ba
 45,WTF GOIN,21 Savage,Verenigde Staten,,,https://musicbrainz.org/artist/37b2cb82-ef79-4d46-a184-a549450aa231
-44,Oh Yeah?,Steve Lacy,Verenigde Staten,California,Compton,https://musicbrainz.org/artist/b29020d6-5dbf-4c99-b16f-c009f8a712ff
+44,Oh Yeah?,Steve Lacy,Verenigde Staten,,,https://musicbrainz.org/artist/b29020d6-5dbf-4c99-b16f-c009f8a712ff
 43,"Phone, Keys, Wallet",Lainey Wilson,Verenigde Staten,Louisiana,Baskin,https://musicbrainz.org/artist/a6e613d6-ff65-4972-beff-303a1b10ab05
 43,"Phone, Keys, Wallet",John Mayer,Verenigde Staten,Connecticut,Bridgeport,https://musicbrainz.org/artist/144ef525-85e9-40c3-8335-02c32d0861f3
 42,Take Me Back (Leave Me There),Cody Johnson,Verenigde Staten,,,https://musicbrainz.org/artist/faabeed5-3dd0-4be5-aec5-e6486e68db2f
