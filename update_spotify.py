@@ -1,8 +1,6 @@
 import os
 import re
 import unicodedata
-from datetime import datetime
-from zoneinfo import ZoneInfo
 
 import requests
 import spotipy
@@ -15,6 +13,7 @@ SCOPES = "playlist-modify-public playlist-modify-private playlist-read-private"
 # Verified Spotify tracks. Used only if the chart artist + title match.
 # These songs were not found by the basic Spotify search in the first run.
 OVERRIDES = {
+    ("bobby boris pickett and the crypt kickers", "monster mash"): "0xxZY5C9xxij3D1HkzbnfC",
     ("karol g", "ahi"): "6DoUDG1GJrJf6eGQLUBBnm",
     ("beyonce", "morning dew donk"): "4ZYlzwjjAJrflwWg4DJTlT",
     ("boa", "duvet"): "7urtwZEtOypb3r8HNi42dT",
@@ -80,12 +79,6 @@ def find_spotify_track(spotify, title, artist):
     return best
 
 def main():
-    if os.getenv("GITHUB_EVENT_NAME") == "schedule":
-        now = datetime.now(ZoneInfo("Europe/Brussels"))
-        if now.weekday() != 2 or now.hour != 12:
-            print("Outside Wednesday 12:00 Belgium schedule. Skipping.")
-            return
-
     chart_response = requests.get(CHART_URL, timeout=40)
     chart_response.raise_for_status()
     chart = chart_response.json()

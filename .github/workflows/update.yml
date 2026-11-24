@@ -2,8 +2,8 @@ name: Update Billboard Hot 100 Reversed
 
 on:
   schedule:
-    # Wednesday at 12:00 Europe/Brussels, including daylight-saving changes.
-    - cron: '0 10,11 * * 3'
+    - cron: '0 12 * * 3'
+      timezone: Europe/Brussels
   push:
     branches:
       - main
@@ -39,24 +39,8 @@ jobs:
           python-version: '3.12'
           cache: pip
       - run: pip install -r requirements.txt
-      - name: Check Belgian Wednesday update time
-        id: clock
-        env:
-          EVENT: ${{ github.event_name }}
-        run: |
-          python - <<'PY'
-          import os
-          from datetime import datetime
-          from zoneinfo import ZoneInfo
-          now = datetime.now(ZoneInfo("Europe/Brussels"))
-          proceed = os.environ["EVENT"] != "schedule" or (now.weekday() == 2 and now.hour == 12)
-          with open(os.environ["GITHUB_OUTPUT"], "a") as output:
-              output.write('proceed=' + ('true' if proceed else 'false') + chr(10))
-          print("Brussels time:", now, "Run:", proceed)
-          PY
       - name: Update Spotify playlist
-        id: spotify
-        if: steps.clock.outputs.proceed == 'true' && (github.event_name == 'schedule' || inputs.update_spotify == true)
+        if: github.event_name == 'schedule' || inputs.update_spotify == true
         env:
           SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
           SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
@@ -64,37 +48,27 @@ jobs:
           SPOTIFY_PLAYLIST_ID: ${{ secrets.SPOTIFY_PLAYLIST_ID }}
         run: python update_spotify.py
       - name: Verify artist-name parsing
-        if: steps.clock.outputs.proceed == 'true'
         run: python -m unittest test_artist_parsing.py test_artist_metadata.py
       - name: Generate details CSV
-        if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
         run: python generate_details.py
       - name: Collect band members and roles
-        if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
         run: python collect_band_members.py
       - name: Enrich band member ages and instruments
-        if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
         run: python enrich_band_members.py
       - name: Collect artist photos and ages
-        if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
         env:
           SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
           SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
         run: python collect_artist_profiles.py
       - name: Enrich artist genre and gender from Wikidata
-        if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
         run: python enrich_artist_extras.py
       - name: Report missing metadata
-        if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
         run: python metadata_quality_report.py
       - name: Build mobile HTML overview
-        if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
         run: python build_mobile_page.py
       - name: Prepare website homepage
-        if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
         run: cp billboard_hot_100.html index.html
       - name: Commit details CSV
-        if: steps.clock.outputs.proceed == 'true' && ((github.event_name != 'schedule' && inputs.update_spotify != true) || steps.spotify.outcome == 'success')
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
