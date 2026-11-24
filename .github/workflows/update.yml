@@ -23,6 +23,7 @@ on:
 
 permissions:
   contents: write
+  pages: write
 
 concurrency:
   group: billboard-hot-100-reversed
@@ -77,3 +78,7 @@ jobs:
             git commit -m "Update Billboard details CSV"
             git push
           fi
+      - name: Request GitHub Pages build
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds"
