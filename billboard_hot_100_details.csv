@@ -1,6 +1,6 @@
 ﻿Billboard-positie,Artiest,Nummer,Vorige week,Weken in Hot 100,Hoogste positie,Land,Staat/regio,Stad,Eerste officiële releasedatum,Bron herkomst,Bron releasedatum
-100,Lil Baby,Mr. Do Something,48,2,48,Verenigde Staten,Georgia,Atlanta,,https://musicbrainz.org/artist/d42a5768-ada1-4fb6-85fd-f61aba6264e0,
-99,Bruno Mars,Dance With Me,,5,42,Verenigde Staten,Hawaii,Honolulu,,https://musicbrainz.org/artist/afb680f2-b6eb-4cd7-a70b-a63b25c763d5,
+100,Lil Baby,Mr. Do Something,48,2,48,Verenigde Staten,Georgia,Atlanta,2026-11-10,https://musicbrainz.org/artist/d42a5768-ada1-4fb6-85fd-f61aba6264e0,https://musicbrainz.org/recording/04c1bed0-1e3c-458d-8759-f47f1534a426
+99,Bruno Mars,Dance With Me,,5,42,Verenigde Staten,Hawaii,Honolulu,2026-02-27,https://musicbrainz.org/artist/afb680f2-b6eb-4cd7-a70b-a63b25c763d5,https://musicbrainz.org/recording/b2715cbc-5dfe-4cbb-aeac-71e142d3a2c5
 98,Elevation Worship & Chandler Moore,God I'm Just Grateful,100,11,87,Verenigde Staten,North Carolina,Charlotte,2025-11-07,https://musicbrainz.org/artist/f3bb45c8-dcb3-4358-ab21-645e6d0935e4,https://musicbrainz.org/recording/45d24cdb-ae94-46f8-896d-6cd5345b3a42
 97,Megan Moroney,Medicine,,8,39,Verenigde Staten,Georgia,Savannah,2026-02-20,https://musicbrainz.org/artist/9eb2030a-c311-4cbf-a8f2-c57a58aa18ce,https://musicbrainz.org/recording/042a9b61-eada-4b01-91b4-22ac745c2400
 96,Thekidszn,Impulsive,92,5,90,,,,2026-02-20,https://musicbrainz.org/artist/086f15ec-a6ef-424b-a711-12da9c3efc25,https://musicbrainz.org/recording/adc45d68-064b-4763-9829-2bf3a7d47172
@@ -11,23 +11,23 @@
 91,Russell Dickerson,Worth Your Wild,99,3,91,Verenigde Staten,,Nashville,2025-08-22,https://musicbrainz.org/artist/e2529584-b250-4a22-821c-16d3d8120978,https://musicbrainz.org/recording/e77bccac-d9c6-45f5-9dea-9bad5fea799e
 90,ATEEZ,UP,,1,90,"Korea, Republic of",,Seoul,2026-11-13,https://musicbrainz.org/artist/cf0dbc16-4e24-4957-b5b4-955c8978f690,https://musicbrainz.org/recording/a24c28c8-094a-4c09-89f1-beed5a278950
 89,Greylan James,Water At A Wedding,,3,89,Verenigde Staten,Tennessee,Knoxville,2025-07-11,https://musicbrainz.org/artist/c539265b-99c9-49fb-b47f-bb1dce6d5cf3,https://musicbrainz.org/recording/25354e3f-1705-4d26-8bed-8ce20f2ca7af
-88,Latto Featuring Doja Cat,Okayyy,93,3,88,Verenigde Staten,,Columbus,,https://musicbrainz.org/artist/355cc194-b8db-4af2-8678-c7ad54213f4b,
+88,Latto Featuring Doja Cat,Okayyy,93,3,88,Verenigde Staten,,Columbus,2026-05-26,https://musicbrainz.org/artist/355cc194-b8db-4af2-8678-c7ad54213f4b,https://musicbrainz.org/recording/79a5434a-f4c7-4a60-87b3-9f0c239e0664
 87,Faouzia,Unethical,95,2,87,,,,2025-08-01,,https://musicbrainz.org/recording/da84ab89-e3b8-4d57-897a-3a6ecfe61568
 86,Jason Aldean,Anytime Soon,91,3,86,,,,2026-04-24,,https://musicbrainz.org/recording/996b0053-f3d4-4d61-9bd0-23a2332808e5
 85,Blake Whiten,Bet On That,83,13,81,,,,2026-07-03,https://musicbrainz.org/artist/42e71830-7c04-48ee-b34b-81574751871a,https://musicbrainz.org/recording/dcbb75f2-6075-4a0e-8bd2-f05817c9fb62
 84,Dolly Babe Featuring Megan Thee Stallion,Pink Blush,82,8,58,,,,2026-06-30,https://musicbrainz.org/artist/fb3a2585-9523-49b7-b8eb-a5009f4a68c2,https://musicbrainz.org/recording/5d4a8dbb-d397-4bb7-9305-93660e6857f1
-83,Fuerza Regida,Suzuki,,1,83,,,,2026-10-08,,https://musicbrainz.org/recording/f6a7fc8b-a5c8-4a67-8483-08d4a43d7cff
+83,Fuerza Regida,Suzuki,,1,83,Mexico,,,2026-10-08,https://musicbrainz.org/artist/e665ce26-6ce9-4c42-8f6a-7a361a0ba328,https://musicbrainz.org/recording/f6a7fc8b-a5c8-4a67-8483-08d4a43d7cff
 82,Mack Geiger,String By,72,13,71,Australia,,,2026-05-29,https://musicbrainz.org/artist/e07e1915-2fe7-4ffb-acd8-8ae47ce58207,https://musicbrainz.org/recording/e765b267-a543-4fc9-9079-957a37e19d4d
 81,Mack Geiger,Pouring,73,2,73,Australia,,,2026-11-06,https://musicbrainz.org/artist/e07e1915-2fe7-4ffb-acd8-8ae47ce58207,https://musicbrainz.org/recording/ad6d22b8-214a-4863-9ee7-9ba19ea17a2e
-80,Lil Baby,From The Back,70,2,70,Verenigde Staten,Georgia,Atlanta,,https://musicbrainz.org/artist/d42a5768-ada1-4fb6-85fd-f61aba6264e0,
-79,Kameron Marlowe,No Need For Leavin',75,9,75,,,,2026-03-06,,https://musicbrainz.org/recording/27826203-08ea-46b2-882e-6bfde003b97a
+80,Lil Baby,From The Back,70,2,70,Verenigde Staten,Georgia,Atlanta,2026-11-10,https://musicbrainz.org/artist/d42a5768-ada1-4fb6-85fd-f61aba6264e0,https://musicbrainz.org/recording/a09aebcb-b17e-4695-abd5-b36f1c732e97
+79,Kameron Marlowe,No Need For Leavin',75,9,75,Verenigde Staten,,Kannapolis,2026-03-06,https://musicbrainz.org/artist/be259f80-096e-4dc1-8933-d60a8cf3bc69,https://musicbrainz.org/recording/27826203-08ea-46b2-882e-6bfde003b97a
 78,Olivia Rodrigo,Cigarette Smoke,79,11,27,Verenigde Staten,California,Murrieta,2026-06-12,https://musicbrainz.org/artist/6925db17-f35e-42f3-a4eb-84ee6bf5d4b0,https://musicbrainz.org/recording/17b78206-ac77-4d7c-bfb3-c05f6a951ae2
 77,Jelly Roll,Hands Up,78,14,74,,,Antioch,2026-06-24,https://musicbrainz.org/artist/ab5a7a60-1b71-4e5b-b622-e0ae2ce84c32,https://musicbrainz.org/recording/6c06fe62-94a3-4ad4-9f1d-20c851f2c945
 76,boa,Duvet,84,9,75,United Kingdom,,,1998-07-01,https://musicbrainz.org/artist/ca1dcba2-792c-4550-abf2-7b45396e81ca,https://musicbrainz.org/recording/f4d36326-da1b-4b43-af19-7113c2adb92d
 75,Drake,Quebec,71,7,11,Canada,,Toronto,2026-10-02,https://musicbrainz.org/artist/9fff2f8a-21e6-47de-a2b8-7f449929d43f,https://musicbrainz.org/recording/068b2c00-a491-4086-8b28-9b675ec1d721
 74,Miranda Lambert & Ella Langley,Snakeskin Boots,76,7,42,Verenigde Staten,Texas,Longview,2026-10-02,https://musicbrainz.org/artist/4eca1aa0-c79f-481b-af8a-4a2d6c41aa5c,https://musicbrainz.org/recording/4aff2838-9575-41f0-a9f3-cc8b27659eb4
 73,Ella Langley,Here Then We're Gone,,1,73,Verenigde Staten,,,2026-11-13,https://musicbrainz.org/artist/b16c0872-31a7-4db9-8569-0e3146fcecfc,https://musicbrainz.org/recording/6127cb17-cb4a-4741-9907-9491ffd2ef6c
-72,Olivia Rodrigo,Take Me Home (4 Christmas),32,2,32,Verenigde Staten,California,Murrieta,,https://musicbrainz.org/artist/6925db17-f35e-42f3-a4eb-84ee6bf5d4b0,
+72,Olivia Rodrigo,Take Me Home (4 Christmas),32,2,32,Verenigde Staten,California,Murrieta,2026-11-05,https://musicbrainz.org/artist/6925db17-f35e-42f3-a4eb-84ee6bf5d4b0,https://musicbrainz.org/recording/17d2a31e-d2b9-4456-a4f8-2740f8d9831f
 71,Noah Kahan,Draw You Out,77,7,25,Verenigde Staten,Vermont,Strafford,2026-10-02,https://musicbrainz.org/artist/a2a3f910-b188-43e7-81d0-f1ac2a2f3e12,https://musicbrainz.org/recording/c4c8cbbb-1fe8-40c2-b716-a96b50dc90d8
 70,Cardi B,AH HA,63,16,25,Verenigde Staten,New York,The Bronx,2026-07-31,https://musicbrainz.org/artist/2f3c4d70-0462-40da-bba3-0aec5772c556,https://musicbrainz.org/recording/922d390a-2f20-4d1d-9786-e6e108d6f8f6
 69,Dexter And The Moonrocks,Freakin' Out,65,35,33,,,,2026-03-11,https://musicbrainz.org/artist/38ed4923-005f-4ba0-baf7-749269dfea29,https://musicbrainz.org/recording/6176f892-5035-46c3-b1fd-39853c6a46d5
@@ -35,7 +35,7 @@
 67,Dan + Shay,Say So,67,11,66,Verenigde Staten,Tennessee,Nashville,2026-04-03,https://musicbrainz.org/artist/33cf3954-10af-4dcb-985f-9420d1fa4168,https://musicbrainz.org/recording/ac28c23b-8a60-44a8-9cd3-b29adb80a25a
 66,Alyssa Grace,Bloodstream,59,20,45,,,,2026-06-05,https://musicbrainz.org/artist/80bd07ef-4e48-4e2c-b5ad-e590e3879cf7,https://musicbrainz.org/recording/989fd39b-30a6-4856-99ab-c6fabf7950f0
 65,Hudson Westbrook,Painted You Pretty,64,13,64,,,,2025-07-25,https://musicbrainz.org/artist/5b511be8-fd02-4de2-a017-7f5d06db53e4,https://musicbrainz.org/recording/0f0f321c-cb20-4e5e-b4c3-bec92e535b09
-64,"Future Featuring Drake, Travis Scott & Loe Shimmy",Ya Hit,38,2,38,,,,2026-11-06,,https://musicbrainz.org/recording/9881bdb2-8141-43f1-87ed-2dbf9655e7cb
+64,"Future Featuring Drake, Travis Scott & Loe Shimmy",Ya Hit,38,2,38,Verenigde Staten,,Atlanta,2026-11-06,https://musicbrainz.org/artist/48262e82-db9f-4a92-b650-dfef979b73ec,https://musicbrainz.org/recording/9881bdb2-8141-43f1-87ed-2dbf9655e7cb
 63,Drake & Don Toliver,Solar Eclipse,56,7,5,Canada,,Toronto,2026-10-02,https://musicbrainz.org/artist/9fff2f8a-21e6-47de-a2b8-7f449929d43f,https://musicbrainz.org/recording/ac4732ef-0e40-43a4-8216-9b7b43dfd97c
 62,"Drake, Don Toliver & Yebba",Cold Shoulder,62,7,18,Canada,,Toronto,2026-10-02,https://musicbrainz.org/artist/9fff2f8a-21e6-47de-a2b8-7f449929d43f,https://musicbrainz.org/recording/5f114ca0-4f38-4582-a9e4-9561886225d3
 61,Steve Lacy,The Feeling,61,18,60,Verenigde Staten,California,,2026-06-05,https://musicbrainz.org/artist/b29020d6-5dbf-4c99-b16f-c009f8a712ff,https://musicbrainz.org/recording/197eb7c2-b690-4ba6-bf58-f73a39ae6cbe
@@ -57,7 +57,7 @@
 45,"Justice, Tame Impala, SZA & King Gizzard & The Lizard Wizard",Flower In A Hurricane,68,5,45,France,,,2026-10-15,https://musicbrainz.org/artist/860b2707-6153-4e3a-aa57-74d2b42c55b5,https://musicbrainz.org/recording/a410643c-4172-4021-bbb8-e93caacc7a77
 44,Lainey Wilson & John Mayer,"Phone, Keys, Wallet",50,24,43,Verenigde Staten,Louisiana,Baskin,2026-06-04,https://musicbrainz.org/artist/a6e613d6-ff65-4972-beff-303a1b10ab05,https://musicbrainz.org/recording/35cc35d0-28ca-4934-adc2-62d67b2e9039
 43,Tame Impala,Loser,39,17,18,Australia,,Sydney,2025-09-01,https://musicbrainz.org/artist/63aa26c3-d59b-4da4-84ac-716b54f1ef4d,https://musicbrainz.org/recording/ec87b2e6-3d7e-4121-96a3-051fe779de6f
-42,Jose Feliciano,Feliz Navidad,,44,6,,,,2000-11-07,,https://musicbrainz.org/recording/a763b1ab-16fe-4d05-8b9b-811148139d93
+42,Jose Feliciano,Feliz Navidad,,44,6,Verenigde Staten,,Lares,2000-11-07,https://musicbrainz.org/artist/3c004c98-aab6-4b63-a2df-e07c98e73b0a,https://musicbrainz.org/recording/a763b1ab-16fe-4d05-8b9b-811148139d93
 41,Lil Baby,Dead Fresh,25,18,18,Verenigde Staten,Georgia,Atlanta,2026-07-17,https://musicbrainz.org/artist/d42a5768-ada1-4fb6-85fd-f61aba6264e0,https://musicbrainz.org/recording/43987e94-5b7f-4ab3-ad0e-969729340ef8
 40,Darlene Love,Christmas (Baby Please Come Home),,33,14,Verenigde Staten,,Los Angeles,,https://musicbrainz.org/artist/af953ba2-283b-41ef-93bc-b4cfc5feeebc,
 39,Michael Buble,It's Beginning To Look A Lot Like Christmas,,32,12,Canada,,Burnaby,2011-10-21,https://musicbrainz.org/artist/611700cf-27f0-4dc9-ae80-c513a767853e,https://musicbrainz.org/recording/0889ab16-b4bb-44be-8a29-7fb311e75e24
@@ -66,13 +66,13 @@
 36,Cody Johnson,Take Me Back (Leave Me There),31,14,31,Verenigde Staten,,,2026-06-26,https://musicbrainz.org/artist/faabeed5-3dd0-4be5-aec5-e6486e68db2f,https://musicbrainz.org/recording/79afe9f9-218a-4f28-bdaf-e18e7fc6c788
 35,Noah Kahan,Orbiter,35,30,33,Verenigde Staten,Vermont,Strafford,2026-04-24,https://musicbrainz.org/artist/a2a3f910-b188-43e7-81d0-f1ac2a2f3e12,https://musicbrainz.org/recording/2e22b8b5-e025-4f7f-8321-0b16df20384d
 34,Olivia Rodrigo,The Cure,33,26,5,Verenigde Staten,California,Murrieta,2026-05-22,https://musicbrainz.org/artist/6925db17-f35e-42f3-a4eb-84ee6bf5d4b0,https://musicbrainz.org/recording/1de149c9-1f2d-491e-b628-6dde34e13b62
-33,The Ronettes,Sleigh Ride,,40,8,Verenigde Staten,,Washington Heights,,https://musicbrainz.org/artist/393e5448-896f-43e9-b80b-4ee58e1e71a4,
-32,Dean Martin,Let It Snow! Let It Snow! Let It Snow!,,43,7,Verenigde Staten,,Steubenville,,https://musicbrainz.org/artist/5e6c760b-42e0-4df4-a221-0269355da00a,
+33,The Ronettes,Sleigh Ride,,40,8,Verenigde Staten,,Washington Heights,1963-11-22,https://musicbrainz.org/artist/393e5448-896f-43e9-b80b-4ee58e1e71a4,https://musicbrainz.org/recording/9abaaa73-fa68-4e03-9edc-d1992d9825d4
+32,Dean Martin,Let It Snow! Let It Snow! Let It Snow!,,43,7,Verenigde Staten,,Steubenville,2006-01-31,https://musicbrainz.org/artist/5e6c760b-42e0-4df4-a221-0269355da00a,https://musicbrainz.org/recording/dfa0ca6e-695b-4758-8208-08270c10401b
 31,"Nat ""King"" Cole",The Christmas Song (Merry Christmas To You),,57,6,Verenigde Staten,,Montgomery,2003-11-11,https://musicbrainz.org/artist/fbe054ec-a143-4101-9e9e-64abc5ff5ac9,https://musicbrainz.org/recording/331d2f9f-3439-460f-aaca-c9e5b9fc2912
 30,Jamie Miller,Babydoll,37,9,30,Verenigde Staten,,,2026-08-07,https://musicbrainz.org/artist/081e71fb-4291-4a0c-a0f7-52b6c9ea8b31,https://musicbrainz.org/recording/d0879d90-5783-40a1-a420-ae977029799a
 29,ADELA,Ain't In LA,27,16,24,Slovakia,,Bratislava,2026-07-23,https://musicbrainz.org/artist/f40856e6-079f-4a0a-916e-9e6a5e04f646,https://musicbrainz.org/recording/2938d427-a034-48ce-9452-31e60d1fd4a7
-28,Kelly Clarkson,Underneath The Tree,45,41,7,Verenigde Staten,Texas,Fort Worth,,https://musicbrainz.org/artist/d339efbb-77b9-4147-ba9e-59f2f24550b2,
-27,Andy Williams,It's The Most Wonderful Time Of The Year,47,54,5,Verenigde Staten,Iowa,Wall Lake,,https://musicbrainz.org/artist/57cb4257-9855-4a42-b1be-bfba1d9b520d,
+28,Kelly Clarkson,Underneath The Tree,45,41,7,Verenigde Staten,Texas,Fort Worth,2013-10-25,https://musicbrainz.org/artist/d339efbb-77b9-4147-ba9e-59f2f24550b2,https://musicbrainz.org/recording/1e62185e-2731-4da4-930a-a5817962ff19
+27,Andy Williams,It's The Most Wonderful Time Of The Year,47,54,5,Verenigde Staten,Iowa,Wall Lake,1997-11-01,https://musicbrainz.org/artist/57cb4257-9855-4a42-b1be-bfba1d9b520d,https://musicbrainz.org/recording/e8229594-9be5-4791-b044-3832de7c6edb
 26,sombr,My Body Isn't Ready,26,21,26,Verenigde Staten,New York,New York,2026-06-25,https://musicbrainz.org/artist/502cf908-9921-48bc-bf0e-265c881c0156,https://musicbrainz.org/recording/719569f4-6083-4d86-8179-8df9776cad5d
 25,Zach Bryan Featuring Lana Del Rey,Lies,19,5,4,Verenigde Staten,,Okinawa,2026-10-16,https://musicbrainz.org/artist/51e90731-08c0-4f60-89b6-5b78e5844de8,https://musicbrainz.org/recording/70a7ba18-aa51-488b-b2d8-9cb4dcbf9467
 24,Malcolm Todd,Earrings,23,38,17,Verenigde Staten,California,Los Angeles,2024-04-05,https://musicbrainz.org/artist/6c2a79b8-2b5c-4c2d-b495-6a446811bf9d,https://musicbrainz.org/recording/5167d8a8-f450-4062-be89-4d427a436540
@@ -85,16 +85,16 @@
 17,Morgan Wallen,Last Thing You Need,21,9,9,Verenigde Staten,Tennessee,Sneedville,2026-09-17,https://musicbrainz.org/artist/2077273e-eaa1-4f49-903c-f286ededecb9,https://musicbrainz.org/recording/22a2f1c0-34e9-4f8b-8093-e643ae5ebc03
 16,Dominic Fike,Babydoll,13,41,10,,,Naples,2018-10-10,https://musicbrainz.org/artist/e337c918-098f-418e-97a2-81dc224b1bf9,https://musicbrainz.org/recording/5b2e8994-f2cb-48c3-b5d3-e7d4351f7a9e
 15,Koe Wetzel & Ella Langley,Jaded,11,15,11,Verenigde Staten,Texas,Pittsburg,2026-08-07,https://musicbrainz.org/artist/cf59723d-febb-4481-9b9b-3cb2c7f2a7e6,https://musicbrainz.org/recording/4537a289-052d-49ff-987b-ae46b82625e3
-14,Brenda Lee,Rockin' Around The Christmas Tree,30,73,1,,,Atlanta,,https://musicbrainz.org/artist/6ca4886a-8f77-4133-b404-46fb3908e24a,
+14,Brenda Lee,Rockin' Around The Christmas Tree,30,73,1,,,Atlanta,1993-08-31,https://musicbrainz.org/artist/6ca4886a-8f77-4133-b404-46fb3908e24a,https://musicbrainz.org/recording/e14e7033-45a5-4985-9f1b-50fa95123365
 13,Ariana Grande,Hate That I Made You Love Me,8,25,1,Verenigde Staten,Florida,Boca Raton,2026-05-29,https://musicbrainz.org/artist/f4fdbb4c-e4b7-47a0-b83b-d91bbfcfa387,https://musicbrainz.org/recording/ac849ae0-384b-4f6d-bbd1-cc1fdf42f6e7
 12,Taylor Swift,Patient Zero,10,8,1,Verenigde Staten,Pennsylvania,West Reading,2026-09-25,https://musicbrainz.org/artist/20244d07-534f-4eff-b4d4-930878889970,https://musicbrainz.org/recording/320a8f7b-9035-49f9-b32c-c92546d395b9
 11,Ashe,Stop The Wedding!,12,11,11,Verenigde Staten,California,,2026-08-07,https://musicbrainz.org/artist/36086094-c2a4-49b9-8572-0fbf12fc3409,https://musicbrainz.org/recording/07556217-3316-4554-909b-843431b94b6f
 10,ADELA,Nicole Kidman,7,11,6,Slovakia,,Bratislava,2026-09-04,https://musicbrainz.org/artist/f40856e6-079f-4a0a-916e-9e6a5e04f646,https://musicbrainz.org/recording/51ae8f24-4d9b-4e1a-aead-768331242fa4
-9,Bobby Helms,Jingle Bell Rock,28,70,2,,,,1995-10-11,,https://musicbrainz.org/recording/2e5a4e6c-33cc-4f02-97a5-72511bdf4bb5
+9,Bobby Helms,Jingle Bell Rock,28,70,2,Verenigde Staten,,Helmsburg,1995-10-11,https://musicbrainz.org/artist/502b3244-0f7d-470c-99e9-b17fe6bcaabf,https://musicbrainz.org/recording/2e5a4e6c-33cc-4f02-97a5-72511bdf4bb5
 8,Karol G With Judeline & rusowsky,BbY WOW,6,15,6,Colombia,,Medellín,2026-08-05,https://musicbrainz.org/artist/de22adae-f8ac-414f-b653-b0162611bd60,https://musicbrainz.org/recording/083ef898-e858-452b-b292-497ce07646b0
 7,Olivia Rodrigo,Stupid Song,5,23,3,Verenigde Staten,California,Murrieta,2026-06-12,https://musicbrainz.org/artist/6925db17-f35e-42f3-a4eb-84ee6bf5d4b0,https://musicbrainz.org/recording/29ad0133-bc09-41cc-9a9a-8050a7b70231
 6,Tate McRae,Housewife,4,5,2,Canada,,Calgary,2026-10-16,https://musicbrainz.org/artist/f9133869-f87c-459c-9aa7-2f176cda7e06,https://musicbrainz.org/recording/24356381-b590-491f-9696-31d114930df4
-5,Wham!,Last Christmas,14,56,2,,,,1984-12-03,,https://musicbrainz.org/recording/b7c17cf1-15cb-446b-9194-6bcdd5e9041a
+5,Wham!,Last Christmas,14,56,2,United Kingdom,,Bushey,1984-12-03,https://musicbrainz.org/artist/d570bb31-b9ca-45a4-a2d9-11b186d9c159,https://musicbrainz.org/recording/b7c17cf1-15cb-446b-9194-6bcdd5e9041a
 4,Mariah Carey,All I Want For Christmas Is You,18,82,1,Verenigde Staten,,,1994-10-29,https://musicbrainz.org/artist/494e8d09-f85b-4543-892f-a5096aed1cd4,https://musicbrainz.org/recording/a6fab057-cf3a-4456-950e-d3edaf219326
 3,Tame Impala & JENNIE,Dracula,3,60,3,Australia,,Sydney,2025-09-24,https://musicbrainz.org/artist/63aa26c3-d59b-4da4-84ac-716b54f1ef4d,https://musicbrainz.org/recording/5b1c893a-16da-4e3d-b9b7-6cc57afc360c
 2,Stella Lefty,Boston,2,33,2,Verenigde Staten,Illinois,Winnetka,2026-03-27,https://musicbrainz.org/artist/e881b225-42b1-41d9-9d5e-eff55568585b,https://musicbrainz.org/recording/34666c26-a563-4644-9040-734dbdc6e223
