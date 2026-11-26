@@ -5,17 +5,17 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 - Nummers: 100
 - Unieke vermelde artiesten: 94
-- Artiesten zonder foto: 3
+- Artiesten zonder foto: 1
 - Artiesten zonder bevestigd debuutjaar: 23
 - Artiesten zonder genre: 9
-- Artiesten zonder gender/groepsaanduiding: 3
-- Artiesten zonder gedocumenteerde identiteit: 3
-- Soloartiesten met ingevulde volledige geboortedatum: 70
+- Artiesten zonder gender/groepsaanduiding: 1
+- Artiesten zonder gedocumenteerde identiteit: 1
+- Soloartiesten met ingevulde volledige geboortedatum: 72
 - Volledige geboortedata zonder bronlink: 0
 - Soloartiesten zonder bevestigde leeftijd: 4
 - Daarvan met gedeeltelijke geboorte- of leeftijdsinformatie: 4
 - Zonder bruikbare geboorte- of leeftijdsinformatie: 0
-- Artiesten zonder land: 3
+- Artiesten zonder land: 1
 - Nummers zonder voorlopige releasedatum: 2
 - Voorlopige releasedata nog niet als eerste officiële uitgave bevestigd: 98
 - Ingevulde releasedata zonder bronlink: 0
@@ -23,9 +23,7 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 ## Ontbrekende foto's
 
-- Burl Ives
 - Faouzia
-- Jason Aldean
 
 ## Ontbrekende leeftijden
 
@@ -74,9 +72,7 @@ Een ingevulde releasedatum blijft voorlopig totdat de eerste officiële uitgave 
 
 ## Ontbrekende gender/groepsaanduidingen
 
-- Burl Ives
 - Faouzia
-- Jason Aldean
 
 ## Volledige geboortedata zonder bronlink
 
@@ -95,15 +91,11 @@ Geen.
 
 ## Artiesten zonder gedocumenteerde identiteit
 
-- Burl Ives
 - Faouzia
-- Jason Aldean
 
 ## Ontbrekende landen
 
-- Burl Ives
 - Faouzia
-- Jason Aldean
 
 ## Ontbrekende releasedata
 
